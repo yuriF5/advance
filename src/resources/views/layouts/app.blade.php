@@ -21,7 +21,10 @@
                         @if (Auth::check())
                             <li class="header-nav__item"><a class="header-nav__link" href="/mypage">Mypage</a>
 
-                            <li class="header-nav__item"><a class="header-nav__link" href="/logout">Logout</a></li>
+                            <li class="header-nav__item"><form class="form" action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="header-nav__link" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">Logout</button>
+                            </form>
                         @else
                             <li class="header-nav__item"><a class="header-nav__link" href="/register">Registration</a></li>
                             <li class="header-nav__item"><a class="header-nav__link" href="/login">Login</a></li>

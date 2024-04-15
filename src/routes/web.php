@@ -6,3 +6,4 @@ use App\Http\Controllers\ShopController;
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);});
+    Route::get('/logout', [AuthController::class, 'logout']);
