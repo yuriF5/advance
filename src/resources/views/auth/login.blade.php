@@ -1,49 +1,33 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/auth.css') }}">
 @endsection
 
 @section('content')
-<div class="login__content">
-    <div class="login-form__heading">
-        <h2>Login</h2>
-    </div>
-        <form class="form" action="/login" method="post">
+    <div class="auth__wrap">
+        <div class="auth__header">
+            Login
+        </div>
+        <form action="/login" method="post" class="form__item">
             @csrf
-        <div class="form__group">
-        <div class="form__group-title">
-            <span class="form__label--item">メールアドレス</span>
-        </div>
-        <div class="form__group-content">
-            <div class="form__input--text">
-            <input type="email" name="email" value="{{ old('email') }}" />
+            <div class="form__item-mail">
+                <input type="email" class="form__input-item" name="email" placeholder="Email" value="{{ old('email') }}">
             </div>
-            <div class="form__error">
-            @error('email')
-            {{ $message }}
-            @enderror
+            <div class="error__item">
+                @error('email')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
             </div>
-        </div>
-        </div>
-        <div class="form__group">
-        <div class="form__group-title">
-            <span class="form__label--item">パスワード</span>
-        </div>
-        <div class="form__group-content">
-            <div class="form__input--text">
-            <input type="password" name="password" />
+            <div class="form__item-key">
+                <input type="password" class="form__input-item" name="password" placeholder="Password">
             </div>
-            <div class="form__error">
-            @error('password')
-            {{ $message }}
-            @enderror
+            <div class="error__item">
+                @error('password')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
             </div>
-        </div>
-        </div>
-        <div class="form__button">
-        <button class="form__button-submit" type="submit">ログイン</button>
-        </div>
-    </form>
-</div>
+            <button type="submit" class="form__item-button">ログイン</button>
+        </form>
+    </div>
 @endsection
