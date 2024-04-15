@@ -1,6 +1,11 @@
-<!-- ホーム画面 -->
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="ja">
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Rese</title>
+</head>
 @section('css')
 <link rel="stylesheet" href="{{ asset('css/index.css') }}">
 @endsection
@@ -13,3 +18,9 @@
  
 </div>
 @endsection
+  <main>
+    @yield('content')
+  </main>
+</body>
+
+</html>
