@@ -11,11 +11,11 @@
     </head>
 
     <body>
-        <header class="header">
+        <header class="header__l">
             <div class="header__icon">
-                <input id="header__input" class="hidden" type="checkbox">
-                <label for="header__input" class="open" ><span></span></label>
-                    <nav class="nav__content">
+                <input id="header__input" class="header__hidden" type="checkbox">
+                <label for="header__input" class="header__open" ><span></span></label>
+                    <nav class="header-nav__content">
                         <ul class="header-nav">
                             <li class="header-nav__item"><a class="header-nav__link" href="/">Home</a></li>
                         @if (Auth::check())
@@ -28,8 +28,8 @@
                         @endif
                         </ul>
                     </nav>
+                    <div class="header__logo">Rase</div>
                 </div>
-                <div class="header__logo">Rase</div>
             </div>
             @yield('header')
         </header>
