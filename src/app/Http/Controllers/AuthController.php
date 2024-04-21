@@ -16,4 +16,9 @@ class AuthController extends Controller
     $contact = $request->all();
     return view('thanks');
     }
+
+    public function mypage(){
+    return view('mypage');
+    }
+
 }
