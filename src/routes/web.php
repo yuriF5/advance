@@ -5,8 +5,8 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 
 
-Route::post('/register',[AuthController::class, 'register']);
-Route::get('/thanks',[AuthController::class,'thanks']);
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
 
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index']);

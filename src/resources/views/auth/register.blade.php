@@ -9,7 +9,7 @@
         <div class="auth__header">
             Registration
         </div>
-        <form action="/register" method="post" class="form__item">
+        <form action="{{ route('register') }}" method="post" class="form__item">
             @csrf
             <div class="form__item-user">
                 <input type="text" class="form__input-item" name="name" placeholder="Username" value="{{ old('name') }}">
@@ -34,8 +34,8 @@
                 @error('password')
                     <span class="error__message">{{ $message }}</span>
                 @enderror
-            </div>
-            <button type="submit" class="form__item-button">登録</button>
+            </div><a href="{{ route('thanks') }}">
+            <button type="submit" class="form__item-button">登録</button></a>
         </form>
     </div>
 @endsection
