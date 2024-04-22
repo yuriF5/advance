@@ -33,5 +33,4 @@ class ReservationFactory extends Factory
             'updated_at' => now(),
         ];
     }
-    }
 }
