@@ -23,14 +23,13 @@ class ShopController extends Controller
 
     public function search(Request $request)
     {
-        $this->updateShopRatings();
+        
         $shops = $this->searchShops($request);
         $favorites = $this->getFavorites();
-        $isLoggedIn = Auth::check();
+        $LogIn = Auth::check();
 
         return response()->json([
             'shops' => $shops,
-            'isLoggedIn' => $isLoggedIn,
             'favorites' => $favorites,
         ]);
     }
