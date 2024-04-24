@@ -14,4 +14,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/logout', [AuthController::class, 'logout']);
     Route::get('/mypage', [AuthController::class, 'mypage']);
     Route::get('/done', [ReservationController::class, 'done']);
+    Route::get('/shops', [ShopController::class, 'index']);
 });

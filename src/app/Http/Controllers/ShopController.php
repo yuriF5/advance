@@ -11,16 +11,31 @@ use Illuminate\Support\Facades\Auth;
 
 class ShopController extends Controller
 {
+
     public function index(Request $request)
     {
-        $this->updateShopRatings();
-        $shops = $this->searchShops($request);
+        $shops = Shop::query();
+dd($areas);
+        if ($request->filled('area')) {
+            $shops->where('area_id', $request->input('area'));
+        }
+
+        if ($request->filled('genre')) {
+            $shops->where('genre_id', $request->input('genre'));
+        }
+
+        if ($request->filled('shop_name')) {
+            $shops->where('name', 'like', '%'.$request->input('shop_name').'%');
+        }
+
+        $shops = $shops->get();
+
         $areas = Area::all();
         $genres = Genre::all();
-        $favorites = $this->getFavorites();
 
-        return view('index', compact('shops', 'areas', 'genres', 'favorites'));
+        return view('index', compact('shops', 'areas', 'genres'));
     }
+
     public function search(Request $request)
     {
         
@@ -33,4 +48,28 @@ class ShopController extends Controller
             'favorites' => $favorites,
         ]);
     }
+    private function searchShops(Request $request)
+{
+    $keyword = $request->input('keyword');
+    $areaId = $request->input('area');
+    $genreId = $request->input('genre');
+
+    $query = Shop::query();
+
+    if (!empty($keyword)) {
+        $query->where('name', 'like', '%'.$keyword.'%');
+    }
+
+    if (!empty($areaId)) {
+        $query->where('area_id', $areaId);
+    }
+
+    if (!empty($genreId)) {
+        $query->where('genre_id', $genreId);
+    }
+
+    $shops = $query->get();
+
+    return $shops;
+}
 }
