@@ -12,15 +12,15 @@ use Illuminate\Support\Facades\Auth;
 class ShopController extends Controller
 {
     public function index(Request $request)
-    {   
+    {
+        $this->updateShopRatings();
         $shops = $this->searchShops($request);
         $areas = Area::all();
         $genres = Genre::all();
         $favorites = $this->getFavorites();
-    
+
         return view('index', compact('shops', 'areas', 'genres', 'favorites'));
     }
-
     public function search(Request $request)
     {
         

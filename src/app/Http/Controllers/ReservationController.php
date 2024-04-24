@@ -23,4 +23,10 @@ class ReservationController extends Controller
 
         return redirect('/done');
     }
+
+    public function done()
+    {
+        return view('done');
+    }
+
 }

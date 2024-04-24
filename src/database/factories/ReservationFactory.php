@@ -3,6 +3,7 @@
 namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Support\Carbon;

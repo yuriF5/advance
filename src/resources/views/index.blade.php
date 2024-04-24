@@ -34,14 +34,31 @@
 @endsection
 
 @section('content')
-    <div class="shop__wrap">
-        <img class="shop__image" src="image_url" alt="イメージ画像">
-        <div class="shop__item">
-            <span class="shop__title">{{ $shop->name }}</span>
-            <div class="shop__tag">
-                <p class="shop__tag-info">#{{ $shop->area->name }}</p>
-                <p class="shop__tag-info">#{{ $shop->genre->name }}</p>
+            <!-- カード一覧 -->
+        <div class="flex justify-between flex-wrap">
+            @foreach ($shops as $shop)
+            <div class="w-56 bg-white rounded-md shadow-md mb-4">
+                <div>
+                    <img class="w-full h-28 object-cover rounded-t-md" src="{{ $shop['image_url'] }}">
+                </div>
+                <div class="p-3">
+                    <h2 class="font-bold">{{ $shop['name'] }}</h2>
+                    <div class="text-xs">
+                        <span>#{{ $shop['region'] }}</span>
+                        <span>#{{ $shop['genre'] }}</span>
+                    </div>
+                    <div class="flex justify-between items-center mt-2">
+                        <a class="text-xs h-6 rounded-md bg-blue-600 text-white px-3 pt-1" href="{{ url('/detail/'.$shop['id']) }}">詳しくみる</a>
+                        @if( Auth::check() )
+                            <form method="POST" action="{{ url('/favorite') }}">
+                                @csrf
+                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
+                                <button class="text-2xl {{ $shop['favorite'] ? 'text-red-500' : 'text-gray-100' }}" type="submit">&#9829;</button>
+                            </form>
+                        @endif
+                    </div>
+                </div>            
             </div>
-        </div>
-    </div>
+            @endforeach
 @endsection
