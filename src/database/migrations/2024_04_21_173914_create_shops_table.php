@@ -21,7 +21,7 @@ class CreateShopsTable extends Migration
             $table->text('description')->nullable();
             $table->string('image_url')->nullable();
             $table->unsignedTinyInteger('business_hours')->nullable();
-            $table->time('reserve_time_seat')->nullable();
+            $table->time('booking')->nullable();
             $table->timestamps();
         });
     }
