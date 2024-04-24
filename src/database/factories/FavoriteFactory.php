@@ -15,7 +15,7 @@ class FavoriteFactory extends Factory
     public function definition()
     {
         return [
-            'user_id' => 5,
+            'user_id' => 2,
             'shop_id' => function () {
                 return Shop::inRandomOrder()->first()->id;
             },

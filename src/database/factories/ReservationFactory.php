@@ -22,7 +22,7 @@ class ReservationFactory extends Factory
         $status = Carbon::parse($randomDate)->lte(Carbon::today()) ? '来店' : '予約';
 
         return [
-            'user_id' => 5,
+            'user_id' => 2,
             'shop_id' => function () {
                 return Shop::inRandomOrder()->first()->id;
             },
