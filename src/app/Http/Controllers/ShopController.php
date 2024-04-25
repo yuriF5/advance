@@ -13,41 +13,54 @@ class ShopController extends Controller
 {
 
     public function index(Request $request)
-    {
-    $shops = Shop::query();
-
+{
+        $shopsQuery = Shop::query();
+    
+    // 条件に従って絞り込む
     if ($request->filled('area')) {
-        $shops->where('area_id', $request->input('area'));
+        $shopsQuery->where('area_id', $request->input('area'));
     }
-
+    
     if ($request->filled('genre')) {
-        $shops->where('genre_id', $request->input('genre'));
+        $shopsQuery->where('genre_id', $request->input('genre'));
     }
-
+    
     if ($request->filled('word')) {
-        $shops->where('name', 'like', '%'.$request->input('word').'%');
+        $shopsQuery->where('name', 'like', '%'.$request->input('word').'%');
     }
+    
+    // $shops を取得
+    $shops = $shopsQuery->get(['id', 'name', 'image_url', 'area_id', 'genre_id']);
+    
+    // 地域とジャンルの名前を取得し、$shops に追加する
+    $areaNames = Area::pluck('name', 'id');
+    $genreNames = Genre::pluck('name', 'id');
+    
+    $areas = Area::all();
+    $genres = Genre::all();
+    
+    return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres'));
 
-    $shops = $shops->get();
+}
+
+public function search(Request $request)
+{
+    $shops = $this->searchShops($request);
+    $favorites = $this->getFavorites();
+    $LogIn = Auth::check();
+    $message = '';
+
+    if ($shops->isEmpty()) {
+        $message = 'No shops found.';
+    }
 
     $areas = Area::all();
     $genres = Genre::all();
 
-    return view('index', compact('shops', 'areas', 'genres'));
-    }
+    return view('search_result', compact('message', 'shops', 'favorites', 'areas', 'genres'));
 
-    public function search(Request $request)
-    {
-        
-        $shops = $this->searchShops($request);
-        $favorites = $this->getFavorites();
-        $LogIn = Auth::check();
+}
 
-        return response()->json([
-            'shops' => $shops,
-            'favorites' => $favorites,
-        ]);
-    }
     private function searchShops(Request $request)
 {
     $keyword = $request->input('keyword');
@@ -68,8 +81,6 @@ class ShopController extends Controller
         $query->where('genre_id', $genreId);
     }
 
-    $shops = $query->get();
-
-    return $shops;
+    return $query->get();
 }
 }
