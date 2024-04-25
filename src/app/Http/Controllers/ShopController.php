@@ -83,4 +83,14 @@ public function search(Request $request)
 
     return $query->get();
 }
+public function detail(Request $request)
+    {
+        $user = Auth::user();
+        $userId = Auth::id();
+        $shop = Shop::find($request->shop_id);
+
+        $backRoute = '/';
+        
+        return view('detail', compact('user', 'shop', 'backRoute'));
+    }
 }

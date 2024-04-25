@@ -28,5 +28,17 @@ class ReservationController extends Controller
     {
         return view('done');
     }
+    
+    public function edit(Reservation $reservation)
+    {
+        $user = Auth::user();
+        $shop = Shop::find($reservation->shop_id);
+
+
+        $backRoute = '/mypage';
+
+        return view('detail', compact('reservation', 'user', 'shop', 'backRoute'));
+    }
+
 
 }
