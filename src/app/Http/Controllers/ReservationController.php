@@ -40,5 +40,4 @@ class ReservationController extends Controller
         return view('detail', compact('reservation', 'user', 'shop', 'backRoute'));
     }
 
-
 }

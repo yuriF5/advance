@@ -15,7 +15,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
-   
 });
 
 Route::controller(ShopController::class)->group(function () {
@@ -25,7 +24,20 @@ Route::controller(ShopController::class)->group(function () {
 });
 
 Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
-        Route::post('/store/{shop}', 'store')->name('reservation');
-        Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
-        Route::get('/done',  'done')->name('reservation.done');
+    Route::post('/store/{shop}', 'store')->name('reservation');
+    Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
+    Route::get('/done',  'done')->name('reservation.done');
     });
+
+// Favorites
+Route::controller(FavoriteController::class)->group(function () {
+    Route::post('/favorite/store/{shop}', 'store')->name('favorite');
+    Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
+    });
+
+// Reservation routes
+Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
+    Route::post('/store/{shop}', 'store')->name('reservation');
+    Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
+    Route::post('/update/{reservation}', 'update')->name('reservation.update');
+});

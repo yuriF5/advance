@@ -68,7 +68,7 @@
                 <div class="shop__button">
                     <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
                     @if (Auth::check())
-                        @if (in_array($shop->id, $favorites))
+                        @if (!empty($favorites) && in_array($shop->id, $favorites))
                             <form method="POST" action="{{ url('/favorite') }}" class="shop__button-favorite form">
                                 @csrf
                                 @method('delete')

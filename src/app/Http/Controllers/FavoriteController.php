@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class FavoriteController extends Controller
 {
+    public function index()
+{
+    $favorites = Auth::user()->favorites()->get(); // ユーザーのお気に入りを取得する
+    return view('index', compact('favorites'));
+}
+
     public function toggleFavorite(Request $request)
     {
         // ログインユーザーのIDを取得
@@ -35,4 +41,6 @@ class FavoriteController extends Controller
         
         return redirect()->back()->with('status', $message);
     }
+
+
 }
