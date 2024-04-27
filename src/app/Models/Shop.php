@@ -20,12 +20,12 @@ class Shop extends Model
 
     public function favorites()
     {
-        return $this->hasMany(Favorite::class, 'shop_id');
+        return $this->hasMany(Favorite::class);
     }
 
     public function reservations()
     {
-        return $this->hasMany(Reservation::class, 'shop_id');
+        return $this->hasMany(Reservation::class);
     }
 
     public function area()

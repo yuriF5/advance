@@ -38,7 +38,7 @@ Route::controller(FavoriteController::class)->group(function () {
     Route::post('/favorite/store/{shop}', 'store')->name('favorite');
     Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
     Route::post('/favorite', 'toggleFavorite')->name('favorite.toggle');
-    Route::post('/favorite', 'updateFavorite')->name('favorite.update')->middleware('auth');
+    
     });
 
 Route::controller(MyPageController::class)->group(function () {

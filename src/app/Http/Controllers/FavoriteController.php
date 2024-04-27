@@ -14,46 +14,27 @@ class FavoriteController extends Controller
         return view('index', compact('favorites'));
     }
 
-    public function toggleFavorite(Request $request)
+        public function toggleFavorite(Request $request)
     {
-        // ログインユーザーのIDを取得
-        $userId = $request->user()->id;
-
-        // リクエストから店舗IDを取得
+        $user = Auth::user();
         $shopId = $request->input('shop_id');
+        
+        // ユーザーのお気に入り情報を取得
+        $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shopId)->first();
 
-        // お気に入りを検索
-        $favorite = Favorite::where('user_id', $userId)
-            ->where('shop_id', $shopId)
-            ->first();
-
-        // お気に入りが存在しない場合は新しく作成し、存在する場合は削除する
+        // お気に入りが存在する場合は削除し、存在しない場合は追加する
         if ($favorite) {
             $favorite->delete();
-            $message = 'お気に入りから削除しました。';
+            $status = 0; // お気に入り解除
         } else {
             Favorite::create([
-                'user_id' => $userId,
+                'user_id' => $user->id,
                 'shop_id' => $shopId,
             ]);
-            $message = 'お気に入りに追加しました。';
+            $status = 1; // お気に入り登録
         }
 
-        return redirect()->back()->with('status', $message);
+        // お気に入りステータスを返す
+        return response()->json(['status' => $status]);
     }
-
-    public function updateFavorite(Request $request)
-    {
-        $userId = $request->input('user_id');
-        $shopId = $request->input('shop_id');
-        $favoriteStatus = $request->input('favorite_status');
-
-        // お気に入りの状態をデータベースに保存
-        Favorite::updateOrCreate(
-            ['user_id' => $userId, 'shop_id' => $shopId],
-            ['favorite_status' => $favoriteStatus]
-        );
-
-        return redirect()->back(); 
-}
 }
