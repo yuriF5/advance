@@ -10,18 +10,26 @@ use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
-    public function store(Request $request)
+    public function store(Request $request, Shop $shop)
     {
+        // バリデーション
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'number' => 'required|numeric|min:1|max:5',
+        ]);
+
+        // 予約データの作成
         $reservation = new Reservation();
         $reservation->shop_id = $shop->id;
-        $reservation->user_id = Auth::user()->id;
-        $reservation->date = $request->input('date');
-        $reservation->time = $request->input('time');
-        $reservation->number_of_people = $request->input('number_of_people');
-        $reservation->status = "予約";
+        $reservation->user_id = Auth::id(); // 認証されたユーザーのIDを使用する
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->number_of_people = $request->number;
         $reservation->save();
 
-        return redirect('/done');
+        // 完了ページにリダイレクト
+        return redirect()->route('done');
     }
 
     public function done()

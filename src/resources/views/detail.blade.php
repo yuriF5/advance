@@ -27,8 +27,8 @@
     </div>
 
     <div class="reservation__form">
-        <form action="{{ request()->is('*edit*') ? route('reservation.update', $reservation) : route('reservation', $shop) }}"
-            method="post" class="reservation__wrap">
+        <form action="{{ route('reservation', $shop) }}" method="post" class="reservation__wrap">
+            @csrf
             <div class="form__item">
                 <label for="date"></label>
                 <input type="date" id="date" name="date" value="{{ old('date') }}" required>
@@ -43,10 +43,7 @@
                 <select name="time" id="time" required>
                     <option value="" disabled selected>-- 時間を選択してください --</option>
                     @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
-                        <option value="{{ $time }}"
-                            {{ request()->is('*edit*') && $time == date('H:i', strtotime($reservation->time)) ? 'selected' : '' }}>
-                            {{ $time }}
-                        </option>
+                        <option value="{{ $time }}">{{ $time }}</option>
                     @endforeach
                 </select>
                 <div class="error__item">
@@ -60,10 +57,7 @@
                 <select name="number" id="number" required>
                     <option value="" disabled selected>-- 人数を選択してください --</option>
                     @foreach (range(1, 5) as $number)
-                        <option value="{{ $number }}"
-                            {{ request()->is('*edit*') && $number == $reservation->number ? 'selected' : '' }}>
-                            {{ $number }}人
-                        </option>
+                        <option value="{{ $number }}">{{ $number }}人</option>
                     @endforeach
                 </select>
                 <div class="error__item">
@@ -72,7 +66,7 @@
                     @enderror
                 </div>
             </div>
-                        <div class="reservation__group">
+            <div class="reservation__group">
                 <div class="reservation__area">
                     <table class="reservation__table">
                         <tr>
@@ -81,31 +75,28 @@
                         </tr>
                         <tr>
                             <th class="table__header">Date</th>
-                            <td class="table__item" id="dateId">{{ request()->is('*edit*') ? $reservation->date : '' }}
-                            </td>
+                            <td class="table__item" id="dateId"></td>
                         </tr>
                         <tr>
                             <th class="table__header">Time</th>
-                            <td class="table__item" id="timeId">
-                                {{ request()->is('*edit*') ? date('H:i', strtotime($reservation->time)) : '' }}</td>
+                            <td class="table__item" id="timeId"></td>
                         </tr>
                         <tr>
                             <th class="table__header">Number</th>
-                            <td class="table__item" id="numberId">
-                                {{ request()->is('*edit*') ? $reservation->number . '人' : '' }}</td>
+                            <td class="table__item" id="numberId"></td>
                         </tr>
                     </table>
                 </div>
             </div>
-        </div>
-        <div class="reservation__button">
-    @if (Auth::check())
-        <button type="submit" class="reservation__button">予約する</button>
-    @else
-        <p>予約するには<a href="/register" class="reservation__button-link">会員登録</a>または<a href="/login" class="reservation__button-link">ログイン</a>が必要です</p>
-    @endif
+            <div class="reservation__button">
+                @if (Auth::check())
+                    <button type="submit" class="reservation__button">予約する</button>
+                @else
+                    <p>予約するには<a href="/register" class="reservation__button-link">会員登録</a>または<a href="/login" class="reservation__button-link">ログイン</a>が必要です</p>
+                @endif
+            </div>
+        </form>
+    </div> 
 </div>
-    </form>
-    </div>
-</div>
+
 @endsection

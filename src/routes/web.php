@@ -6,38 +6,35 @@ use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
 
+// simple 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
-Route::post('/favorite', [FavoriteController::class,'toggleFavorite'])->name('favorite.toggle');
 
 
+// auth
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('home');
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
 
+// shop
 Route::controller(ShopController::class)->group(function () {
     Route::get('/detail/{shop_id}', 'detail');
     Route::get('/', 'index');
     Route::get('/search', 'search')->name('search');
 });
 
+// Reservation
 Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
     Route::post('/store/{shop}', 'store')->name('reservation');
     Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
-    Route::get('/done',  'done')->name('reservation.done');
+    Route::get('/done',  'done')->name('done');
     });
 
 // Favorites
 Route::controller(FavoriteController::class)->group(function () {
     Route::post('/favorite/store/{shop}', 'store')->name('favorite');
     Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
+    Route::post('/favorite', 'toggleFavorite')->name('favorite.toggle');
     });
-
-// Reservation routes
-Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
-    Route::post('/store/{shop}', 'store')->name('reservation');
-    Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
-    Route::post('/update/{reservation}', 'update')->name('reservation.update');
-});
