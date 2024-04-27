@@ -21,7 +21,7 @@
                     @if (Auth::check())
                     <li class="header-nav__item"><a class="header-nav__link" href="/mypage">Mypage</a></li>
                     <li class="header-nav__item">
-                        <form class="form" action="{{ route('logout') }}" method="POST" style="display: inline;">
+                        <form class="form" action="{{ route('logout') }}" method="GET" style="display: inline;">
                             @csrf
                             <button type="submit" class="header-nav__link" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">Logout</button>
                         </form>
@@ -34,13 +34,13 @@
             </nav>
             <div class="header__logo">Rase</div>
         </div>
+        @yield('header')
     </header>
 
     <main>
         @yield('content')
     </main>
 
-    @yield('header')
 </body>
 
 </html>
