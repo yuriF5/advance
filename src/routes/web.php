@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
+use App\Http\Controllers\MyPageController;
 
 // simple 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -37,4 +38,12 @@ Route::controller(FavoriteController::class)->group(function () {
     Route::post('/favorite/store/{shop}', 'store')->name('favorite');
     Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
     Route::post('/favorite', 'toggleFavorite')->name('favorite.toggle');
+    Route::post('/favorite', 'updateFavorite')->name('favorite.update')->middleware('auth');
     });
+
+Route::controller(MyPageController::class)->group(function () {
+    Route::get('/mypage', 'mypage')->name('mypage');
+    Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
+    Route::delete('/mypage/reservation/{reservation}', 'destroyReservation');
+});
+Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.destroy');
