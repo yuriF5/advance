@@ -20,6 +20,7 @@
                 @enderror
             </div>
             <div class="form__item-mail">
+                src/public/images/envelope-regular.svg
                 <input type="email" class="form__input-item" name="email" placeholder="Email" value="{{ old('email') }}">
             </div>
             <div class="error__item">

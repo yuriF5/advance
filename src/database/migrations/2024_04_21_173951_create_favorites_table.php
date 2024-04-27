@@ -17,6 +17,7 @@ class CreateFavoritesTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
             $table->foreignId('shop_id')->constrained()->cascadeOnDelete();
+            $table->unsignedTinyInteger('status')->default(0); // デフォルト値を0に設定
             $table->timestamps();
         });
     }

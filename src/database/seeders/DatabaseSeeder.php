@@ -5,6 +5,8 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use App\Models\Favorite;
+use App\Models\Reservation;
+use App\Models\User;
 
 class DatabaseSeeder extends Seeder
 {
@@ -15,11 +17,17 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+
+        User::factory(10)->create();
+        
     $this->call([
             AreasTableSeeder::class,
             GenresTableSeeder::class,
             ShopsTableSeeder::class, 
         ]);
+
+        Favorite::factory(10)->create();
+        Reservation::factory(10)->create();
+
 }
 }

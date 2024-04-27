@@ -28,8 +28,7 @@ class ReservationFactory extends Factory
             },
             'date' => $randomDate,
             'time' => $this->faker->randomElement(['20:00', '20:30', '21:00', '21:30', '22:00']),
-            'number' => $this->faker->numberBetween(1, 6),
-            'status' => $status,
+            'number_of_people' => $this->faker->numberBetween(1, 6),
             'created_at' => now(),
             'updated_at' => now(),
         ];

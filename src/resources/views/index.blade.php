@@ -38,7 +38,13 @@
                     </label>
 
                     <div class="search__item">
-                        <div class="search__item-button"></div>
+                        <div class="search__item-button">
+                        <span class="fill-gray-500 h-5 w-5">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+                                <path d="M416 208c0 45.9-14.9 88.3-40 122.7L502.6 457.4c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L330.7 376c-34.4 25.2-76.8 40-122.7 40C93.1 416 0 322.9 0 208S93.1 0 208 0S416 93.1 416 208zM208 352a144 144 0 1 0 0-288 144 144 0 1 0 0 288z"/>
+                            </svg>
+                        </span>
+                    </div>
                         <label class="search__item-label">
                             <input type="text" name="word" class="search__item-input" placeholder="Search ..." value="{{ request('word') }}">
                         </label>
@@ -67,35 +73,31 @@
                 </div>
                 <div class="shop__button">
                     <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
-                    @if (Auth::check())
+                    @auth
                         @if (!empty($favorites) && in_array($shop->id, $favorites))
-                            <form method="POST" action="{{ url('/favorite') }}" class="shop__button-favorite form">
-                                @csrf
-                                @method('delete')
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                <button type="submit" class="shop__button-favorite-btn" title="お気に入り削除">
-                                    <img class="favorite__btn-image" src="{{ asset('images/heart_color.svg') }}">
-                                </button>
-                            </form>
-                        @else
-                            <form method="POST" action="{{ url('/favorite') }}" class="shop__button-favorite form">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                <input type="hidden" name="shop_id" value="{{ $shop->id }}">
-                                <button type="submit" class="shop__button-favorite-btn" title="お気に入り追加">
-                                    <img class="favorite__btn-image" src="{{ asset('images/heart.svg') }}">
-                                </button>
-                            </form>
+                            <div class="favorite__button" data-favorite="{{ $favoriteStatus }}">
+                                <form method="POST" action="{{ url('/favorite') }}" class="form">
+                                    @csrf
+                                    <input type="hidden" name="user_id" value="{{ Auth::id() }}">
+                                    <input type="hidden" name="shop_id" value="{{ $shop->id }}">
+                                    <input type="hidden" name="favorite_status" value="{{ $favoriteStatus }}">
+                                    <button type="submit" class="favorite__button-icon">
+                                        @if ($favoriteStatus)
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#ff3d3d">
+                                                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                                            </svg>
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="#ffffff">
+                                                <path d="M47.6 300.4L228.3 469.1c7.5 7 17.4 10.9 27.7 10.9s20.2-3.9 27.7-10.9L464.4 300.4c30.4-28.3 47.6-68 47.6-109.5v-5.8c0-69.9-50.5-129.5-119.4-141C347 36.5 300.6 51.4 268 84L256 96 244 84c-32.6-32.6-79-47.5-124.6-39.9C50.5 55.6 0 115.2 0 185.1v5.8c0 41.5 17.2 81.2 47.6 109.5z"/>
+                                            </svg>
+                                        @endif
+                                    </button>
+                                </form>
+                            </div>
                         @endif
-                    @else
-                        <button type="button" onclick="location.href='/login'" class="shop__button-favorite-btn">
-                            <img class="favorite__btn-image" src="{{ asset('images/heart.svg') }}">
-                        </button>
-                    @endif
+                    @endauth
                 </div>
-            </div>            
+            </div>
         </div>
     @endforeach
-</main>
 @endsection

@@ -2,8 +2,9 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
 @endsection
+
 
 @section('content')
 <div class="container">
@@ -27,6 +28,7 @@
     </div>
 
     <div class="reservation__form">
+        <h2 class="reservation__title">予約</h2>
         <form action="{{ route('reservation', $shop) }}" method="post" class="reservation__wrap">
             @csrf
             <div class="form__item">
