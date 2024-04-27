@@ -30,7 +30,7 @@
         <form action="{{ route('reservation', $shop) }}" method="post" class="reservation__wrap">
             @csrf
             <div class="form__item">
-                <label for="date"></label>
+                <label for="date">予約日</label>
                 <input type="date" id="date" name="date" value="{{ old('date') }}" required>
             </div>
             <div class="error__item">
@@ -39,7 +39,7 @@
                 @enderror
             </div>
             <div class="form__item">
-                <label for="time"></label>
+                <label for="time">予約時間</label>
                 <select name="time" id="time" required>
                     <option value="" disabled selected>-- 時間を選択してください --</option>
                     @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="form__item">
-                <label for="number"></label>
+                <label for="number">人数</label>
                 <select name="number" id="number" required>
                     <option value="" disabled selected>-- 人数を選択してください --</option>
                     @foreach (range(1, 5) as $number)
@@ -75,15 +75,15 @@
                         </tr>
                         <tr>
                             <th class="table__header">Date</th>
-                            <td class="table__item" id="dateId"></td>
+                            <td class="table__item" id="dateId">--</td>
                         </tr>
                         <tr>
                             <th class="table__header">Time</th>
-                            <td class="table__item" id="timeId"></td>
+                            <td class="table__item" id="timeId">--</td>
                         </tr>
                         <tr>
                             <th class="table__header">Number</th>
-                            <td class="table__item" id="numberId"></td>
+                            <td class="table__item" id="numberId">--</td>
                         </tr>
                     </table>
                 </div>
@@ -96,7 +96,25 @@
                 @endif
             </div>
         </form>
-    </div> 
+    </div>
 </div>
-
 @endsection
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('#time, #number').change(function() {
+            var time = $('#time').val();
+            var number = $('#number').val();
+
+            var timeText = time ? time : '--';
+            var numberText = number ? number + '人' : '--';
+
+            $('#timeId').text(timeText);
+            $('#numberId').text(numberText);
+        });
+        $('#date').change(function() {
+            var date = $('#date').val();
+            $('#dateId').text(date);
+        });
+    });
+</script>
