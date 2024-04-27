@@ -1,33 +1,45 @@
-html{
-    font-size:60%;
+html {
+    font-size: 60%;
 }
 
-body{
-    max-width:1280px;
-    margin:0 auto;
+body {
+    max-width: 1280px;
+    margin: 0 auto;
     background-color: #eee;
-    padding:0 75px 30px 75px;
+    padding: 0 75px 30px 75px;
 }
 
-header{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    position:sticky;
-    padding:30px 1%;
-    background-color:#eee;
-    z-index:10;
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    padding: 30px 1%;
+    background-color: #eee;
+    z-index: 10;
 }
-@media screen and (max-width:768px){
-    body{
-        padding:0 0 30px 0;
+
+@media screen and (max-width: 768px) {
+    body {
+        padding: 0 0 30px 0;
     }
 }
 
 .header__l {
-    display: flex;
-    justify-content: space-between;
-}
+    position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        z-index: 1000;
+        /* 必要に応じて z-index を調整 */
+        background-color: #eee;
+        padding: 15px 75px;
+        /* 上下の余白を調整 */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        /* 必要に応じて影を追加 */
+        display: block;
+        /* ブロックレベル要素として表示 */
+    }
 
 .header__icon {
     display: flex;
@@ -95,15 +107,17 @@ header{
 }
 
 .header-nav__content {
-position: fixed;
+    position: fixed;
     top: 0;
-    right: 100%;
+    right: 50%;
+    transform: translateX(50%);
     width: 100%;
     height: 100%;
     background-color: white;
     transition: right 0.5s;
     z-index: 99;
 }
+
 #header__input:checked~.header__open {
     z-index: 100;
 }
@@ -129,7 +143,7 @@ position: fixed;
 .header-nav__item {
     font-size: 2.8rem;
     text-align: center;
-    padding-bottom: 12px;
+    padding-bottom: 10px;
     display: block;
 }
 
