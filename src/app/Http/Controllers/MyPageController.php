@@ -53,7 +53,7 @@ public function updateFavorite(Request $request, $shopId)
 
         $reservation->delete();
 
-        return redirect()->back()->with('status', '予約を削除しました。');
+        return redirect()->back()->with('id', '予約を削除しました。');
     }
 }
 

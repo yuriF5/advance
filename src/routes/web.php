@@ -44,6 +44,5 @@ Route::controller(FavoriteController::class)->group(function () {
 Route::controller(MyPageController::class)->group(function () {
     Route::get('/mypage', 'mypage')->name('mypage');
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
-    Route::delete('/mypage/reservation/{reservation}', 'destroyReservation');
+    Route::delete('/mypage/reservation/{id}', 'destroyReservation')->name('reservation.destroy');
 });
-Route::delete('/reservations/{reservation}', [ReservationController::class, 'destroy'])->name('reservation.destroy');
