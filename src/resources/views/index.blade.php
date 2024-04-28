@@ -48,10 +48,6 @@
 
 @section('content')
 <div class="shop__wrap">
-    @if (!empty($message))
-        <p>{{ $message }}</p>
-    @endif
-</div>
 @foreach ($shops as $shop)
     <div class="shop__content">
         <div>
@@ -95,5 +91,7 @@
             </div>
         </div>
     </div>
+
 @endforeach
+</div>
 @endsection
