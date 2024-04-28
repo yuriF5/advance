@@ -27,18 +27,14 @@ header {
 
 .header__l {
     position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        z-index: 1000;
-        /* 必要に応じて z-index を調整 */
-        background-color: #eee;
-        padding: 15px 75px;
-        /* 上下の余白を調整 */
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        /* 必要に応じて影を追加 */
-        display: block;
-        /* ブロックレベル要素として表示 */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 100;
+    background-color: #eee;
+    padding: 15px 75px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    display: block;
     }
 
 .header__icon {
