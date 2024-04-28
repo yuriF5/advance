@@ -14,27 +14,19 @@ class FavoriteController extends Controller
         return view('index', compact('favorites'));
     }
 
-        public function toggleFavorite(Request $request)
+    public function store(Shop $shop)
     {
-        $user = Auth::user();
-        $shopId = $request->input('shop_id');
-        
-        // ユーザーのお気に入り情報を取得
-        $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shopId)->first();
+        $favorite = new Favorite();
+        $favorite->shop_id = $shop->id;
+        $favorite->user_id = Auth::user()->id;
+        $favorite->save();
 
-        // お気に入りが存在する場合は削除し、存在しない場合は追加する
-        if ($favorite) {
-            $favorite->delete();
-            $status = 0; // お気に入り解除
-        } else {
-            Favorite::create([
-                'user_id' => $user->id,
-                'shop_id' => $shopId,
-            ]);
-            $status = 1; // お気に入り登録
-        }
+        return back();
+}
+    public function destroy(Shop $shop)
+    {
+        Auth::user()->favorites()->where('shop_id',$shop->id)->delete();
 
-        // お気に入りステータスを返す
-        return response()->json(['status' => $status]);
+        return back();
     }
 }

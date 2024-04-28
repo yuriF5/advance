@@ -358,5 +358,8 @@
         justify-content: center;
         gap: 15px 30px;
     }
-
+.favorite__btn-image{
+        width: 20px;
+        height: 10px;
+}
 }

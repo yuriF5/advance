@@ -49,10 +49,9 @@
                     </div>
                 @endforeach
             </div>
-            </div>
+        </div>
     <div class="favorite__wrap">
         <p class="favorite__title">お気に入り店舗</p>
-       
     </div>
 </div>
 @endsection
