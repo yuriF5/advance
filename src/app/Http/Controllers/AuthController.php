@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
@@ -20,7 +21,6 @@ class AuthController extends Controller
 
     public function register(Request $request)
     {
-                // バリデーションを実行
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
@@ -39,8 +39,6 @@ class AuthController extends Controller
             return redirect()->back()->with('error', '会員登録に失敗しました。');
         }
 
-        // 登録成功時の処理
-        // 今回は単純にthanksページにリダイレクト
         return redirect()->route('thanks');
     }
     
@@ -48,4 +46,12 @@ class AuthController extends Controller
     return view('mypage');
     }
 
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        return redirect('/login');
+    }
 }

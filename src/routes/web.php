@@ -15,7 +15,7 @@ Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
 // auth
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('home');
-    Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+    Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
 
