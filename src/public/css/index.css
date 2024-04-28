@@ -2,7 +2,7 @@
     display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 58%;
+    width: 80%;
 }
 
 .header__search,
@@ -208,10 +208,6 @@
     visibility: hidden;
 }
 
-main {
-    margin-top: 110px;
-    padding: 110px;
-}
 @media screen and (max-width: 768px) {
     .header__right {
         display: none;
