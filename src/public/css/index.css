@@ -208,6 +208,10 @@
     visibility: hidden;
 }
 
+main {
+    margin-top: 110px;
+    padding: 110px;
+}
 @media screen and (max-width: 768px) {
     .header__right {
         display: none;
@@ -321,15 +325,7 @@
         margin: 0;
     }
 
-    #drawer__input-search:checked~.drawer__open-search span {
-        content: url("../images/batsu.svg");
-    }
 
-    /* アイコンがクリックされたらメニューを表示 */
-    #drawer__input-search:checked~.search__content {
-        top: 0;
-        /* メニューを画面に入れる */
-    }
 
     .overlay {
         display: none;

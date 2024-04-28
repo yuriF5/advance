@@ -2,7 +2,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/detail.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/de.css') }}">
 @endsection
 
 
@@ -16,10 +16,7 @@
             </div>
         </div>
         <div class="detail__image">
-            <img src="{{ $shop->image_url }}" alt="イメージ画像" class="detail__image-img"
-            width="350px"
-            height="auto"
-            />
+            <img src="{{ $shop->image_url }}" alt="イメージ画像" class="detail__image-img"/>
         </div>
         <div class="detail__tag">
             <p class="detail__tag-info">#{{ $shop->area->name }}</p>
@@ -35,8 +32,8 @@
         <form action="{{ route('reservation', $shop) }}" method="post" class="reservation__wrap">
             @csrf
             <div class="form__item">
-                <label for="date">予約日</label>
-                <input type="date" id="date" name="date" value="{{ old('date') }}" required>
+                <label for="date"><input type="date" id="date" name="date" value="{{ old('date') }}" required></label>
+                
             </div>
             <div class="error__item">
                 @error('date')
@@ -44,13 +41,13 @@
                 @enderror
             </div>
             <div class="form__item">
-                <label for="time">予約時間</label>
+                <label for="time">
                 <select name="time" id="time" required>
                     <option value="" disabled selected>-- 時間を選択してください --</option>
                     @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
                         <option value="{{ $time }}">{{ $time }}</option>
                     @endforeach
-                </select>
+                </select></label>
                 <div class="error__item">
                     @error('time')
                         <span class="error__message">{{ $message }}</span>
@@ -58,13 +55,13 @@
                 </div>
             </div>
             <div class="form__item">
-                <label for="number">人数</label>
+                <label for="number">
                 <select name="number" id="number" required>
                     <option value="" disabled selected>-- 人数を選択してください --</option>
                     @foreach (range(1, 5) as $number)
                         <option value="{{ $number }}">{{ $number }}人</option>
                     @endforeach
-                </select>
+                </select></label>
                 <div class="error__item">
                     @error('number')
                         <span class="error__message">{{ $message }}</span>
