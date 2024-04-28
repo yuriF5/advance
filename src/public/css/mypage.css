@@ -1,0 +1,96 @@
+.user__name {
+    font-size: 2.4rem;
+    font-weight: bold;
+    margin: 0;
+    padding-bottom: 20px;
+    text-align: center;
+}
+
+.mypage__wrap {
+    display: flex;
+    gap: 30px;
+    justify-content: space-around;
+}
+
+.reservation__wrap {
+    width: 400px;
+    display: flex;
+    flex-direction: column;
+    padding-left: 15px;
+}
+
+.reservation__tab {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.reservation__title,
+.favorite__title {
+    font-size: clamp(1.2rem, 0.6288rem + 1.34vw, 2rem);
+    font-weight: bold;
+    padding-bottom: 20px;
+    top: 100px;
+    background-color: #eee;
+}
+
+
+
+.reservation__content-wrap {
+    width: 100%;
+}
+
+
+.reservation__content {
+    margin-bottom: 20px;
+    padding: 10px 10% 30px 10%;
+    background-color: rgb(84, 124, 243);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.reservation__content--steelblue {
+    background-color: steelblue;
+}
+
+.reservation__header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.header__title {
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+}
+
+.reservation__header__title {
+    text-decoration: none;
+    color: inherit;
+}
+
+.form__button--edit,
+.form__button--cancel {
+    background: none;
+    border: none;
+    cursor: pointer;
+    background-color: rgb(84, 124, 243);
+    border-radius: 5px;
+    color: #fff;
+    font-size: 1.6rem;
+}
+
+.form__button--edit span,
+.form__button--cancel span {
+    font-size: 0;
+    visibility: hidden;
+
+}
+.reservation__table th,
+.reservation__table td {
+    text-align: justify;
+    /* セル内のテキストを両端揃えにする */
+    padding: 8px;
+    /* セルの内側の余白を設定 */
+}
+
