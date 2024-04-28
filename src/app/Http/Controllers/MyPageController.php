@@ -47,10 +47,8 @@ public function updateFavorite(Request $request, $shopId)
 
     return redirect()->back()->with('status', $message)->with('shops', $shops);
 }
-    public function destroyReservation(Request $request, Reservation $reservation)
+    public function destroy(Request $request, Reservation $reservation)
     {
-        
-
         $reservation->delete();
 
         return redirect()->back()->with('id', '予約を削除しました。');

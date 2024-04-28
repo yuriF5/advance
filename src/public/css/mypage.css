@@ -43,14 +43,14 @@
 .reservation__content {
     margin-bottom: 20px;
     padding: 10px 10% 30px 10%;
-    background-color: rgb(84, 124, 243);
+    background-color: rgb(56, 86, 178);
     border-radius: 5px;
     color: #fff;
     font-size: 1.6rem;
 }
 
 .reservation__content--steelblue {
-    background-color: steelblue;
+    background-color: rgb(34, 63, 149);
 }
 
 .reservation__header {
