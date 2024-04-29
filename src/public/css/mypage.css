@@ -33,12 +33,9 @@
     background-color: #eee;
 }
 
-
-
 .reservation__content-wrap {
     width: 100%;
 }
-
 
 .reservation__content {
     margin-bottom: 20px;
@@ -89,9 +86,7 @@
 .reservation__table th,
 .reservation__table td {
     text-align: justify;
-    /* セル内のテキストを両端揃えにする */
     padding: 8px;
-    /* セルの内側の余白を設定 */
 }
 
 .reservation__header_button{
