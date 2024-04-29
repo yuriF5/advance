@@ -41,6 +41,7 @@ Route::controller(FavoriteController::class)->group(function () {
     
     });
 
+// Mypage
 Route::controller(MyPageController::class)->group(function () {
     Route::get('/mypage', 'mypage')->name('mypage');
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');

@@ -9,8 +9,7 @@
 <div class="mypage__wrap">
     <div class="reservation__wrap">
         <div class="reservation__title">
-        <p class="reservation__title_p">ご予約状況
-        </p>
+        <p class="reservation__title_p">ご予約状況</p>
         </div>
             <div class="reservation__content-wrap">
                 @foreach ($reservations as $reservation)
