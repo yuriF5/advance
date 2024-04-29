@@ -38,10 +38,17 @@ class ShopController extends Controller
     
     $areas = Area::all();
     $genres = Genre::all();
+    $user = Auth::user();
+    $favorites = $this->getFavorites();
     
-    return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres'));
+    return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres','favorites'));
 
 }
+private function getFavorites(): array
+    {
+        return Auth::user()->favorites()->pluck('shop_id')->toArray();
+    }
+
 
 public function search(Request $request)
 {

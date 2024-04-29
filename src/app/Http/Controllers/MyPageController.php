@@ -17,10 +17,9 @@ class MyPageController extends Controller
         $user = Auth::user();
         $reservations = Reservation::where('user_id', $user->id)->get();
         $favorites = $user->favorites()->pluck('shop_id')->toArray();
-        $histories = Reservation::where('user_id', $user->id)->get();
         $shops = $user->favorites()->pluck('shop_id')->toArray();
 
-        return view('mypage', compact('reservations', 'favorites', 'histories', 'shops'));
+        return view('mypage', compact('reservations', 'favorites', 'shops'));
     }
 
 public function updateFavorite(Request $request, $shopId)

@@ -9,7 +9,7 @@
 .mypage__wrap {
     display: flex;
     gap: 30px;
-    justify-content: space-around;
+    justify-content: space-between;
 }
 
 .reservation__wrap {

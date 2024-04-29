@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Favorite;
-
+use App\Models\Shop;
+use App\Models\Area;
+use App\Models\Genre;
+use Illuminate\Support\Facades\Auth;
 
 use Illuminate\Http\Request;
 

@@ -61,7 +61,21 @@
             </div>
             <div class="shop__button">
                 <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
-                <img class="favorite__btn-image" width='30px' src="{{ asset('images/heart-regular (1).svg') }}">
+                @if (Auth::check())
+                    @if(in_array($shop->id,$favorites))
+                        <form action="{{ route('unfavorite',$shop) }}" method="post" class="shop__button-favorite">
+                        @csrf
+                            @method('delete')
+                            <button type="submit" class="shop__button-favorite-btn" title="お気に入り削除">
+                                <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-solid.svg') }}"alt="お気に入り解除">
+                            </button>
+                        </form>
+                        @endif
+                @else<!-- 非会員用表示 -->
+                <button type="button" onclick="location.href='/login'" class="shop__button-favorite-btn">
+                    <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-regular (1).svg') }}"alt="お気に入り登録">
+                </button>
+                @endif
             </div>
         </div>
     </div>
