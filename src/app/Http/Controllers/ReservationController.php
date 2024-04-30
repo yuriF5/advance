@@ -7,18 +7,12 @@ use App\Models\Favorite;
 use App\Models\Reservation;
 use App\Models\Shop;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReseFormRequest;
 
 class ReservationController extends Controller
 {
     public function store(Request $request, Shop $shop)
     {
-        // バリデーション
-        $request->validate([
-            'date' => 'required|date',
-            'time' => 'required',
-            'number' => 'required|numeric|min:1|max:5',
-        ]);
-
         // 既存の予約があるかどうかを確認
     $reservation = Reservation::where('shop_id', $shop->id)
                                 ->where('user_id', Auth::id())
