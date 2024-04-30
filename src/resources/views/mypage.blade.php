@@ -67,8 +67,7 @@
                             </div>
                             <div class="shop__button">
                                 <a href="/detail/{{ $shop->id }}?from=mypage" class="shop__button-detail">詳しくみる</a>
-                            
-                        @if(in_array($shop->id,$favorites))
+                            @if(in_array($shop->id,$favorites))
                                 <form action="{{ route('unfavorite',$shop) }}" method="post" class="shop__button-favorite">
                                     @csrf
                                     @method('delete')
@@ -83,6 +82,5 @@
             @endforeach
         </div>
     </div>
-</div>
 </div>
 @endsection
