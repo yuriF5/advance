@@ -8,4 +8,21 @@ use Illuminate\Database\Eloquent\Model;
 class Admin_shop extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'email',
+        'password',
+        'role'
+    ];
+
+    public function admin()
+    {
+        return $this->belongTo(Admin::class);
+    }
+
+    public function shop()
+    {
+        return $this->hasMany(Shop::class);
+    }
 }
