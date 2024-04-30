@@ -44,11 +44,6 @@ class ShopController extends Controller
     return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres','favorites'));
 
 }
-private function getFavorites(): array
-    {
-        return Auth::user()->favorites()->pluck('shop_id')->toArray();
-    }
-
 
 public function search(Request $request)
 {
@@ -63,6 +58,7 @@ public function search(Request $request)
 
     $areas = Area::all();
     $genres = Genre::all();
+
 
     return view('search_result', compact('message', 'shops', 'favorites', 'areas', 'genres'));
 
@@ -90,6 +86,14 @@ public function search(Request $request)
 
     return $query->get();
 }
+    private function getFavorites(): array
+    {
+        if (Auth::check()) {
+            return Auth::user()->favorites()->pluck('shop_id')->toArray();
+        }
+        return [];
+    }
+
 public function detail(Request $request)
     {
         $user = Auth::user();

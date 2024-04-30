@@ -62,24 +62,32 @@
             <div class="shop__button">
                 <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
                 @if (Auth::check())
-                    @if(in_array($shop->id,$favorites))
-                        <form action="{{ route('unfavorite',$shop) }}" method="post" class="shop__button-favorite">
-                        @csrf
+                    @if (in_array($shop->id, $favorites))
+                        <form action="{{ route('unfavorite', $shop) }}" method="post"
+                            enctype="application/x-www-form-urlencoded" class="shop__button-favorite form">
+                            @csrf
                             @method('delete')
                             <button type="submit" class="shop__button-favorite-btn" title="お気に入り削除">
-                                <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-solid.svg') }}"alt="お気に入り解除">
+                                <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-solid.svg') }}"alt="">
                             </button>
                         </form>
-                        @endif
-                @else<!-- 非会員用表示 -->
-                <button type="button" onclick="location.href='/login'" class="shop__button-favorite-btn">
-                    <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-regular (1).svg') }}"alt="お気に入り登録">
-                </button>
+                    @else
+                        <form action="{{ route('favorite', $shop) }}" method="post"
+                            enctype="application/x-www-form-urlencoded" class="shop__button-favorite form">
+                            @csrf
+                            <button type="submit" class="shop__button-favorite-btn" title="お気に入り追加">
+                                <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-regular (1).svg') }}"alt="お気に入り登録">
+                            </button>
+                        </form>
+                    @endif
+                @else
+                    <button type="button" onclick="location.href='/login'" class="shop__button-favorite-btn">
+                        <img class="favorite__btn-image" width="40px"src="{{ asset('images/heart-regular (1).svg') }}"alt="お気に入り登録">
+                    </button>
                 @endif
             </div>
         </div>
     </div>
-
 @endforeach
 </div>
 @endsection

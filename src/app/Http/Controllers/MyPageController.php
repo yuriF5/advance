@@ -13,14 +13,15 @@ use Illuminate\Support\Facades\Auth;
 class MyPageController extends Controller
 {
     public function mypage()
-    {
-        $user = Auth::user();
-        $reservations = Reservation::where('user_id', $user->id)->get();
-        $favorites = $user->favorites()->pluck('shop_id')->toArray();
-        $shops = $user->favorites()->pluck('shop_id')->toArray();
+{
+    $user = Auth::user();
+    $reservations = Reservation::where('user_id', $user->id)->get();
+    $favorites = $user->favorites()->pluck('shop_id')->toArray();
+    $shops = Shop::whereIn('id', $favorites)->with('genre', 'area')->get();
 
-        return view('mypage', compact('reservations', 'favorites', 'shops'));
-    }
+    return view('mypage', compact('reservations', 'favorites', 'shops'));
+}
+
 
 public function updateFavorite(Request $request, $shopId)
 {
@@ -42,6 +43,7 @@ public function updateFavorite(Request $request, $shopId)
             'shop_id' => $shopId,
         ]);
         $message = 'お気に入りに追加しました。';
+
     }
 
     return redirect()->back()->with('status', $message)->with('shops', $shops);

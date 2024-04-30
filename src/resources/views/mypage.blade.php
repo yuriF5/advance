@@ -55,11 +55,10 @@
         </div>
     <div class="favorite__wrap">
         <p class="favorite__title">お気に入り店舗</p>
-    </div>
     <div class="mobile-favorite__wrap">
                 @foreach ($shops as $shop)
                     <div class="shop__content">
-                        <img class="shop__image" src="{{ $shop->image_url }}" alt="イメージ画像">
+                        <img class="shop__image" width="40px" src="{{ $shop->image_url }}" alt="イメージ画像">
                         <div class="shop__item">
                             <span class="shop__title">{{ $shop->name }}</span>
                             <div class="shop__tag">
@@ -68,15 +67,22 @@
                             </div>
                             <div class="shop__button">
                                 <a href="/detail/{{ $shop->id }}?from=mypage" class="shop__button-detail">詳しくみる</a>
-                        @if( Auth::check() )
-                            <form method="POST" action="{{ url('/favorite') }}">
-                                @csrf
-                                <input type="hidden" name="user_id" value="{{ Auth::id() }}">
-                                <input type="hidden" name="shop_id" value="{{ $shop['id'] }}">
-                                <button class="text-2xl {{ $shop['favorite'] ? 'text-red-500' : 'text-gray-100' }}" type="submit">&#9829;</button>
-                            </form>
-                        @endif
-                        @endforeach
+                            
+                        @if(in_array($shop->id,$favorites))
+                                <form action="{{ route('unfavorite',$shop) }}" method="post" class="shop__button-favorite">
+                                    @csrf
+                                    @method('delete')
+                                        <button type="submit" class="shop__button-favorite-btn" title="お気に入り削除"><img class="favorite__btn-image" width="30px"src="{{ asset('images/heart-solid.svg') }}"alt="">
+                                        </button>
+                                </form>
+                            @endif
+                            </div>      
                         </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
 </div>
 @endsection
