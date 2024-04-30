@@ -45,3 +45,9 @@ Route::controller(MyPageController::class)->group(function () {
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
 });
+
+// csv
+Route::controller(CsvController::class)->group(function () {
+    Route::get('csv', 'csv_index')->name('csv_index');
+    Route::post('csv/upload', 'upload')->name('csv.upload');
+});
