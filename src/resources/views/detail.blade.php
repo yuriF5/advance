@@ -44,7 +44,7 @@
                 <label for="time">
                 <select name="time" id="time" required>
                     <option value="" disabled selected>-- 時間を選択してください --</option>
-                    @foreach (['20:00', '20:30', '21:00', '21:30', '22:00'] as $time)
+                    @foreach (['17:00', '18:00', '19:00', '20:30', '21:00'] as $time)
                         <option value="{{ $time }}">{{ $time }}</option>
                     @endforeach
                 </select></label>

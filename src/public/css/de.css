@@ -63,7 +63,8 @@ header {
     font-size: 1.4rem;
 }
 .reservation__wrap {
-    width: 230%;
+    width: 150%;
+    margin:0 auto;
     height: 650px;
     background-color: rgb(63, 90, 242);
     margin-top: -70px;
@@ -115,6 +116,7 @@ header {
 .reservation__area {
     padding: 20px;
     font-size: 1.5rem;
+
 }
 
 .table__header {
@@ -162,7 +164,15 @@ header {
     color: inherit;
 }
 
-.reservation__button-btn:hover,
-.reservation__button-link:hover {
-    color: red;
+.reservation__form{
+    margin: auto;
+}
+
+@media screen and (max-width: 768px) {
+    .reservation__wrap {
+        width: auto;
+    }
+    .detail__wrap {
+        margin:0 auto;
+    }
 }
