@@ -19,7 +19,6 @@ class FavoriteFactory extends Factory
             'shop_id' => function () {
                 return Shop::inRandomOrder()->first()->id;
             },
-            'status' => $this->faker->randomElement([0, 1]),
             'created_at' => now(),
             'updated_at' => now(),
         ];
