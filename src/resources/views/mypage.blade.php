@@ -54,8 +54,11 @@
             </div>
         </div>
     <div class="favorite__wrap">
-        <p class="favorite__title">お気に入り店舗</p>
-    <div class="mobile-favorite__wrap">
+        <div class="reservation__title">
+            <p class="favorite__title_p">お気に入り店舗</p>
+        </div>
+        <div class="mobile-favorite__wrap">
+            <div class="favorite__wrap_c">
                 @foreach ($shops as $shop)
                     <div class="shop__content">
                         <img class="shop__image" width="40px" src="{{ $shop->image_url }}" alt="イメージ画像">
@@ -80,6 +83,7 @@
                     </div>
                 </div>
             @endforeach
+            </div>
         </div>
     </div>
 </div>

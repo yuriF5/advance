@@ -9,7 +9,7 @@
 .mypage__wrap {
     display: flex;
     gap: 30px;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .reservation__wrap {
@@ -96,10 +96,11 @@
     padding-top: 15px;
 }
 .mobile-favorite__wrap{
-    display: flex;
+    display: flex;  
     justify-content: space-between;
+    gap: 30px;
     }
-
+    
 .shop__wrap {
     display: flex;
     gap: 15px 1%;
@@ -181,4 +182,27 @@
 
 .shop__button-favorite-btn:hover {
     opacity: 0.6;
+}
+
+@media screen and (max-width: 768px) {
+
+    .reservation__header__title {
+    font-size: 10px;
+    }
+
+    .form__button--edit,
+    .form__button--cancel {
+        font-size: 10px;
+    }
+
+
+    .shop__wrap {
+    justify-content: center;
+    gap: 15px 30px;
+    }
+
+    .favorite__btn-image {
+        width: 20px;
+        height: 10px;
+}
 }
