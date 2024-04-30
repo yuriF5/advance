@@ -25,7 +25,7 @@ class ReseFormRequest extends FormRequest
 public function rules()
 {
     return [
-        'date' => ['required', 'date', 'after_or_equal:' . Carbon::today()->toDateString(), 'before_or_equal:' . Carbon::today()->addMonths(1)->endOfMonth()->toDateString()],
+        'date' => ['required', 'date', 'after_or_equal:today', 'before_or_equal:' . Carbon::today()->addMonths(1)->endOfMonth()->toDateString()],
         'time' => ['required', 'integer', 'between:0,4'],
         'number' => ['required', 'integer', 'between:1,5'],
     ];
