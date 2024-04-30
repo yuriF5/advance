@@ -37,7 +37,6 @@ Route::prefix('reservation')->controller(ReservationController::class)->group(fu
 Route::controller(FavoriteController::class)->group(function () {
     Route::post('/favorite/store/{shop}', 'store')->name('favorite');
     Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
-    
     });
 
 // Mypage
