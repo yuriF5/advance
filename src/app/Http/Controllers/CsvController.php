@@ -12,7 +12,6 @@ class CsvController extends Controller
 
     $data = DB::table('users')->get(); // データ登録対象のテーブルからデータを取得する
     $count = $request->input('count'); // 何件登録したか結果を返す
-
     return view('csv_index',['data' => $data,'cnt' => $count]);
   }
 
@@ -46,7 +45,7 @@ class CsvController extends Controller
         $count++;
       }
     }
-    return redirect(route('csv',['count' => $count]));
+    return redirect(route('csv_index',['count' => $count]));
   }
 }
 
