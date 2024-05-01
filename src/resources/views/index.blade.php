@@ -30,10 +30,8 @@
                 </label>
                 <div class="search__item">
                     <div class="search__item-button">
-                    <span class="fill-gray-500 h-5 w-5">
-                        <img class="favorite__btn-image" width="10px"src="{{ asset('images/magnifying-glass-solid.svg') }}"alt="検索">
-                    </span>
-                </div>
+                        <input type="image" src="{{ asset('images/magnifying-glass-solid.svg') }}" width="10" alt="検索" >
+                    </div>
                     <label class="search__item-label">
                         <input type="text" name="word" class="search__item-input" placeholder="Search ..." value="{{ request('word') }}">
                     </label>
