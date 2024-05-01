@@ -5,7 +5,7 @@ main {
 .auth__wrap {
     margin: auto;
     max-width: 350px;
-    width: 95%;
+    width: 100%;
     border: none;
     border-radius: 10px;
     box-shadow: 2px 2px 5px gray;
@@ -27,7 +27,7 @@ main {
 
 .form__input-item {
     display: inline-block;
-    width: 85%;
+    width: 100%;
     font-size: 1.6rem;
     border: none;
     outline: none;
@@ -37,8 +37,11 @@ main {
 .form__item-user,
 .form__item-mail,
 .form__item-key {
-    width: 100%;
+    width: 90%;
     margin-bottom: 5px;
+    display: flex;
+    justify-content: space-around;
+    gap: 10px;
 }
 
 .error__item {
@@ -102,3 +105,5 @@ main {
 .form__item-button:hover {
     opacity: 0.8;
 }
+
+
