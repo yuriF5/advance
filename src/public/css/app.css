@@ -13,11 +13,11 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
     padding: 30px 1%;
     background-color: #eee;
     z-index: 10;
 }
+
 
 @media screen and (max-width: 768px) {
     body {
@@ -30,7 +30,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 100;
+    z-index: 110;
     background-color: #eee;
     padding: 15px 75px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -100,11 +100,15 @@ header {
     top: 0;
     transform: rotate(-45deg);
     width: 16px;
-}
 
-/* .header-nav__content {
+}
+.header-nav{
+    margin-top: 200px;
+
+}
+.header-nav__content {
     position: fixed;
-    top: 0;
+    top: -100%;
     right: 50%;
     transform: translateX(50%);
     width: 100%;
@@ -112,17 +116,9 @@ header {
     background-color: white;
     transition: right 0.5s;
     z-index: 99;
-} */
+}
 
-/* #header__input:checked~.header__open {
-    z-index: 100;
-} */
-/* 
-#header__input:checked~.header-nav__content {
-    z-index: 100;
-} */
-
-/* .header-nav__list {
+.header-nav__list {
     list-style: none;
     height: 60%;
     min-height: 300px;
@@ -130,38 +126,49 @@ header {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-} */
-
-#header__input:checked~.header-nav__content {
-    right: 0;
 }
 
-/* .header-nav__item {
+#header__input:checked~.header-nav__content {
+    top: 0;
+}
+.header-nav__item {
     font-size: 2.8rem;
     text-align: center;
     padding-bottom: 10px;
     display: block;
-} */
+}
+.header-nav__link_b{
+    font-size: 2.8rem;
+    font-weight: bold;
+}
 
-/* .header-nav__item:hover {
+.header-nav__link{
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.header-nav__item:hover {
     opacity: 0.8;
-} */
+}
 
-/* .header-nav__item-link {
+.header-nav__item-link {
     color: rgb(63, 90, 242);
     text-decoration: none;
     font-weight: bold;
     font-size: 2.8rem;
-} */
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
 
-/* .header-nav__link button {
+.header-nav__link button {
     background: none;
     border: none;
     padding: 0;
     color: inherit;
     font-size: inherit;
     cursor: pointer;
-} */
+}
 
 .header__logo {
     font-size: 2.8rem;

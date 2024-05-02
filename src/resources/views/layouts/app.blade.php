@@ -23,7 +23,7 @@
                     <li class="header-nav__item">
                         <form class="form" action="{{ route('logout') }}" method="POST" style="display: inline;">
                             @csrf
-                            <button type="submit" class="header-nav__link" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">Logout</button>
+                            <button type="submit" class="header-nav__link_b" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">Logout</button>
                         </form>
                     </li>
                     @else
