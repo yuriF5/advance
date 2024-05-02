@@ -29,9 +29,9 @@
                     </select>
                 </label>
                 <div class="search__item">
-                    <div class="search__item-button">
-                        <input type="image" src="{{ asset('images/magnifying-glass-solid.svg') }}" width="10" alt="検索" >
-                    </div>
+                        <button type="submit" class="search__item-button">
+                            <img src="{{ asset('images/magnifying-glass-solid.svg') }}" width="10" alt="検索">
+                        </button>                    
                     <label class="search__item-label">
                         <input type="text" name="word" class="search__item-input" placeholder="Search ..." value="{{ request('word') }}">
                     </label>
