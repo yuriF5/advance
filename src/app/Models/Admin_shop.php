@@ -23,6 +23,6 @@ class Admin_shop extends Model
 
     public function shop()
     {
-        return $this->hasMany(Shop::class);
+        return $this->belongTo(Shop::class);
     }
 }

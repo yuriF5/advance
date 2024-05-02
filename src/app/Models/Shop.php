@@ -42,4 +42,9 @@ class Shop extends Model
     {
         return $this->hasMany(Review::class);
     }
+
+    public function admin_shop()
+    {
+        return $this->hasMany(Admin_shop::class);
+    }
 }
