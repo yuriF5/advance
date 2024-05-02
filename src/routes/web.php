@@ -14,40 +14,45 @@ Route::post('/register', [AuthController::class, 'register'])->name('register');
 Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
 
 // auth
-Route::middleware(['auth'])->group(function () {
+Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
 
 // shop
-Route::get('/detail/{shop_id}', [ShopController::class, 'detail']);
-Route::get('/shop', [ShopController::class, 'index'])->name('shop.index');
-Route::get('/search', [ShopController::class, 'search'])->name('search');
-
-// Reservation
-Route::prefix('reservation')->group(function () {
-    Route::post('/store/{shop}', [ReservationController::class, 'store'])->name('reservation.store');
-    Route::get('/edit/{reservation}', [ReservationController::class, 'edit'])->name('reservation.edit');
-    Route::get('/done',  [ReservationController::class, 'done'])->name('reservation.done');
+Route::controller(ShopController::class)->group(function () {
+    Route::get('/detail/{shop_id}', 'detail');
+    Route::get('/', 'index');
+    Route::get('/search', 'search')->name('search');
 });
 
+// Reservation
+Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
+    Route::post('/store/{shop}', 'store')->name('reservation');
+    Route::get('/edit/{reservation}', 'edit')->name('reservation.edit');
+    Route::get('/done',  'done')->name('done');
+    });
+
 // Favorites
-Route::post('/favorite/store/{shop}', [FavoriteController::class, 'store'])->name('favorite.store');
-Route::delete('/favorite/destroy/{shop}', [FavoriteController::class, 'destroy'])->name('favorite.destroy');
+Route::controller(FavoriteController::class)->group(function () {
+    Route::post('/favorite/store/{shop}', 'store')->name('favorite');
+    Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
+    });
 
 // Mypage
-Route::get('/mypage', [MyPageController::class, 'mypage'])->name('mypage');
-Route::post('/mypage/favorite/{shopId}', [MyPageController::class, 'updateFavorite'])->name('user.favorite.update');
-Route::delete('/reservations/{reservation}', [MyPageController::class, 'destroy'])->name('reservation.destroy');
+Route::controller(MyPageController::class)->group(function () {
+    Route::get('/mypage', 'mypage')->name('mypage');
+    Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
+    Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
+});
 
 // csv
-Route::get('/csv', [CsvController::class, 'csv_index'])->name('csv.csv_index');
-Route::post('/csv/upload', [CsvController::class, 'upload'])->name('csv.upload');
-
+Route::controller(CsvController::class)->group(function () {
+    Route::get('csv', 'csv_index')->name('csv_index');
+    Route::post('csv/upload', 'upload')->name('csv.upload');
+});
 
 // review
-Route::get('/review', [ReviewController::class, 'index'])->name('review.index');
-Route::post('/review', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/thanks_review', [ReviewController::class, 'thanks'])->name('review.thanks');
+
 

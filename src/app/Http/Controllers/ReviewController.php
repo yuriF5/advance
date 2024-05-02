@@ -12,16 +12,6 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-    public function index($shop_id)
-    {
-        $userId = Auth::id();
-
-        $review = Review::where('user_id', $userId)->where('shop_id', $shop_id)->first();
-        $shop = Shop::where('id', $shop_id)->first();
-        $favorites = Auth::user()->favorites()->pluck('shop_id')->toArray();
-
-        return view('review', compact('review', 'shop', 'favorites'));
-    }
 
     public function store(Request $request)
     {
