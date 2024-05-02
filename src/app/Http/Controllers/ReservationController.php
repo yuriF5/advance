@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Carbon;
 
 class ReservationController extends Controller
 {
-    public function store(Request $request, Shop $shop)
+    public function store(ReseFormRequest $request, Shop $shop)
     {
         // 既存の予約があるかどうかを確認
     $reservation = Reservation::where('shop_id', $shop->id)

@@ -57,7 +57,4 @@ Route::controller(CsvController::class)->group(function () {
 Route::get('/shop/{shop_id}', [ReviewController::class, 'show'])->name('shop.show');
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/thanks_review', [ReviewController::class, 'thanks']);
-
-
-
+Route::get('/rthanks', [ReviewController::class, 'thanks'])->name('rthanks');
