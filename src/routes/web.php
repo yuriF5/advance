@@ -58,3 +58,4 @@ Route::get('/shop/{shop_id}', [ReviewController::class, 'show'])->name('shop.sho
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
 Route::get('/rthanks', [ReviewController::class, 'thanks'])->name('rthanks');
+Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);

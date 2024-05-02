@@ -41,6 +41,27 @@
         </div>
     </div>
     <div class="review_input">
+        @if(in_array($shop->id, $reviews))
+    <div class="review_history">
+        <p>過去の投稿内容:</p>
+        @foreach($Reviews as $review)
+            <div class="review_item">
+                <p>投稿日付: {{ $review->created_at }}</p>
+                <p>店名: {{ $review->shop->name }}</p>
+                <p>評価: {{ $review->star }}</p>
+                <p>コメント: {{ $review->comment }}</p>
+                <div class="review_buttons">
+                    <form action="{{ route('review.delete', $review->id) }}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit">削除</button>
+                    </form>
+                    <a href="">内容変更</a>
+                </div>
+            </div>
+        @endforeach
+    </div>
+@else
         <form action="{{ route('review.store', $shop->id) }}" method="post">
             @csrf
             <div class="review_star">
@@ -109,6 +130,7 @@
                 </div>
             </div>
         </form>
+        @endif
     </div>
 </div>
 @endsection
