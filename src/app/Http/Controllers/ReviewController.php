@@ -12,28 +12,41 @@ use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
-
-    public function store(Request $request)
+public function create(Request $request)
     {
-        // バリデーションなどの処理を追加
-        $request->validate([
-            'rating' => 'required|integer|min:1|max:5',
-            'comment' => 'required|string|max:255',
-        ]);
+        $user = Auth::user();
+        $userId = Auth::id();
+        $shop = Shop::find($request->shop_id);
+        $favorites = $this->getFavorites();
 
-        // レビューモデルを作成して保存
-        $review = new Review();
-        $review->rating = $request->rating;
-        $review->comment = $request->comment;
-        $review->save();
+        
+        
+        return view('review', compact('user', 'shop','favorites'));
+    
 
-        // リダイレクトして投稿完了画面へ移動
-        return redirect()->route('thanks_review');
+}
+    public function store(ReviewRequest $request, $shop_id)
+    {
+        $userId = Auth::id();
+        $review = Review::where('user_id', $userId)->where('shop_id', $shop_id)->first();
+
+        
+
+        return view('reviews.thanks', compact('shop_id'));
     }
+
 
     public function thanks()
     {
         
         return view('thanks_review');
     }
+private function getFavorites(): array
+    {
+        if (Auth::check()) {
+            return Auth::user()->favorites()->pluck('shop_id')->toArray();
+        }
+        return [];
+    }
+    
 }

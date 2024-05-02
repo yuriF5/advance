@@ -104,4 +104,5 @@ public function detail(Request $request)
         
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
+    
 }

@@ -1,0 +1,132 @@
+.review_form {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+}
+
+.title__text {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 10px 0 0 0;
+}
+
+.shop__content {
+    width: 260px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px gray;
+    background-color: #fff;
+}
+
+.shop__image {
+    width: 100%;
+    height: 130px;
+    object-fit: cover;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+.shop__item {
+    margin: 10px;
+}
+
+.shop__title {
+    font-weight: bold;
+    font-size: 2rem;
+    margin: 10px 0 0 0;
+}
+
+.shop__tag {
+    display: flex;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.shop__tag-info {
+    margin: 0;
+    padding-right: 5px;
+}
+
+.shop__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 0;
+}
+
+.shop__button-detail {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    background-color: rgb(63, 90, 242);
+    border: 1px solid rgb(63, 90, 242);
+    border-radius: 5px;
+    color: #fff;
+    padding: 0 16px;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+.shop__button-favorite-btn {
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    border: none;
+    background-color: #fff;
+}
+
+.review_input{
+    width: 260px;
+}
+.review_star p {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.review_star .flex {
+    display: flex;
+    flex-direction: column;
+}
+
+.star-label {
+    font-size: 2.8rem;
+    text-align: center;
+    display: block;
+}
+
+.tittle {
+    font-weight: bold;
+        font-size: 2rem;
+        margin: 10px 0 0 0;
+}
+.comment {
+    height: 200px;
+    width: 100%;
+    resize: none;
+}
+
+.text-xs {
+    font-size: 12px;
+}
+
+.text-end {
+    text-align: end;
+}
+
+.goal {
+    background-color: blue;
+    font-weight: bold;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.goal:hover {
+    background-color: darkblue;
+}
+.error {
+    color: red;
+}
