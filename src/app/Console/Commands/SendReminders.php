@@ -5,7 +5,8 @@ namespace App\Console\Commands;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Batch;
 use App\Jobs\SendReminderEmail;
-use App\Models\User;
+use App\Models\Reservation;
+
 
 class SendReminders extends Command
 {
