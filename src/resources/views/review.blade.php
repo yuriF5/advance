@@ -43,24 +43,8 @@
     <div class="review_input">
         @if(in_array($shop->id, $reviews))
     <div class="review_history">
-        <p>過去の投稿内容:</p>
-        @foreach($Reviews as $review)
-            <div class="review_item">
-                <p>投稿日付: {{ $review->created_at }}</p>
-                <p>店名: {{ $review->shop->name }}</p>
-                <p>評価: {{ $review->star }}</p>
-                <p>コメント: {{ $review->comment }}</p>
-                <div class="review_buttons">
-                    <form action="{{ route('review.delete', $review->id) }}" method="POST">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">削除</button>
-                    </form>
-                    <a href="">内容変更</a>
-                </div>
-            </div>
-        @endforeach
-    </div>
+        <p>※投稿は完了してます。</br>ありがとうございました。</p>
+    </div><a class="header-nav__link" href="/">Homeへ戻る</a>
 @else
         <form action="{{ route('review.store', $shop->id) }}" method="post">
             @csrf
@@ -68,11 +52,11 @@
                 <p>体験を評価してください</p>
                 <div class="flex flex-col">
                     <div>
-                        <input type="radio" id="star5" name="star" value="5" class="hidden peer">
+                        <input type="radio" id="star5" name="star" value="1" class="hidden peer">
                         <label for="star5" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★</label>
                     </div>
                     <div>
-                        <input type="radio" id="star4" name="star" value="4" class="hidden peer">
+                        <input type="radio" id="star4" name="star" value="2" class="hidden peer">
                         <label for="star4" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★</label>
                     </div>
                     <div>
@@ -80,11 +64,11 @@
                         <label for="star3" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★</label>
                     </div>
                     <div>
-                        <input type="radio" id="star2" name="star" value="2" class="hidden peer">
+                        <input type="radio" id="star2" name="star" value="4" class="hidden peer">
                         <label for="star2" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★★</label>
                     </div>
                     <div>
-                        <input type="radio" id="star1" name="star" value="1" class="hidden peer">
+                        <input type="radio" id="star1" name="star" value="5" class="hidden peer">
                         <label for="star1" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★★★</label>
                     </div>
                 </div>

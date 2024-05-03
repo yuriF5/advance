@@ -8,42 +8,54 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Favorite;
 use App\Models\Genre;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReviewStoreRequest;
 
 class ReviewController extends Controller
 {
-    public function thanks()
+    public function index()
     {
-        return view('rthanks');
+        return view('index');
     }
+
 public function create(Request $request)
     {
         $user = Auth::user();
         $userId = Auth::id();
         $shop = Shop::find($request->shop_id);
         $favorites = $this->getFavorites();
-        return view('review', compact('user', 'shop','favorites'));
+        $reviews = $this->getReviews();
+        $review=Review::find($request->review_id);
+        $reviewsArray = collect($reviews)->toArray();
+        return view('review', compact('user', 'shop', 'favorites', 'reviews', 'review', 'reviewsArray'));
     }
 
     public function store(ReviewStoreRequest $request, $shop_id)
     {
-        $userId = Auth::id();
-        $review = Review::where('user_id', $userId)->where('shop_id', $shop_id)->first();
-        if ($review) {
-        $review->update($data);
-    } else {
-        $data['user_id'] = $userId;
-        $data['shop_id'] = $shop_id;
-        Review::create($data);
-    }
-        return redirect()->route('rthanks');
+        $review = new Review();
+        $review->user_id = Auth::user()->id;
+        $review->shop_id = $shop_id;
+        $review->star = $request->input('star');
+        $review->comment = $request->input('comment');
+        $review->save();
+
+        return redirect()->route('review.create', ['shop_id' => $shop_id]);
+    
     }
 
     private function getFavorites(): array
     {
         if (Auth::check()) {
             return Auth::user()->favorites()->pluck('shop_id')->toArray();
+        }
+        return [];
+    }
+
+    private function getReviews(): array
+    {
+        if (Auth::check()) {
+            return Auth::user()->reviews()->pluck('shop_id')->toArray();
         }
         return [];
     }

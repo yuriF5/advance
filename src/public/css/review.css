@@ -130,3 +130,9 @@
 .error {
     color: red;
 }
+
+.review_history{
+    background-color: rgb(108, 211, 122);
+    font-weight: bold;
+    font-size: 20px;
+}
