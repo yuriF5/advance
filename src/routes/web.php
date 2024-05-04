@@ -67,7 +67,7 @@ Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
 
 
-Route::get('/admin/login', [AdminController::class, 'adminLogin'])->name('admin.login');
-Route::post('/admin/login', [AdminController::class, 'adminLogin'])->name('admin.login');
-    Route::post('/register/shopRepresentative', [AdminController::class, 'register'])->name('admin.register');
-    Route::get('/admin/register',[AdminController::class, 'register'])->name('admin.register');
+Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
+Route::post('/admin/shop/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
+    Route::post('/admin/register/shopRepresentative', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
+    Route::get('/admin/register',[App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');

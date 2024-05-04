@@ -9,7 +9,7 @@
         <div class="auth__header">
             Admin Login
         </div>
-        <form method="POST" action="/admin/login'">  
+        <form method="POST" action="/admin/shop/login'">  
             @csrf
             <div class="form__item-mail">
                 <img class="favorite__btn-image" width="30px"src="{{ asset('images/envelope-regular.svg') }}"alt="">

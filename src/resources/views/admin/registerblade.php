@@ -7,12 +7,12 @@
 @section('content')
     <div class="auth__wrap">
         <div class="auth__header">
-            Admin register
+            管理代表者user登録
         </div>
         <form action="/admin/register/shopRepresentative" method="post" class="form__item">
             @csrf
             <div class="form__item-user">
-                <input type="text" class="form__input-item" name="username" placeholder="Shop Representative Name" value="{{ old('username') }}">
+                <input type="text" class="form__input-item" name="username" placeholder="店舗代表者名" value="{{ old('username') }}">
             </div>
             <div class="error__item">
                 @error('username')
@@ -21,7 +21,7 @@
             </div>
 
             <div class="form__item-mail">
-                <input type="email" class="form__input-item" name="email" placeholder="Email" value="{{ old('email') }}">
+                <input type="email" class="form__input-item" name="email" placeholder="店舗用メールアドレス" value="{{ old('email') }}">
             </div>
             <div class="error__item">
                 @error('email')
@@ -30,7 +30,7 @@
             </div>
 
             <div class="form__item-key">
-                <input type="password" class="form__input-item" name="password" placeholder="Temporary Password">
+                <input type="password" class="form__input-item" name="password" placeholder="店舗用 Password">
             </div>
             <div class="error__item">
                 @error('password')
