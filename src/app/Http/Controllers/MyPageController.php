@@ -23,36 +23,19 @@ class MyPageController extends Controller
 }
 
 
-public function updateFavorite(Request $request, $shopId)
-{
-    $user = Auth::user();
-    
-    /// ユーザーのお気に入り店舗IDを取得
-    $favoriteShopIds = $user->favorites()->pluck('shop_id')->toArray();
-
-    // お気に入り店舗IDのみを持つ店舗を取得
-    $shops = Shop::whereIn('id', $favoriteShopIds)->get();
-    $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shopId)->first();
-
-    if ($favorite) {
-        $favorite->delete();
-        $message = 'お気に入りから削除しました。';
-    } else {
-        Favorite::create([
-            'user_id' => $user->id,
-            'shop_id' => $shopId,
-        ]);
-        $message = 'お気に入りに追加しました。';
-
+    public function updateFavorite(Request $request, $shopId)
+    {
+        $user = Auth::user();    
+        $favoriteShopIds = $user->favorites()->pluck('shop_id')->toArray();
+        $shops = Shop::whereIn('id', $favoriteShopIds)->get();
+        $favorite = Favorite::where('user_id', $user->id)->where('shop_id', $shopId)->first();
+        return redirect()->back()->with('status', $message)->with('shops', $shops);
     }
 
-    return redirect()->back()->with('status', $message)->with('shops', $shops);
-}
     public function destroy(Request $request, Reservation $reservation)
     {
         $reservation->delete();
-
-        return redirect()->back()->with('id', '予約を削除しました。');
+        return redirect()->back();
     }
 }
 

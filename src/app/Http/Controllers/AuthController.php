@@ -27,7 +27,6 @@ class AuthController extends Controller
             'password' => 'required|string|min:8',
         ]);
 
-        // ユーザーを作成し、データベースに保存
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -35,7 +34,6 @@ class AuthController extends Controller
         ]);
 
         if (!$user) {
-            // エラーメッセージをフラッシュデータに保存してリダイレクト
             return redirect()->back()->with('error', '会員登録に失敗しました。');
         }
 
