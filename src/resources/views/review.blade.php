@@ -53,23 +53,23 @@
                 <div class="flex flex-col">
                     <div>
                         <input type="radio" id="star5" name="star" value="1" class="hidden peer">
-                        <label for="star5" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★</label>
+                        <label for="star5" class="">★</label>
                     </div>
                     <div>
                         <input type="radio" id="star4" name="star" value="2" class="hidden peer">
-                        <label for="star4" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★</label>
+                        <label for="star4" class="">★★</label>
                     </div>
                     <div>
                         <input type="radio" id="star3" name="star" value="3" class="hidden peer">
-                        <label for="star3" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★</label>
+                        <label for="star3" class="">★★★</label>
                     </div>
                     <div>
                         <input type="radio" id="star2" name="star" value="4" class="hidden peer">
-                        <label for="star2" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★★</label>
+                        <label for="star2" class="">★★★★</label>
                     </div>
                     <div>
                         <input type="radio" id="star1" name="star" value="5" class="hidden peer">
-                        <label for="star1" class="relative py-0 px-[5px] text-gray-200 cursor-pointer text-[35px] hover:text-blue-600 peer-hover:text-blue-600 peer-checked:text-blue-600">★★★★★</label>
+                        <label for="star1" class="">★★★★★</label>
                     </div>
                 </div>
                 <div class="error">

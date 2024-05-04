@@ -49,13 +49,16 @@ Route::controller(MyPageController::class)->group(function () {
 
 // csv
 Route::controller(CsvController::class)->group(function () {
-    Route::get('csv', 'csv_index')->name('csv_index');
-    Route::post('csv/upload', 'upload')->name('csv.upload');
+    Route::get('/csv', 'csv_index')->name('csv_index');
+    Route::post('/csv/upload', 'upload')->name('csv.upload');
 });
 
 // review
 Route::get('/shop/{shop_id}', [ReviewController::class, 'show'])->name('shop.show');
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
-Route::get('reviewer', [ReviewController::class, 'thanks'])->name('reviewer');
+Route::get('/reviewer', [ReviewController::class, 'thanks'])->name('reviewer');
 Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
+
+// mail
+Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
