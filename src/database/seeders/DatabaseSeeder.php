@@ -20,16 +20,16 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
 
-        // User::factory(10)->create();
+        User::factory(10)->create();
         
-    // $this->call([
-    //         AreasTableSeeder::class,
-    //         GenresTableSeeder::class,
-    //         ShopsTableSeeder::class, 
-    //     ]);
+    $this->call([
+            AreasTableSeeder::class,
+            GenresTableSeeder::class,
+            ShopsTableSeeder::class, 
+        ]);
 
-        // Favorite::factory(10)->create();
-        // Reservation::factory(10)->create();
+        Favorite::factory(10)->create();
+        Reservation::factory(10)->create();
         Review::factory(10)->create();
 
 }

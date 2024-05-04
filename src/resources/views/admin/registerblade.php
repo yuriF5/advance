@@ -7,7 +7,7 @@
 @section('content')
     <div class="auth__wrap">
         <div class="auth__header">
-            Shop Representative
+            Admin register
         </div>
         <form action="/admin/register/shopRepresentative" method="post" class="form__item">
             @csrf

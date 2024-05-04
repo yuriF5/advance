@@ -10,6 +10,8 @@ use App\Models\Review;
 
 class AdminController extends Controller
 {
+
+    
     public function register(Request $request)
     {
         $user = Admin::create([

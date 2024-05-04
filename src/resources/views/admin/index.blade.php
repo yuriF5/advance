@@ -5,5 +5,5 @@
 @endsection
 
 @section('content')
-
+<!-- 管理者画面一覧 -->
 @endsection
