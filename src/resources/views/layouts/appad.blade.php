@@ -17,30 +17,13 @@
             <label for="header__input" class="header__open"><span></span></label>
             <nav class="header-nav__content">
                 <ul class="header-nav">
-                    @if (Auth::check())
-                        @if( 0 == Auth::user()->role )
-                        <li class="header-nav__item"><a class="header-nav__link" href="/">お知らせ・管理者一覧へ</a></li>                    
-                        <li class="header-nav__item"><a class="header-nav__link" href="/">レビュー管理一覧へ</a></li>
+                    
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/dashboad">お知らせ・管理者一覧へ</a></li>                    
+                        <li class="header-nav__item"><a class="header-nav__link" href="">レビュー管理一覧へ</a></li>
                         <li class="header-nav__item">
-                            <form class="form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="header-nav__link_b" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">ログアウト</button>
-                            </form>
+                            <
                         </li>
-                        @endif
-                        @if( 1 == Auth::user()->role )
-                        <li class="header-nav__item"><a class="header-nav__link" href="">予約者管理一覧へ</a></li>
-                        <li class="header-nav__item"><a class="header-nav__link" href="/login">店舗情報編集へ</a></li>
-                        <li class="header-nav__item"><a class="header-nav__link" href="/login">新規店舗登録へ</a></li>
-                        <form class="form" action="{{ route('logout') }}" method="POST" style="display: inline;">
-                                @csrf
-                                <button type="submit" class="header-nav__link_b" style="background:none; border:none; padding:0; color:blue; cursor:pointer;">ログアウト</button>
-                            </form>
-                        @endif
-                    @else
-                    <li class="header-nav__item"><a class="header-nav__link" href="/login">Admin Loginへ</a></li>
-                    <li class="header-nav__item"><a class="header-nav__link" href="/login">User Loginへ</a></li>
-                </ul>
+</ul>
             </nav>
             <div class="header__logo">Rase</div>
         </div>

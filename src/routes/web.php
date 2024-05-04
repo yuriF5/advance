@@ -9,6 +9,8 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\MailController;
+use App\Http\Controllers\AdminController;
+
 
 // simple 
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -64,8 +66,8 @@ Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 // mail
 Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
 
-Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
-    Route::controller(AdminController::class)->group(function () {
-    Route::post('/register/shopRepresentative', 'register');
-    Route::get('/admin/login','login');
-});});
+
+Route::get('/admin/login', [AdminController::class, 'adminLogin'])->name('admin.login');
+Route::post('/admin/login', [AdminController::class, 'adminLogin'])->name('admin.login');
+    Route::post('/register/shopRepresentative', [AdminController::class, 'register'])->name('admin.register');
+    Route::get('/admin/register',[AdminController::class, 'register'])->name('admin.register');

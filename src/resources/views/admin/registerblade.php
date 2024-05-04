@@ -38,6 +38,13 @@
                 @enderror
             </div>
 
+            <div class="form__item-key">
+                <input type="checkbox" class="form__input-item" name="role[]" value="0" id="role_0">
+                <label for="role_0">管理者</label>
+                <input type="checkbox" class="form__input-item" name="role[]" value="1" id="role_0">
+                <label for="role_1">店舗代表者</label>
+            </div>
+
             <button type="submit" class="form__item-button">登録</button>
 
         </form>

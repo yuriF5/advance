@@ -7,22 +7,31 @@ use Auth;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Review;
+use App\Models\Admin;
 
 class AdminController extends Controller
 {
+public function adminLogin(Request $request)
+{
+    $credentials = $request->validate([ 
+        'email' => ['required', 'email'],
+        'password' => ['required'],
+    ]);
 
-    
-    public function register(Request $request)
-    {
-        $user = Admin::create([
-            'name' => $request->name,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-        ]);
-
-        if (!$user) {
-            return redirect()->back()->with('error', '会員登録に失敗しました。');
+    if (Auth::guard('admin')->attempt($credentials)) { 
+        if (Auth::guard('admin')->user()->role > 0) { 
+            $request->session()->regenerate(); 
+            return redirect()->intended('admin/dashboard');  
+            Auth::guard('admin')->logout(); 
+            $request->session()->regenerate(); 
+            return redirect()->route('reservation.admin.index')->withErrors([
+                'error' => '提供された資格情報は、当社の記録と一致しません。',
+            ]);
         }
     }
 
+    return back()->withErrors([ 
+        'error' => 'ログインに失敗しました。',
+    ]);
+}
 }
