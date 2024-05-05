@@ -66,8 +66,11 @@ Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 // mail
 Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
 
-
+// admin
+Route::group(['middleware' => 'admin'], function () {
+    // ここに管理者用のルートを定義
 Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
 Route::post('/admin/shop/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
     Route::post('/admin/register/shopRepresentative', [App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
     Route::get('/admin/register',[App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
+    });

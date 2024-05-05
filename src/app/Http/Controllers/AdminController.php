@@ -17,20 +17,13 @@ public function adminLogin(Request $request)
         'password' => ['required'],
     ]);
 
-    if (Auth::guard('admin')->attempt($credentials)) { 
-        if (Auth::guard('admin')->user()->role > 0) { 
-            $request->session()->regenerate(); 
-            return redirect()->intended('admin/dashboard');  
-            Auth::guard('admin')->logout(); 
-            $request->session()->regenerate(); 
-            return redirect()->route('reservation.admin.index')->withErrors([
-                'error' => '提供された資格情報は、当社の記録と一致しません。',
-            ]);
-        }
-    }
+if (!Admin::check()) {
+    return redirect()->route('admin.login');
+}
 
     return back()->withErrors([ 
         'error' => 'ログインに失敗しました。',
     ]);
+
 }
 }

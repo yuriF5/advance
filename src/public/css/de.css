@@ -129,6 +129,7 @@ header {
 .reservation__button {
     margin-top: auto;
     width: 100%;
+    cursor: pointer;
 }
 
 .mobile-reservation__button {

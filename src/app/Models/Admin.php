@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 
 class Admin extends Model
 {
@@ -31,5 +32,14 @@ class Admin extends Model
     public function admin_shop()
     {
         return $this->hasMany(Admin_shop::class);
+    }
+
+}
+class Admin extends Authenticatable
+{
+    // 管理者の認証を確認するメソッド
+    public static function check()
+    {
+        return Auth::guard('admin')->check();
     }
 }
