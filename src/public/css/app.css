@@ -14,8 +14,10 @@ header {
     justify-content: space-between;
     align-items: center;
     padding: 30px 1%;
+    padding-right: 60px;
     background-color: #eee;
     z-index: 10;
+    max-width: 1000px;
 }
 
 
@@ -32,9 +34,7 @@ header {
     width: 100%;
     z-index: 110;
     background-color: #eee;
-    padding: 15px 75px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    display: block;
     }
 
 .header__icon {

@@ -1,8 +1,7 @@
 .header__right {
-    display: flex;
     justify-content: flex-end;
     align-items: center;
-    width: 80%;
+    width: 40%;
 }
 
 .header__search,
@@ -12,7 +11,7 @@
     box-shadow: 2px 2px 5px gray;
     background-color: #fff;
     font-size: 1.2rem;
-    width: 120%;
+    width: 130%;
 }
 
 .header__sort {
