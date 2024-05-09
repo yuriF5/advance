@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\QrCodeController;
 
 
 // simple 
@@ -72,4 +73,4 @@ Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminL
 Route::post('/admin/shop/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
     Route::post('/admin/register/shopRepresentative', [AdminController::class, 'userRegister']);
     Route::get('/admin/register',[App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
-
+Route::get('/qrcode', [QrCodeController::class, 'displayQrCode']);
