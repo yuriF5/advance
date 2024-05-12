@@ -33,7 +33,6 @@
             @csrf
             <div class="form__item">
                 <label for="date"><input type="date" id="date" name="date" value="{{ old('date') }}" required></label>
-                
             </div>
             <div class="error__item">
                 @error('date')
@@ -42,32 +41,35 @@
             </div>
             <div class="form__item">
                 <label for="time">
-                <select name="time" id="time" required>
+                    <select name="time" id="time" required>
                     <option value="" disabled selected>-- 時間を選択してください --</option>
                     @foreach (['17:00', '18:00', '19:00', '20:30', '21:00'] as $time)
-                        <option value="{{ $time }}">{{ $time }}</option>
+                        <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
                     @endforeach
-                </select></label>
-                <div class="error__item">
-                    @error('time')
-                        <span class="error__message">{{ $message }}</span>
-                    @enderror
-                </div>
+                    </select>
+                </label>
             </div>
+            <div class="error__item">
+                @error('time')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
+            </div>
+
             <div class="form__item">
                 <label for="number">
                 <select name="number" id="number" required>
                     <option value="" disabled selected>-- 人数を選択してください --</option>
                     @foreach (range(1, 5) as $number)
-                        <option value="{{ $number }}">{{ $number }}人</option>
+                        <option value="{{ $number }}" {{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
                     @endforeach
                 </select></label>
-                <div class="error__item">
-                    @error('number')
-                        <span class="error__message">{{ $message }}</span>
-                    @enderror
-                </div>
+            </div>  
+            <div class="error__item">
+                @error('number')
+                    <span class="error__message">{{ $message }}</span>
+                @enderror
             </div>
+        
             <div class="reservation__group">
                 <div class="reservation__area">
                     <table class="reservation__table">

@@ -12,7 +12,7 @@
         <p class="reservation__title_p">ご予約状況</p>
         </div>
             <div class="reservation__content-wrap">
-                @foreach ($reservations as $reservation)
+                @foreach ($reservations->sortBy('date') as $reservation)
                     <div class="reservation__content">
                         <div class="reservation__header">
                             <p class="header__title reservation__header__title">予約{{ $loop->iteration }}</p>

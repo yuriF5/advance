@@ -52,11 +52,19 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($reservation->shop_id);
-
+        $reservationData = old() ? [
+        'date' => old('date'),
+        'time' => old('time'),
+        'number' => old('number'),
+    ] : [
+        'date' => $reservation->date,
+        'time' => $reservation->time,
+        'number' => $reservation->number_of_people,
+    ];
 
         $backRoute = '/mypage';
 
-        return view('detail', compact('reservation', 'user', 'shop', 'backRoute'));
+        return view('detail', compact('reservation', 'user', 'shop', 'backRoute','reservationData'));
     }
 
 }

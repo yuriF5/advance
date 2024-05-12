@@ -50,11 +50,7 @@ public function messages()
         'date.after_or_equal' => '今日以降の日付を選択してください。',
         'date.before_or_equal' => '1か月までの日付を選択してください。',
         'time.required' => '時間を選択してください。',
-        'time.integer' => '時間の形式が正しくありません。',
-        'time.between' => '時間は17時から21時の間で選択してください。',
         'number.required' => '人数を選択してください。',
-        'number.integer' => '人数の形式が正しくありません。',
-        'number.between' => '人数は1人から5人の間で選択してください。',
     ];
 }
 }
