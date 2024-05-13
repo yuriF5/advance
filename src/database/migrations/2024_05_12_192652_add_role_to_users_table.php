@@ -15,7 +15,7 @@ class AddRoleToUsersTable extends Migration
     {
 
     Schema::table('users', function (Blueprint $table) {
-        $table->string('role')->default('user'); // デフォルトのロールを'user'として追加
+        $table->tinyInteger('role')->default(2)->comment('0: 管理者, 1: 店舗代表者, 2: ユーザー');
     });
 }
 
