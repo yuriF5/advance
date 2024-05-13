@@ -13,6 +13,7 @@
         </div>
             <div class="reservation__content-wrap">
                 @foreach ($reservations->sortBy('date') as $reservation)
+                    @if (strtotime($reservation->date) > strtotime(date('Y-m-d')) || (strtotime($reservation->date) == strtotime(date('Y-m-d')) && strtotime($reservation->time) >= strtotime(date('H:i:s'))))
                     <div class="reservation__content">
                         <div class="reservation__header">
                             <p class="header__title reservation__header__title">予約{{ $loop->iteration }}</p>
@@ -50,6 +51,7 @@
                             </tr>
                         </table>
                     </div>
+                    @endif
                 @endforeach
             </div>
         </div>
