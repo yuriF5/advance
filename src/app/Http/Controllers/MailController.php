@@ -40,5 +40,8 @@ class MailController extends Controller
             return redirect()->back()->with('error', '無効な送信先が選択されました');
         }
     }
-
+public function email()
+    {
+        return view('admin.email_send');
+    }
 }
