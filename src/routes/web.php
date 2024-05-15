@@ -69,9 +69,7 @@ Route::post('/admin/email-notification', [MailController::class, 'sendNotificati
 Route::get('/admin/email_send',[MailController::class,'email']);
 
 // admin
-Route::get('/admin/boad',[AdminController::class,'boad']);
-Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
-Route::post('/admin/shop/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
-    Route::post('/admin/register/shopRepresentative', [AdminController::class, 'userRegister']);
-    Route::get('/admin/register',[App\Http\Controllers\AdminController::class, 'register'])->name('admin.register');
+Route::get('/admin/board',[AdminController::class,'board']);
+Route::get('/admin/create',[AdminController::class,'create']);
+Route::post('/add/shop', [ShopController::class, 'store']);
 Route::get('/qrcode', [QrCodeController::class, 'displayQrCode']);

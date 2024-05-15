@@ -13,6 +13,12 @@
         </div>
 
         <div class="auth__wrap">
+            @if(session('success'))
+            <div class="alert-success">
+                {{ session('success') }}
+            </div>
+            @endif
+            
         <div class="auth__header">
             管理代表者user登録
         </div>
