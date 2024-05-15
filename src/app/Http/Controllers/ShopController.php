@@ -120,6 +120,7 @@ class ShopController extends Controller
         // ジャンルとエリアのIDを取得
         $genreId = $request->genre; 
         $areaId = $request->area; 
+        $shop = Shop::find($request->shop_id);
 
         // 新しい店舗を作成し保存する
         $shop = new Shop;
@@ -135,5 +136,27 @@ class ShopController extends Controller
 
         $message = '店舗を新規登録しました。';   
         return redirect('/admin/create')->with('message', $message);
+    }
+
+    public function update(Request $request)
+    {
+        $image = $request->file('image_file');
+        $path = $this->myStoreImage($image);
+
+        //更新情報を作成
+        $shop->name = $request->name;
+        $shop->genre_id = $genreId;
+        $shop->area_id = $areaId;
+        $shop->description = $request->description;
+
+        if(!empty($path)) $update_info['image_url'] = $path;
+
+        //更新
+        $shop = Shop::find($request->id);
+        $shop->update($update_info);
+
+        $message = '店舗情報を更新しました。';   
+        return redirect('/admin/edit') ->with('message', $message);
+    }
     }
 }

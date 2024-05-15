@@ -72,4 +72,5 @@ Route::get('/admin/email_send',[MailController::class,'email']);
 Route::get('/admin/board',[AdminController::class,'board']);
 Route::get('/admin/create',[AdminController::class,'create']);
 Route::post('/add/shop', [ShopController::class, 'store']);
+Route::post('/update/shop', [ShopController::class, 'update']);
 Route::get('/qrcode', [QrCodeController::class, 'displayQrCode']);
