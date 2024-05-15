@@ -18,10 +18,10 @@
             <nav class="header-nav__content">
                 <ul class="header-nav">
                     
-                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/dashboad">お知らせ・管理者一覧へ</a></li>                    
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/boad">お知らせ・管理者一覧へ</a></li>                    
                         <li class="header-nav__item"><a class="header-nav__link" href="">レビュー管理一覧へ</a></li>
                         <li class="header-nav__item">
-                            <
+                            
                         </li>
 </ul>
             </nav>

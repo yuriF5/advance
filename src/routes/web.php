@@ -68,7 +68,7 @@ Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
 
 // admin
-
+Route::get('/admin/boad',[AdminController::class,'boad']);
 Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
 Route::post('/admin/shop/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
     Route::post('/admin/register/shopRepresentative', [AdminController::class, 'userRegister']);

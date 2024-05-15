@@ -64,4 +64,6 @@ public function create(Request $request)
         Review::find($review_id)->delete();
         return redirect()->back()->with('success','口コミを削除しました');
     }
+
+
 }

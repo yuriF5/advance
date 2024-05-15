@@ -61,4 +61,8 @@ public function userRegister(Request $request)
         // 何かしらのレスポンスを返す
         return response()->json(['message' => '代表者が登録されました'], 200);
     }
+        public function boad()
+    {
+        return view('admin.boad');
+    }
 }
