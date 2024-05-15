@@ -16,7 +16,7 @@
         </div>
 
         <div class="email_send__content-wrap">
-            <form action="{{route('send') }}" method="post" class="email_send__form">
+            <form action="{{route('send.notification') }}" method="post" class="email_send__form">
                 @csrf
                 <div class="email_send__content">
                     <div class="email_send__title vertical-center">
@@ -41,7 +41,7 @@
                     </div>
                 </div>
                 <div class="form__button">
-                    <a href="/" class="back__button">戻る</a>
+                    <a href="/admin/boad" class="back__button">戻る</a>
                     <button type="submit" class="form__button-btn">メール送信</button>
                 </div>
             </form>

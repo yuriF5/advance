@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Review;
-use App\Models\Admin;
+use App\Models\User;
 
 class AdminController extends Controller
 {

@@ -65,8 +65,9 @@ Route::get('/reviewer', [ReviewController::class, 'thanks'])->name('reviewer');
 Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 
 // mail
-Route::post('/admin/email-send', [MailController::class, 'send'])->name('send');
+Route::post('/admin/email-notification', [MailController::class, 'sendNotification'])->name('send.notification');
 Route::get('/admin/email_send',[MailController::class,'email']);
+
 // admin
 Route::get('/admin/boad',[AdminController::class,'boad']);
 Route::get('/admin/login', [App\Http\Controllers\AdminController::class, 'adminLogin'])->name('admin.login');
