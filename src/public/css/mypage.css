@@ -184,6 +184,17 @@
     opacity: 0.6;
 }
 
+.form__button--pay{
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    background-color: rgb(3, 37, 17);
+    border-radius: 5px;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #fff;
+}
 @media screen and (max-width: 768px) {
 
     .reservation__header__title {

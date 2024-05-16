@@ -50,9 +50,11 @@
                                 <td class="table__item">{{ $reservation->number_of_people }}人</td>
                             </tr>
                         </table>
+                        <a class="form__button--pay" href="{{ route('payment.create')}}">決済&#128179;</a>
                     </div>
                     @endif
                 @endforeach
+                
             </div>
         </div>
     <div class="favorite__wrap">

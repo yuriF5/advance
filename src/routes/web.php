@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CsvController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrCodeController;
 
 
@@ -76,3 +77,9 @@ Route::get('/admin/do',[AdminController::class,'do']);
 Route::post('/admin/register',[AdminController::class,'register']);
 Route::get('/admin/reservation', [AdminController::class, 'index'])->name('admin.reservation');
 Route::get('/qrcode',[QrCodeController::class,'displayQrCode']);
+
+// peyment
+Route::prefix('payment')->name('payment.')->group(function () {
+    Route::get('/create',[PaymentController::class,'create'])->name('create');
+    Route::post('/store',[PaymentController::class,'store'])->name('store');
+});
