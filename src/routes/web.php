@@ -24,6 +24,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified']);
 
 // shop
 Route::controller(ShopController::class)->group(function () {
