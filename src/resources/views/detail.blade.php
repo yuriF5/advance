@@ -7,6 +7,7 @@
 
 
 @section('content')
+
 <div class="container">
     <div class="detail__wrap">
         <div class="detail__header">
@@ -25,7 +26,11 @@
         <div class="detail__outline">
             <p class="detail__outline-text">{{ $shop->description }}</p>
         </div>
+    @if(Auth::check() && Auth::user()->role == 1)
+        <a href="/admin/update">店舗修正用リンク先へ</a>
+    @endif
     </div>
+    
 
     <div class="reservation__form">
         <h2 class="reservation__title">予約</h2>

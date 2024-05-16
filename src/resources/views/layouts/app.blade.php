@@ -30,6 +30,17 @@
                     <li class="header-nav__item"><a class="header-nav__link" href="/register">Registration</a></li>
                     <li class="header-nav__item"><a class="header-nav__link" href="/login">Login</a></li>
                     @endif
+                    @if (Auth::check())
+                    @if( 0 == Auth::user()->role )
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/boad">お知らせ・管理者一覧へ</a></li> 
+                        <li class="header-nav__item"><a class="header-nav__link" href="">レビュー管理一覧へ</a></li>
+                        <li class="header-nav__item"><a class="header-nav__link" href="">店舗CSV登録へ</a></li>
+                    @endif
+                    @if( 1 == Auth::user()->role )
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/reservation_admin">予約一覧へ</a></li>
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/create">店舗情報の新規登録</a></li> 
+                    @endif
+                    @endif
                 </ul>
             </nav>
             <div class="header__logo">Rase</div>

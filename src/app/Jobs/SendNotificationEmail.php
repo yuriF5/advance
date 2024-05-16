@@ -30,6 +30,8 @@ class SendNotificationEmail implements ShouldQueue
      */
     public function handle()
     {
-        //
+        foreach ($this->users as $user) {
+        Mail::to($user->email)->send(new NotificationMail($user, $this->messageContent));
+    }
     }
 }
