@@ -14,6 +14,15 @@ class AuthController extends Controller
     return view('index');
     }
 
+    public function login()
+    {
+    return view('auth.login');
+    }
+
+    public function store()
+    {
+    return view('auth.register');
+    }
     public function thanks()
     {
         return view('auth.thanks');
@@ -50,6 +59,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('/login');
+        return redirect('auth.login');
     }
 }

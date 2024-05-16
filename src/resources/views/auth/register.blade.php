@@ -9,7 +9,7 @@
         <div class="auth__header">
             Registration
         </div>
-        <form action="{{ route('register') }}" method="post" class="form__item">
+        <form action="/register'" method="post" class="form__item">
             @csrf
             <div class="form__item-user">
                 <img class="favorite__btn-image" width="30px"src="{{ asset('images/user-solid.svg') }}"alt="">

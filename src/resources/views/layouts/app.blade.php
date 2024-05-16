@@ -28,7 +28,7 @@
                     </li>
                     @else
                     <li class="header-nav__item"><a class="header-nav__link" href="/register">Registration</a></li>
-                    <li class="header-nav__item"><a class="header-nav__link" href="/login">Login</a></li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="/auth/login">Login</a></li>
                     @endif
                     @if (Auth::check())
                     @if( 0 == Auth::user()->role )
@@ -38,7 +38,7 @@
                     @if( 1 == Auth::user()->role )
                         <li class="header-nav__item"><a class="header-nav__link" href="/admin/reservation">予約一覧へ</a></li>
                         <li class="header-nav__item"><a class="header-nav__link" href="/admin/create">店舗情報の新規登録</a></li>
-                        <li class="header-nav__item"><a class="header-nav__link" href="/">店舗一覧修正へ</a></li> 
+                        <li class="header-nav__item"><a class="header-nav__link" href="/">店舗一覧から</br>店舗修正へ</a></li> 
                     @endif
                     @endif
                 </ul>

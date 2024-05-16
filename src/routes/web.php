@@ -14,8 +14,9 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrCodeController;
 
 
-// simple 
-Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/auth/register',[AuthController::class,'store']);
+Route::post('/register', [AuthController::class, 'register']);
+Route::get('/auth/login',[AuthController::class,'login']);
 Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
 
 // auth
