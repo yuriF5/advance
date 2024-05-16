@@ -13,11 +13,11 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\QrCodeController;
 
-
+Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
-Route::post('/register', [AuthController::class, 'register']);
+Route::post('/auth/register', [AuthController::class, 'register']);
 Route::get('/auth/login',[AuthController::class,'login']);
-Route::get('/thanks', [AuthController::class, 'thanks'])->name('thanks');
+Route::get('/auth/thanks', [AuthController::class, 'thanks']);
 
 // auth
 Route::middleware('auth')->group(function () {

@@ -9,7 +9,7 @@
         <div class="auth__header">
             Registration
         </div>
-        <form action="/register'" method="post" class="form__item">
+        <form action="/auth/register'" method="post" class="form__item">
             @csrf
             <div class="form__item-user">
                 <img class="favorite__btn-image" width="30px"src="{{ asset('images/user-solid.svg') }}"alt="">
@@ -37,8 +37,8 @@
                 @error('password')
                     <span class="error__message">{{ $message }}</span>
                 @enderror
-            </div><a href="{{ route('thanks') }}">
-            <button type="submit" class="form__item-button">登録</button></a>
+            </div>
+            <button type="submit" class="form__item-button">登録</button>
         </form>
     </div>
 @endsection

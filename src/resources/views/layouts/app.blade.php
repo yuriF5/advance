@@ -27,7 +27,7 @@
                         </form>
                     </li>
                     @else
-                    <li class="header-nav__item"><a class="header-nav__link" href="/register">Registration</a></li>
+                    <li class="header-nav__item"><a class="header-nav__link" href="/auth/register">Registration</a></li>
                     <li class="header-nav__item"><a class="header-nav__link" href="/auth/login">Login</a></li>
                     @endif
                     @if (Auth::check())

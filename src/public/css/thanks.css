@@ -32,3 +32,15 @@ main {
     cursor: pointer;
     text-decoration: none;
 }
+
+.form__button--pay {
+    display: inline-block;
+    background-color: rgb(18, 144, 28);
+    border: 1px solid rgb(37, 155, 66);
+    border-radius: 5px;
+    font-size: clamp(1rem, 0.8576rem + 0.45vw, 1, 2rem);
+    padding: 3px 10px;
+    cursor: pointer;
+    text-decoration: none;
+
+}

@@ -98,7 +98,7 @@
                 @if (Auth::check())
                     <button type="submit" class="reservation__button">予約する</button>
                 @else
-                    <p>予約するには<a href="/register" class="reservation__button-link">会員登録</a>または<a href="/login" class="reservation__button-link">ログイン</a>が必要です</p>
+                    <p>予約するには<a href="/auth/register" class="reservation__button-link">会員登録</a>または<a href="/auth/login" class="reservation__button-link">ログイン</a>が必要です</p>
                 @endif
             </div>
         </form>

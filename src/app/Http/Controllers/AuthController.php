@@ -11,12 +11,12 @@ class AuthController extends Controller
 {
     public function index()
     {
-    return view('index');
+    return view('/');
     }
 
     public function login()
     {
-    return view('auth.login');
+    return view('/auth/login');
     }
 
     public function store()
@@ -25,7 +25,7 @@ class AuthController extends Controller
     }
     public function thanks()
     {
-        return view('auth.thanks');
+        return view('/auth/thanks');
     }
 
     public function register(Request $request)
@@ -46,7 +46,7 @@ class AuthController extends Controller
             return redirect()->back()->with('error', '会員登録に失敗しました。');
         }
 
-        return redirect()->route('thanks');
+        return redirect()->route('/auth/thanks');
     }
     
     public function mypage(){
