@@ -1,0 +1,52 @@
+.shop__wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.shop__header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.form__item {
+    margin-top: 20px;
+}
+
+.form__input-item {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.form__input-item:focus {
+    outline: none;
+    border-color: #007bff;
+}
+
+.error__message {
+    color: red;
+    font-size: 14px;
+}
+
+.form__item-button {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.form__item-button:hover {
+    background-color: #0056b3;
+}
