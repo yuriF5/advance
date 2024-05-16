@@ -17,11 +17,11 @@
                 </tr>
                 @foreach ($reservations as $reservation)
                 <tr class="">
-                    <td class="wrap">{{ $reservation['user_name'] }}</td>
-                    <td class="wrap">{{ $reservation['shop_name] }}</td>
-                    <td class="wrap">{{ $reservation['date'] }}</td>
-                    <td class="wrap">{{ $reservation['time'] }}</td>
-                    <td class="wrap">{{ $reservation['number_of_people'] }}</td>
+                    <td class="wrap">{{ $reservation['user_name']}}</td>
+                    <td class="wrap">{{ $reservation['shop_name']}}</td>
+                    <td class="wrap">{{ $reservation['date']}}</td>
+                    <td class="wrap">{{ $reservation['time']}}</td>
+                    <td class="wrap">{{ $reservation['number_of_people']}}</td>
                 </tr>
                 @endforeach
                 

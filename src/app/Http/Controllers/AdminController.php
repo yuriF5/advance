@@ -21,9 +21,15 @@ class AdminController extends Controller
     {
         return view('admin.create');
     }
+
     public function do()
     {
         return view('admin.do');
+    }
+
+    public function index()
+    {
+        return view('admin.reservation');
     }
 
     public function register(Request $request)
