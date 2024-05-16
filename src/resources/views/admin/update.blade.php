@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="">
+    <link rel="stylesheet" href="{{ asset('css/de.css') }}">
 @endsection
 
 @section('content')
@@ -43,31 +43,26 @@
                 </div>
             </div>
             <div>
-                <label for="area" class="block">地域</label>
-                    <select name="area" class="form__input-item" id="area">
-                        <option value="" {{ old('genre') == '' ? 'selected' : '' }}>選択してください</option>
-                        <option value="1" {{ old('area') == '1' ? 'selected' : '' }}>東京</option>
-                        <option value="2" {{ old('area') == '2' ? 'selected' : '' }}>大阪</option>
-                        <option value="3" {{ old('area') == '3' ? 'selected' : '' }}>福岡</option>
-                    </select>
-                <div class="error__item">
+            <label for="area" class="block">地域</label>
+            <input type="text" name="area" class="form__input-item" value="{{ old('area', $shop->area->name) }}">
+            <div class="error__item">
                 @error('area')
                     <span class="error__message">{{ $message }}</span>
                 @enderror
-                </div>
             </div>
-            <div>
-                <label for="genre" class="block">ジャンル</label>
-                    input type="text" name="genre" class="form__input-item" value="{{ old('genre', $shop['genre']) }}">
-                <div class="error__item">
+        </div>
+        <div>
+            <label for="genre" class="block">ジャンル</label>
+            <input type="text" name="genre" class="form__input-item" value="{{ old('genre', $shop->genre->name) }}">
+            <div class="error__item">
                 @error('genre')
                     <span class="error__message">{{ $message }}</span>
                 @enderror
-                </div>
             </div>
+        </div>
             <div>
                 <label for="description" class="block">店舗概要</label>
-                    <textarea name="description" class="form__input-item">{{ old('description', $shop['description']) }}</textarea>
+                    <textarea name="description" class="form__input-item"rows="10">{{ old('description', $shop['description']) }}</textarea>
                 <div class="error__item">
                 @error('description')
                     <span class="error__message">{{ $message }}</span>
@@ -75,7 +70,7 @@
                 </div>
             </div>
             <div>
-                <label for="image_file" class="block">画像ファイルの変更(アップロード)</label>
+                <label for="image_file" class="block">画像の変更</label>
                     <input type="file" name="image_file"  class="form__input-item">
                 <div class="error__item">
                 @error('image_file')

@@ -58,10 +58,8 @@ Route::controller(CsvController::class)->group(function () {
 });
 
 // review
-Route::get('/shop/{shop_id}', [ReviewController::class, 'show'])->name('shop.show');
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');
 Route::post('/review/{shop_id}', [ReviewController::class, 'store'])->name('review.store');
-Route::get('/reviewer', [ReviewController::class, 'thanks'])->name('reviewer');
 Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 
 // mail
@@ -72,6 +70,6 @@ Route::get('/admin/email_send',[MailController::class,'email']);
 Route::get('/admin/board',[AdminController::class,'board']);
 Route::get('/admin/create',[AdminController::class,'create']);
 Route::post('/add/shop', [ShopController::class, 'store']);
-Route::get('/admin/update',[AdminController::class,'show']);
+Route::get('/admin/update/{shop_id}',[ShopController::class,'show']);
 Route::post('/update/shop', [ShopController::class, 'update']);
 Route::get('/qrcode', [QrCodeController::class, 'displayQrCode']);

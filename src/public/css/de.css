@@ -168,6 +168,51 @@ header {
 .reservation__form{
     margin: auto;
 }
+.shop_header {
+    margin: 0 auto;
+}
+
+.shop_header form {
+    display: flex;
+    flex-direction: column;
+}
+
+.shop_header div {
+    margin-bottom: 10px;
+}
+
+.shop_header label {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.shop_header .block {
+    display: inline-block;
+    width: 100px;
+    /* ラベルの幅を調整 */
+}
+
+.shop_header .form__input-item {
+    width: calc(100% - 10px);
+    /* 入力フィールドの幅を調整 */
+    padding: 5px;
+}
+
+.shop_header .error__item {
+    margin-top: 5px;
+    color: red;
+}
+.form__item-button{
+    text-decoration: none;
+    align-items: center;
+    background-color: rgb(63, 90, 242);
+    border: 1px solid rgb(63, 90, 242);
+    border-radius: 5px;
+    color: #fff;
+    height: 30px;
+    cursor: pointer;
+    font-size: 1.2rem;
+}
 
 @media screen and (max-width: 768px) {
     .reservation__wrap {

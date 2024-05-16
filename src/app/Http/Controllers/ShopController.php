@@ -141,7 +141,7 @@ class ShopController extends Controller
         return redirect('/admin/create')->with('message', $message);
     }
 
-    public function Show(Request $request)
+    public function show(Request $request)
     {
         $user = Auth::user();
         $userId = Auth::id();
@@ -155,6 +155,8 @@ class ShopController extends Controller
     {
         $img = $request->file('image_url');
         $path = $this->myStoreImage($image);
+        $genre = Genre::find($request->genre_id);
+        $area = Area::find($request->area_id);
 
         //更新情報を作成
         $shop->name = $request->name;

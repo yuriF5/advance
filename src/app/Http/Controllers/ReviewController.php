@@ -14,12 +14,7 @@ use App\Http\Requests\ReviewStoreRequest;
 
 class ReviewController extends Controller
 {
-    public function index()
-    {
-        return view('index');
-    }
-
-public function create(Request $request)
+    public function create(Request $request)    
     {
         $user = Auth::user();
         $userId = Auth::id();

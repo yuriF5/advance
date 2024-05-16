@@ -57,6 +57,9 @@
             </div>
             <div class="shop__button">
                 <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
+                @if(Auth::check() && Auth::user()->role == 1)
+                <a class="shop__button-detail" href="{{ url('/admin/update/'.$shop->id) }}">店舗修正</a>
+                @endif
                 @if (Auth::check())
                     @if (in_array($shop->id, $favorites))
                         <form action="{{ route('unfavorite', $shop) }}" method="post"
