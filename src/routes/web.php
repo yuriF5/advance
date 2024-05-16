@@ -74,5 +74,5 @@ Route::get('/admin/update/{shop_id}',[ShopController::class,'show']);
 Route::post('/update/shop',[ShopController::class,'update']);
 Route::get('/admin/do',[AdminController::class,'do']);
 Route::post('/admin/register',[AdminController::class,'register']);
-Route::get('/admin/reservation',[AdminController::class,'index']);
+Route::get('/admin/reservation', [AdminController::class, 'index'])->name('admin.reservation');
 Route::get('/qrcode',[QrCodeController::class,'displayQrCode']);

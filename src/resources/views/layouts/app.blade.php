@@ -33,10 +33,10 @@
                     @if (Auth::check())
                     @if( 0 == Auth::user()->role )
                         <li class="header-nav__item"><a class="header-nav__link" href="/admin/email_send">お知らせへ</a></li> 
-                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/board">管理登録へ</a></li>
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/board">店舗代表者user登録へ</a></li>
                     @endif
                     @if( 1 == Auth::user()->role )
-                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/reservation_admin">予約一覧へ</a></li>
+                        <li class="header-nav__item"><a class="header-nav__link" href="/admin/reservation">予約一覧へ</a></li>
                         <li class="header-nav__item"><a class="header-nav__link" href="/admin/create">店舗情報の新規登録</a></li>
                         <li class="header-nav__item"><a class="header-nav__link" href="/">店舗一覧修正へ</a></li> 
                     @endif

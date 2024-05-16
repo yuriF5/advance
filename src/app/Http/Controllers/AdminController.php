@@ -7,7 +7,9 @@ use App\Models\Shop;
 use App\Models\Favorite;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Reservation;
 use Illuminate\Support\Facades\Hash;
+
 
 class AdminController extends Controller
 {
@@ -27,9 +29,38 @@ class AdminController extends Controller
         return view('admin.do');
     }
 
-    public function index()
-    {
-        return view('admin.reservation');
+    public function index(Request $request)
+{
+    $userSearch = $request->input('user_search');
+    $shopSearch = $request->input('shop_search');
+    
+    // 検索結果を取得
+    $query = Reservation::query();
+    
+    if ($userSearch) {
+        $query->whereHas('user', function ($query) use ($userSearch) {
+            $query->where('name', 'like', "%$userSearch%");
+        });
+    }
+
+    if ($shopSearch) {
+        $query->whereHas('shop', function ($query) use ($shopSearch) {
+            $query->where('name', 'like', "%$shopSearch%");
+        });
+    }
+
+    $reservations = $query->get();
+
+    // ユーザー名と店舗名を取得
+    foreach ($reservations as $reservation) {
+        $user = $reservation->user;
+        $reservation->user_name = $user ? $user->name : 'Unknown';
+
+        $shop = $reservation->shop;
+        $reservation->shop_name = $shop ? $shop->name : 'Unknown';
+    }
+
+    return view('admin.reservation', compact('reservations'));
     }
 
     public function register(Request $request)

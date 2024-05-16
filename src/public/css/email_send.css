@@ -1,0 +1,83 @@
+.email_send__wrap {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.email_send__header {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.email_send__content-wrap {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 400px;
+}
+
+.email_send__content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+    max-width: 400px;
+}
+
+.email_send__title {
+    flex: 1;
+    font-weight: bold;
+    font-size: 20px;
+    align-items: center;
+}
+
+.email_send__area {
+    flex: 2;
+}
+
+.email_send__area select,
+.email_send__area textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    outline: none;
+}
+
+.email_send__content-textarea {
+    align-items: flex-start;
+}
+
+.form__button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.back__button {
+    padding: 10px 20px;
+    background-color: #ccc;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.back__button:hover {
+    background-color: #999;
+}
+
+.form__button-btn {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.form__button-btn:hover {
+    background-color: #0056b3;
+}

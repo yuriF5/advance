@@ -12,7 +12,7 @@
     @endif
     <div class="email_send__wrap">
         <div class="email_send__header">
-            メール作成
+            お知らせメールの作成
         </div>
 
         <div class="email_send__content-wrap">
@@ -41,7 +41,8 @@
                     </div>
                 </div>
                 <div class="form__button">
-                    <a href="/admin/boad" class="back__button">戻る</a>
+                    <a href="/admin/board" class="back__button">店舗代表者user登録へ
+                    </a>
                     <button type="submit" class="form__button-btn">メール送信</button>
                 </div>
             </form>
