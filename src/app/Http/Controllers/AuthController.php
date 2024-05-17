@@ -59,6 +59,6 @@ class AuthController extends Controller
 
         $request->session()->invalidate();
 
-        return redirect('auth.login');
+        return redirect('/auth/login');
     }
 }
