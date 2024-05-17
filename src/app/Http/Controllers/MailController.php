@@ -19,7 +19,7 @@ class MailController extends Controller
     if ($destination === 'all') {
         SendNotificationEmail::dispatch(User::all(), $messageContent);
     } elseif ($destination === 'user') {
-        SendNotificationEmail::dispatch(User::doesntHave('roles')->get(), $messageContent);
+        SendNotificationEmail::dispatch(User::doesntHave('role')->get(), $messageContent);
     } else {
         $role = Role::findByName($destination);
         $users = $role ? $role->users : collect();
