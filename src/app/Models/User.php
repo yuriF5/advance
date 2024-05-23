@@ -57,4 +57,34 @@ class User extends Authenticatable
     {
         return $this->hasMany(Review::class);
     }
+
+    // 役割の定数
+    const ROLE_ADMIN = 0;
+    const ROLE_REPRESENTATIVE = 1;
+    const ROLE_USER = 2;
+
+    /**
+     * ユーザーが管理者かどうかを確認
+     */
+    public function isAdmin()
+    {
+        return $this->role === self::ROLE_ADMIN;
+    }
+
+    /**
+     * ユーザーが店舗代表者かどうかを確認
+     */
+    public function isRepresentative()
+    {
+        return $this->role === self::ROLE_REPRESENTATIVE;
+    }
+
+    /**
+     * ユーザーが一般ユーザーかどうかを確認
+     */
+    public function isUser()
+    {
+        return $this->role === self::ROLE_USER;
+    }
 }
+

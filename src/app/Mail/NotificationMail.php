@@ -12,11 +12,15 @@ class NotificationMail extends Mailable
 {
     use Queueable, SerializesModels;
 
-    public $details;
-    public function __construct($user, $messageContent)
+    public $messageContent;
+    /**
+     * Create a new message instance.
+     *
+     * @return void
+     */
+    public function __construct($messageContent)
     {
-        $this->user = $user;
-        $this->messageContent = str_replace("\n"," \n",$messageContent);
+        $this->messageContent = $messageContent;
     }
 
     /**
@@ -26,7 +30,8 @@ class NotificationMail extends Mailable
      */
     public function build()
     {
-        return $this->subject('Reseからのお知らせ')->markdown('emails.notification')
-            ->with(['messageContent' => $this->messageContent,]);
+        return $this->view('emails.notification')
+                    ->subject('Reseからのお知らせ')
+                    ->with(['messageContent' => $this->messageContent]);
     }
 }
