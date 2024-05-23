@@ -80,7 +80,7 @@ Route::post('/update/shop',[ShopController::class,'update']);
 Route::get('/admin/do',[AdminController::class,'do']);
 Route::post('/admin/register',[AdminController::class,'register']);
 Route::get('/admin/reservation', [AdminController::class, 'index'])->name('admin.reservation');
-Route::get('/qrcode',[QrCodeController::class,'displayQrCode']);
+Route::get('/admin/qr/code',[AdminController::class,'displayQrCode']);
 
 // peyment
 Route::prefix('payment')->name('payment.')->group(function () {
