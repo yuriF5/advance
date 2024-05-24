@@ -46,7 +46,7 @@ class AuthController extends Controller
             return redirect()->back()->with('error', '会員登録に失敗しました。');
         }
 
-        return redirect()->route('/auth/thanks');
+        return view('/auth/thanks');
     }
     
     public function mypage(){
