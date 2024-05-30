@@ -24,8 +24,8 @@ class ReviewStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'star' => 'required|integer|min:1|max:5', // 1〜5の整数
-            'comment' => 'nullable|string|max:400', // 最大400文字の文字列（任意）
+            'star' => 'required|integer|min:1|max:5',
+            'comment' => 'nullable|string|max:400', 
         ];
     }
 
