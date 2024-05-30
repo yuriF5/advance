@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Hash;
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Writer;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Foundation\Http\AdminRequest;
 
 
 class AdminController extends Controller
@@ -66,13 +67,8 @@ class AdminController extends Controller
     return view('admin.reservation', compact('reservations'));
     }
 
-    public function register(Request $request)
+    public function register(AdminRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:8',
-        ]);
 
         $user = new User();
         $user->name = $request->name;

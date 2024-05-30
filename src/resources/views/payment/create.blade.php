@@ -23,17 +23,30 @@
                         <label for="card_number">カード番号</label>
                         <div id="card-number" class="form-control"></div>
                     </div>
+                    <div class="error__item">
+                        @error('card_number')
+                        <span class="error__message">{{ $message }}</span>
+                        @enderror
+                    </div>
 
                     <div>
                         <label for="card_expiry">有効期限</label>
                         <div id="card-expiry" class="form-control"></div>
                     </div>
-
+                    <div class="error__item">
+                        @error('card_expiry')
+                        <span class="error__message">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div>
                         <label for="card-cvc">セキュリティコード</label>
                         <div id="card-cvc" class="form-control"></div>
                     </div>
-
+                    <div class="error__item">
+                        @error('card_cvc')
+                        <span class="error__message">{{ $message }}</span>
+                        @enderror
+                    </div>
                     <div id="card-errors" class="text-danger"></div>
 
                     <div class="text-right">
