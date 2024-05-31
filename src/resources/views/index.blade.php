@@ -47,7 +47,11 @@
 @foreach ($shops as $shop)
     <div class="shop__content">
         <div>
-            <img class="shop__image" src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
+            @if (filter_var($shop->image_url, FILTER_VALIDATE_URL))
+                <img class="shop__image" src="{{ $shop->image_url }}" alt="{{ $shop->name }}">
+            @else
+                <img class="shop__image" src="{{ asset('storage/'.$shop->image_url) }}" alt="{{ $shop->name }}">
+            @endif
         </div>
         <div class="shop__item">
             <h2 class="shop__title">{{ $shop->name }}</h2>

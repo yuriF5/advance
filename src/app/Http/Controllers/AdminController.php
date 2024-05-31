@@ -13,6 +13,8 @@ use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Writer;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Http\AdminRequest;
+use Illuminate\Support\Facades\Storage;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 
 class AdminController extends Controller
