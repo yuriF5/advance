@@ -6,7 +6,6 @@
 
 
 @section('content')
-
 <div class="container">
     <div class="detail__wrap">
         <div class="detail__header">
@@ -46,11 +45,11 @@
             <div class="form__item">
                 <label for="time">
                     <select name="time" id="time" required>
-                    <option value="" disabled selected>-- 時間を選択してください --</option>
-                    @foreach (['17:00', '18:00', '19:00', '20:30', '21:00'] as $time)
-                        <option value="{{ $time }}" {{ old('time') == $time ? 'selected' : '' }}>{{ $time }}</option>
-                    @endforeach
-                    </select>
+            <option value="" disabled selected>-- 時間を選択してください --</option>
+            @foreach ($times as $time)
+                <option value="{{ $time->id }}" {{ old('time') == $time->id ? 'selected' : '' }}>{{ $time->name }}</option>
+            @endforeach
+        </select>
                 </label>
             </div>
             <div class="error__item">
@@ -62,11 +61,11 @@
             <div class="form__item">
                 <label for="number">
                 <select name="number" id="number" required>
-                    <option value="" disabled selected>-- 人数を選択してください --</option>
-                    @foreach (range(1, 5) as $number)
-                        <option value="{{ $number }}" {{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
-                    @endforeach
-                </select></label>
+            <option value="" disabled selected>-- 人数を選択してください --</option>
+            @foreach ($numbers as $number)
+                <option value="{{ $number->id }}" {{ old('number') == $number->id ? 'selected' : '' }}>{{ $number->name }}人</option>
+            @endforeach
+        </select>
             </div>  
             <div class="error__item">
                 @error('number')

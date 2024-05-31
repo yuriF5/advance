@@ -64,7 +64,7 @@ class ReservationController extends Controller
 
         $backRoute = '/mypage';
 
-        return view('detail', compact('reservation', 'user', 'shop', 'backRoute','reservationData'));
+        return view('edit.reservation', compact('reservation', 'user', 'shop', 'backRoute','reservationData'));
     }
 
 }
