@@ -44,7 +44,12 @@
             </div>
             <div>
             <label for="area" class="block">地域</label>
-            <input type="text" name="area" class="form__input-item" value="{{ old('area', $shop->area->name) }}">
+            <select name="area_id" class="form__input-item" id="area" required>
+                <option value="">選択してください</option>
+                @foreach($areas as $area)
+                <option value="{{ $area->id }}" {{ old('area_id', $shop->area_id) == $area->id ? 'selected' : '' }}>{{ $area->name }}</option>
+                @endforeach
+            </select>
             <div class="error__item">
                 @error('area')
                     <span class="error__message">{{ $message }}</span>
@@ -53,7 +58,12 @@
         </div>
         <div>
             <label for="genre" class="block">ジャンル</label>
-            <input type="text" name="genre" class="form__input-item" value="{{ old('genre', $shop->genre->name) }}">
+            <select name="genre_id" class="form__input-item" id="genre" required>
+                    <option value="">選択してください</option>
+                    @foreach($genres ?? [] as $genre)
+                        <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+                    @endforeach
+                </select>
             <div class="error__item">
                 @error('genre')
                     <span class="error__message">{{ $message }}</span>

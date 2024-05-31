@@ -146,31 +146,52 @@ class ShopController extends Controller
         $user = Auth::user();
         $userId = Auth::id();
         $shop = Shop::find($request->shop_id);
+        $genres = Genre::all();
+        $areas = Area::all();
         $backRoute = '/';
         
-        return view('admin.update', compact('user', 'shop', 'backRoute'));
+        return view('admin.update', compact('user', 'shop','genres', 'areas','backRoute'));
     }
 
-    public function update(Request $request)
-    {
-        $img = $request->file('image_url');
-        $path = $this->myStoreImage($image);
-        $genre = Genre::find($request->genre_id);
-        $area = Area::find($request->area_id);
+    public function update(Request $id)
+{
+    // 画像ファイルを取得
+    $img = $request->file('image_url');
+    $path = null;
 
-        //更新情報を作成
-        $shop->name = $request->name;
-        $shop->genre_id = $genreId;
-        $shop->area_id = $areaId;
-        $shop->description = $request->description;
+    // 画像がある場合は保存し、パスを取得
+    if ($img) {
+        $path = $this->myStoreImage($img);
+    }
 
-        if(!empty($path)) $update_info['image_url'] = $path;
+    // ジャンルとエリアを取得
+    $genre = Genre::all();
+    $area = Area::all();
 
-        //更新
-        $shop = Shop::find($request->id);
-        $shop->update($update_info);
+    // 店舗情報を取得
+    $shop = Shop::find($request->id);
+    $genres = Genre::find($request->id);
+    $area = Area::find($request->id);
 
-        $message = '店舗情報を更新しました。';   
-        return redirect('/admin/edit') ->with('message', $message);
+    // 更新情報を作成
+    $update_info = [
+        'name' => $request->name,
+        'genre_id' => $request->genre_id,  // リクエストから取得
+        'area_id' => $request->area_id,    // リクエストから取得
+        'description' => $request->description,
+    ];
+
+    // 画像のパスがある場合は更新情報に追加
+    if (!empty($path)) {
+        $update_info['image_url'] = $path;
+    }
+
+    // 更新
+    $shop->update($update_info);
+
+    // メッセージ設定
+    $message = '店舗情報を更新しました。';   
+
+    return redirect('/admin/edit')->with('message', $message);
     }
 }
