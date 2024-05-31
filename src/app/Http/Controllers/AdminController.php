@@ -81,7 +81,7 @@ class AdminController extends Controller
             return redirect()->back()->with('error', '登録に失敗しました。');
         }
 
-        return redirect('/admin/do');
+        return view('/admin/do');
 
     }
 
