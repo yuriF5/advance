@@ -95,25 +95,7 @@ class ShopController extends Controller
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
 
-// ファイル保存
-    private function myStoreImage($img_file)
-{
-    if(isset($img_file)) {
-        $filename = uniqid() . '_' . $img_file->getClientOriginalName(); 
-        $path = 'rese/image/'.$filename; 
 
-        if(config('filesystems.default') == 'local') {
-            $disk = Storage::disk('public'); // デフォルトのディスクを取得
-        } else {
-            $disk = Storage::disk(config('filesystems.default'));
-        }
-
-        $disk->putFileAs('', $img_file, $path); 
-        return $path; 
-        } else {
-            return ''; 
-        }
-    }
 
     public function store(Request $request)
     {
@@ -155,9 +137,6 @@ class ShopController extends Controller
 
     public function update(Request $id)
 {
-    // 画像ファイルを取得
-    $img = $request->file('image_url');
-    $path = null;
 
     // 画像がある場合は保存し、パスを取得
     if ($img) {
@@ -176,8 +155,8 @@ class ShopController extends Controller
     // 更新情報を作成
     $update_info = [
         'name' => $request->name,
-        'genre_id' => $request->genre_id,  // リクエストから取得
-        'area_id' => $request->area_id,    // リクエストから取得
+        'genre_id' => $request->genre_id, 
+        'area_id' => $request->area_id,
         'description' => $request->description,
     ];
 

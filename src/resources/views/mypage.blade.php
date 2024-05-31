@@ -64,8 +64,12 @@
         <div class="mobile-favorite__wrap">
             <div class="favorite__wrap_c">
                 @foreach ($shops as $shop)
-                    <div class="shop__content">
-                        <img class="shop__image" width="40px" src="{{ $shop->image_url }}" alt="イメージ画像">
+                <div class="shop__content">
+                    @if (filter_var($shop->image_url, FILTER_VALIDATE_URL))
+                    <img class="shop__image" src="{{ $shop->image_url }}" alt="{{ $shop->name }}"width="100%">
+                    @else
+                    <img class="shop__image" src="{{ asset('storage/'.$shop->image_url) }}" alt="{{ $shop->name }}"width="100%">
+                    @endif
                         <div class="shop__item">
                             <span class="shop__title">{{ $shop->name }}</span>
                             <div class="shop__tag">
