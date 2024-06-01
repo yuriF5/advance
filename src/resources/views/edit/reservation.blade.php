@@ -31,11 +31,11 @@
     </div>
 
     <div class="reservation__form">
-        <h2 class="reservation__title">予約</h2>
+        <h2 class="reservation__title">予約変更</h2>
         <form action="{{ route('reservation', $shop) }}" method="post" class="reservation__wrap">
             @csrf
             <div class="form__item">
-                <label for="date"><input type="date" id="date" name="date" value="{{ old('date') }}" required></label>
+                <label for="date"><input type="date" id="date" name="date" value="{{ $reservation->date }}" required></label>
             </div>
             <div class="error__item">
                 @error('date')
@@ -45,11 +45,11 @@
             <div class="form__item">
                 <label for="time">
                     <select name="time" id="time" required>
-            <option value="" disabled selected>-- 時間を選択してください --</option>
-            @foreach ($times as $time)
-                <option value="{{ $time->id }}" {{ old('time') == $time->id ? 'selected' : '' }}>{{ $time->name }}</option>
-            @endforeach
-        </select>
+                    <option value="" disabled selected>-- 変更する時間を選択してください --</option>
+                    @foreach ($availableTimes as $timeOption)
+                        <option value="{{ $timeOption }}" {{ old('time', $reservation->time) == $timeOption ? 'selected' : '' }}>{{ $timeOption }}</option>
+                    @endforeach
+                    </select>
                 </label>
             </div>
             <div class="error__item">
@@ -59,13 +59,13 @@
             </div>
 
             <div class="form__item">
-                <label for="number">
+                <label for="number"value="{{ $reservation->number_of_people}}">
                 <select name="number" id="number" required>
-            <option value="" disabled selected>-- 人数を選択してください --</option>
-            @foreach ($numbers as $number)
-                <option value="{{ $number->id }}" {{ old('number') == $number->id ? 'selected' : '' }}>{{ $number->name }}人</option>
-            @endforeach
-        </select>
+                    <option value="" disabled selected>-- 変更する人数を選択してください --</option>
+                    @foreach (range(1, 5) as $number)
+                        <option value="{{ $number }}" {{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
+                    @endforeach
+                </select></label>
             </div>  
             <div class="error__item">
                 @error('number')
@@ -82,26 +82,21 @@
                         </tr>
                         <tr>
                             <th class="table__header">Date</th>
-                            <td class="table__item" id="dateId">--</td>
+                            <td class="table__item" id="dateId">{{ $reservation->date }}</td>
                         </tr>
                         <tr>
                             <th class="table__header">Time</th>
-                            <td class="table__item" id="timeId">--</td>
+                            <td class="table__item" id="timeId">{{ $reservation->time }}</td>
                         </tr>
                         <tr>
                             <th class="table__header">Number</th>
-                            <td class="table__item" id="numberId">--</td>
+                            <td class="table__item" id="numberId">{{ $reservation->number_of_people}}</td>
                         </tr>
                     </table>
                 </div>
             </div>
-            <a href="{{ route('review.create', ['shop_id' => $shop->id]) }}">口コミを投稿する</a>
             <div class="reservation__button">
-                @if (Auth::check())
-                    <button type="submit" class="reservation__button">予約する</button>
-                @else
-                    <p>予約するには<a href="/auth/register" class="reservation__button-link">会員登録</a>または<a href="/auth/login" class="reservation__button-link">ログイン</a>が必要です</p>
-                @endif
+                    <button type="submit" class="reservation__button">予約変更を更新する</button>
             </div>
         </form>
     </div>

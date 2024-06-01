@@ -40,7 +40,8 @@ Route::controller(ShopController::class)->group(function () {
 Route::prefix('reservation')->controller(ReservationController::class)->group(function () {
     Route::post('/store/{shop}', 'store')->name('reservation');
     Route::get('/edit/reservation/{reservation}', 'edit')->name('reservation.edit');
-    Route::get('/done',  'done')->name('done');
+    Route::post('/update/reservation/{id}','update')->name('reservation.update');
+    Route::get('/done','done')->name('done');
     });
 
 // Favorites

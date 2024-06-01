@@ -52,19 +52,27 @@ class ReservationController extends Controller
     {
         $user = Auth::user();
         $shop = Shop::find($reservation->shop_id);
-        $reservationData = old() ? [
-        'date' => old('date'),
-        'time' => old('time'),
-        'number' => old('number'),
-    ] : [
-        'date' => $reservation->date,
-        'time' => $reservation->time,
-        'number' => $reservation->number_of_people,
-    ];
-
+        $availableTimes = ['17:00', '18:00', '19:00', '20:30', '21:00'];
+        $numbers = range(1, 5);
         $backRoute = '/mypage';
 
-        return view('edit.reservation', compact('reservation', 'user', 'shop', 'backRoute','reservationData'));
+        return view('edit.reservation', compact('reservation', 'user', 'shop', 'availableTimes','numbers','backRoute'));
+    }
+    public function update(Request $request, $id)
+    {
+        $request->validate([
+            'date' => 'required|date',
+            'time' => 'required',
+            'number' => 'required|integer|min:1|max:5',
+        ]);
+
+        $reservation = Reservation::findOrFail($id);
+        $reservation->date = $request->date;
+        $reservation->time = $request->time;
+        $reservation->number_of_people = $request->number;
+        $reservation->save();
+
+        return redirect()->route('done');
     }
 
 }
