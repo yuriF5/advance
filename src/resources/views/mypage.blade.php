@@ -50,7 +50,15 @@
                                 <td class="table__item">{{ $reservation->number_of_people }}人</td>
                             </tr>
                         </table>
-                        <a class="form__button--pay" href="{{ route('payment.create')}}">決済&#128179;</a>
+                        <div class="reservation__footer_button">
+                            <form method="GET" action="/code">
+                            <input type="hidden" name="reservation_id" value="{{ $reservation['id'] }}"><form method="GET" action="/code">
+                            <button type="submit" class="form__button--qr">QRコード</br>来店時にかざす
+                            </button>
+                            </form>
+                            </form>
+                                <a class="form__button--pay" href="{{ route('payment.create')}}">ネット</br>決済&#128179;</a>
+                        </div>
                     </div>
                     @endif
                 @endforeach

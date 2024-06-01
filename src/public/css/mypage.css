@@ -95,12 +95,17 @@
     justify-content: space-around;
     padding-top: 15px;
 }
+.reservation__footer_button{
+    display: flex;
+    justify-content: space-between;
+    }
+
 .mobile-favorite__wrap{
     display: flex;  
     justify-content: space-between;
     gap: 30px;
     }
-    
+
 .shop__wrap {
     display: flex;
     gap: 15px 1%;
@@ -184,16 +189,28 @@
     opacity: 0.6;
 }
 
+.form__button--qr {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0 10px;
+    background-color: rgb(221, 85, 12);
+    border-radius: 5px;
+    font-size: 1.6rem;
+    text-decoration: none;
+    color: #fff;
+}
+
 .form__button--pay{
     background: none;
     border: none;
     cursor: pointer;
     padding: 0 10px;
-    background-color: rgb(3, 37, 17);
+    background-color: rgb(11, 218, 97);
     border-radius: 5px;
     font-size: 1.6rem;
     text-decoration: none;
-    color: #fff;
+    color: #070707;
 }
 @media screen and (max-width: 768px) {
 

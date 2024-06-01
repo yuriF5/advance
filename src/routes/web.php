@@ -55,6 +55,8 @@ Route::controller(MyPageController::class)->group(function () {
     Route::get('/mypage', 'mypage')->name('mypage');
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
+    Route::get('/code','showQrCode');
+
 });
 
 // csv
@@ -81,7 +83,6 @@ Route::post('/update/shop',[ShopController::class,'update']);
 Route::get('/admin/do',[AdminController::class,'do']);
 Route::post('/admin/register',[AdminController::class,'register']);
 Route::get('/admin/reservation', [AdminController::class, 'index'])->name('admin.reservation');
-Route::get('/admin/qr/code',[AdminController::class,'displayQrCode']);
 
 // peyment
 Route::prefix('payment')->name('payment.')->group(function () {

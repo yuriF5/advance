@@ -96,8 +96,12 @@
                     </table>
                 </div>
             </div>
-            <a href="{{ route('review.create', ['shop_id' => $shop->id]) }}">口コミを投稿する</a>
-            <div class="reservation__button">
+                @if (isset($reservation_id))
+                    @if (isset($past_review_id))
+                        <a href="{{ route('review.create', ['shop_id' => $shop->id]) }}">口コミを投稿する</a>
+                    @endif
+                @endif
+                <div class="reservation__button">
                 @if (Auth::check())
                     <button type="submit" class="reservation__button">予約する</button>
                 @else
