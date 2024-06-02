@@ -21,6 +21,8 @@
 - 開発環境：http://localhost/
 - phpMyAdmin:http://localhost:8080/
 
+git clone git@github.com:estra-inc/confirmation-test-contact-form.git
+※ご使用のphp等のversionに適したversionに必ず修正してください。意図しない表示がされます。
 
 ## 機能一覧
 ログイン機能、メール認証、お気に入り追加/削除、予約追加/変更/削除、検索、レビュー、リマインドメール送信、QRコードで予約認証、決済機能  
@@ -67,14 +69,14 @@ $ sudo chmod -R 777 *
 ## ダミーデータの説明
 ### ユーザー一覧
 1. 管理者　　　email: admin@admin.com
-2. 店舗代表者　email: shop@shop.com　
-3. ユーザー　　　email: test@test.com  
+2. 店舗代表者　email: shop@shop.com
+3. ユーザー　　email: test@test.com  
 
 ※パスワードは全て"password"でログインできます。
 
-## 店舗の新規作成方法
-### 店舗代表者が作成する
-1. 管理者でログイン
+## 店舗の新規作成、更新方法
+1. 店舗代表者　email: shop@shop.comでログイン
 2. "店舗代表者作成"で店舗代表者権限を持つユーザーを作成
 3. 店舗代表者でログイン
 4. 店舗情報の作成で作成する
+5. 店舗一覧の各店舗ごと修正し更新する
