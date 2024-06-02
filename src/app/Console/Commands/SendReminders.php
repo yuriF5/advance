@@ -6,6 +6,7 @@ use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Batch;
 use App\Jobs\SendReminderEmail;
 use App\Models\Reservation;
+use App\Mail\ReservationReminder;
 
 
 class SendReminders extends Command

@@ -6,6 +6,14 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\Reservation;
+use Illuminate\Support\Facades\URL;
+use BaconQrCode\Encoder\QrCode;
+use BaconQrCode\Common\ErrorCorrectionLevel;
+use BaconQrCode\Renderer\Image\Png;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
+use BaconQrCode\Writer;
 
 class ReservationReminder  extends Mailable
 {
