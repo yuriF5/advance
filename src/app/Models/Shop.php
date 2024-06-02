@@ -15,7 +15,9 @@ class Shop extends Model
         'genre_id',
         'image_url',
         'business_hours',
-        'reserve_time_seat'
+        'reserve_time_seat',
+        'visit_status',
+        'payment_status'
     ];
 
     public function favorites()

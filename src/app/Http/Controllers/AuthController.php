@@ -30,7 +30,7 @@ class AuthController extends Controller
         return view('/auth/thanks');
     }
 
-    public function register(RegisterRequest $request)
+    public function register(Request $request)
     {
 
         $user = User::create([
