@@ -9,6 +9,8 @@ use App\Models\Favorite;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReseFormRequest;
+use App\Http\Requests\ShopUpdateRequest;
+use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
@@ -95,8 +97,6 @@ class ShopController extends Controller
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
 
-
-
     public function store(Request $request)
     {
          // 画像を保存してパスを取得
@@ -135,42 +135,31 @@ class ShopController extends Controller
         return view('admin.update', compact('user', 'shop','genres', 'areas','backRoute'));
     }
 
-    public function update(Request $id)
-{
+    public function update(ShopUpdateRequest $request)
+    {
 
-    // 画像がある場合は保存し、パスを取得
-    if ($img) {
-        $path = $this->myStoreImage($img);
+        //ストレージに画像を登録
+        $img = $request->file('image_file');
+        $path = $img->store('img', 'public');
+
+        //更新情報を作成
+        $update_info = [
+            'name' => $request->name,
+            'region' => $request->region,
+            'genre' => $request->genre,
+            'description' => $request->description
+        ];
+        if(!empty($path)) $update_info['image_url'] = $path;
+
+        //更新
+        $shop = Shop::find($request->id);
+        $shop->update($update_info);
+   
+        return redirect('/admin/done');
     }
 
-    // ジャンルとエリアを取得
-    $genre = Genre::all();
-    $area = Area::all();
-
-    // 店舗情報を取得
-    $shop = Shop::find($request->id);
-    $genres = Genre::find($request->id);
-    $area = Area::find($request->id);
-
-    // 更新情報を作成
-    $update_info = [
-        'name' => $request->name,
-        'genre_id' => $request->genre_id, 
-        'area_id' => $request->area_id,
-        'description' => $request->description,
-    ];
-
-    // 画像のパスがある場合は更新情報に追加
-    if (!empty($path)) {
-        $update_info['image_url'] = $path;
-    }
-
-    // 更新
-    $shop->update($update_info);
-
-    // メッセージ設定
-    $message = '店舗情報を更新しました。';   
-
-    return redirect('/admin/edit')->with('message', $message);
+        public function done()
+    {
+        return view('admin.done');
     }
 }
