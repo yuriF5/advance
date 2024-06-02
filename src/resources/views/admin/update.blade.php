@@ -14,7 +14,11 @@
             </div>
         </div>
         <div class="detail__image">
-            <img src="{{ $shop->image_url }}" alt="イメージ画像" width="100%" class="detail__image-img"/>
+            @if (filter_var($shop->image_url, FILTER_VALIDATE_URL))
+                <img class="detail__image-img" src="{{ $shop->image_url }}" alt="{{ $shop->name }}"width="100%">
+            @else
+                <img class="detail__image-img" src="{{ asset('storage/'.$shop->image_url) }}" alt="{{ $shop->name }}"width="100%">
+            @endif
         </div>
         <div class="detail__tag">
             <p class="detail__tag-info">#{{ $shop->area->name }}</p>
