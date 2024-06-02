@@ -1,14 +1,30 @@
-@if (session('status') == 'verification-link-sent')
-    <div class="mb-4 font-medium text-sm text-green-600">
-        新しいメール確認リンクが送信されました！
-    </div>
-@endif
+@extends('layouts.app')
 
+@section('css')
+    
+@endsection
+
+@section('content')
 <div>
-    続行する前に、メールに記載された確認リンクをクリックしてください。
-    もしメールを受け取っていない場合は、<form method="POST" action="{{ route('verification.send') }}" class="d-inline">
-        @csrf
-        <button type="submit" class="btn btn-link p-0 m-0 align-baseline">こちらをクリックして再送信してください</button>。
-    </form>
+	<h1>確認メールの送信</a></h1>
+	<div>
+		@if (session('status') === 'verification-link-sent')
+			<p>
+				登録したメールアドレスを確認してください！！
+			</p>
+			<p ><a href="/">TOPに戻る</a></p>
+		@else
+			<p>
+				確認メールを送信してください！！
+			</p>
+			<form method="post" action="{{ route('verification.send') }}">
+				@method('post')
+				@csrf
+				<div>
+					<button type="submit">確認メールを送信</button>
+				</div>
+			</form>
+		@endif
+	</div>
 </div>
-
+@endsection
