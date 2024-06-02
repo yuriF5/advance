@@ -8,6 +8,17 @@
 </p>
 
 # 飲食店予約システム
+![表面](https://github.com/yuriF5/advance/assets/152612024/c8a5ee9d-0132-4a73-8e9f-2d23fc6853e4)
+
+
+管理者メニュー
+
+![管理者メニュー](https://github.com/yuriF5/advance/assets/152612024/a672fc63-4189-40fd-890c-cea3fdcc48cf)
+
+
+店舗代表者メニュー
+
+![new代表者](https://github.com/yuriF5/advance/assets/152612024/c0717f45-34c5-4867-b6aa-2a3e4ab81e72)
 
 
 ## 作成した目的
@@ -33,6 +44,11 @@ git clone git@github.com:estra-inc/confirmation-test-contact-form.git
 docker、Laravel 8.x、PHP8.1.2 4、laravel-fortify、laravel-permission、Stripe、javascript
 
 ## テーブル設計及びER図
+
+![ER最終](https://github.com/yuriF5/advance/assets/152612024/4dd2851f-00c1-4604-bcc2-45ae51bb0d8e)
+![テーブル１](https://github.com/yuriF5/advance/assets/152612024/9af6adb8-e937-4920-a399-98ddfcbfd4bc)
+![テーブル２](https://github.com/yuriF5/advance/assets/152612024/dcccd2ea-8e63-44e5-8d5b-f35f3bd3e0a3)
+![テーブル３](https://github.com/yuriF5/advance/assets/152612024/61485a76-c3e8-428a-96b9-b59689d05c7d)
 
 
 ## 環境構築
