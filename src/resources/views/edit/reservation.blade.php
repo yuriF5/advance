@@ -45,7 +45,7 @@
             <div class="form__item">
                 <label for="time">
                     <select name="time" id="time" required>
-                    <option value="" disabled>-- 変更する時間を選択してください --</option>
+                    <option value="" disabled selected>-- 変更する時間を選択してください --</option>
                     @foreach ($availableTimes as $timeOption)
                         <option value="{{ $timeOption }}" {{  $reservation->time== $timeOption ? 'selected' : '' }}>{{ $timeOption }}</option>
                     @endforeach
