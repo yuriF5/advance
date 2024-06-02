@@ -67,7 +67,7 @@ header {
     margin:0 auto;
     height: 650px;
     background-color: rgb(63, 90, 242);
-    margin-top: -70px;
+    margin-top: -50px;
     border-radius: 5px;
     padding-top: 60px;
     display: flex;
@@ -75,7 +75,7 @@ header {
 }
 
 .reservation__content {
-    padding: 10px 10% 10px 30px;
+    padding: 10px 10px 10px 30px;
 }
 
 .reservation__title {
@@ -109,14 +109,13 @@ header {
 .reservation__group {
     background-color: rgb(84, 124, 243);
     color: #fff;
-    width: 95%;
     border-radius: 5px;
 }
 
 .reservation__area {
     padding: 20px;
     font-size: 1.5rem;
-
+    padding-left: 30px;
 }
 
 .table__header {
@@ -189,12 +188,10 @@ header {
 .shop_header .block {
     display: inline-block;
     width: 100px;
-    /* ラベルの幅を調整 */
 }
 
 .shop_header .form__input-item {
     width: calc(100% - 10px);
-    /* 入力フィールドの幅を調整 */
     padding: 5px;
 }
 

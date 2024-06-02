@@ -45,9 +45,9 @@
             <div class="form__item">
                 <label for="time">
                     <select name="time" id="time" required>
-                    <option value="" disabled selected>-- 変更する時間を選択してください --</option>
+                    <option value="" disabled>-- 変更する時間を選択してください --</option>
                     @foreach ($availableTimes as $timeOption)
-                        <option value="{{ $timeOption }}" {{ old('time', $reservation->time) == $timeOption ? 'selected' : '' }}>{{ $timeOption }}</option>
+                        <option value="{{ $timeOption }}" {{  $reservation->time== $timeOption ? 'selected' : '' }}>{{ $timeOption }}</option>
                     @endforeach
                     </select>
                 </label>
@@ -59,11 +59,11 @@
             </div>
 
             <div class="form__item">
-                <label for="number"value="{{ $reservation->number_of_people}}">
+                <label for="number">
                 <select name="number" id="number" required>
-                    <option value="" disabled selected>-- 変更する人数を選択してください --</option>
+                    <option value="" disabled>-- 変更する人数を選択してください --</option>
                     @foreach (range(1, 5) as $number)
-                        <option value="{{ $number }}" {{ old('number') == $number ? 'selected' : '' }}>{{ $number }}人</option>
+                        <option value="{{ $number }}" {{ $reservation->number_of_people== $number ? 'selected' : '' }}>{{ $number }}人</option>
                     @endforeach
                 </select></label>
             </div>  
