@@ -12,9 +12,11 @@
 
 
 管理者メニュー
+
 <img src="https://github.com/yuriF5/advance/assets/152612024/a672fc63-4189-40fd-890c-cea3fdcc48cf" width="30%">
 
 店舗代表者メニュー
+
 <img src="https://github.com/yuriF5/advance/assets/152612024/c0717f45-34c5-4867-b6aa-2a3e4ab81e72" width="30%">
 
 
