@@ -56,6 +56,9 @@
             </div>
         </div>
     </div>
+    <a href="https://buy.stripe.com/test_dR60404su2F0bg4aEF" class="shop__button-detail">イタリアン</a>
+    
+    <a href="https://buy.stripe.com/test_6oE1840cea7s3NC28a" class="shop__button-detail">ラーメン</a>
 </div>
 
 

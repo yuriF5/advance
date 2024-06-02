@@ -7,11 +7,9 @@ use App\Http\Controllers\ReservationController;
 use App\Http\Controllers\FavoriteController;
 use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\CsvController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\QrCodeController;
 
 Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
@@ -25,9 +23,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
     Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified']);
 
 // shop
 Route::controller(ShopController::class)->group(function () {
@@ -57,12 +52,6 @@ Route::controller(MyPageController::class)->group(function () {
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
     Route::get('/code','showQrCode');
 
-});
-
-// csv
-Route::controller(CsvController::class)->group(function () {
-    Route::get('/csv', 'csv_index')->name('csv_index');
-    Route::post('/csv/upload', 'upload')->name('csv.upload');
 });
 
 // review

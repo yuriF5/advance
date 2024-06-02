@@ -7,6 +7,9 @@ use App\Models\Reservation;
 use App\Models\Shop;
 use App\Http\Requests\StorePaymentRequest;
 use Exception;
+use Stripe\Stripe;
+use Stripe\Customer;
+use Stripe\Charge;
 
 class PaymentController extends Controller
 {
@@ -37,4 +40,5 @@ class PaymentController extends Controller
         }
         return back()->with('status', '決済が完了しました！');
     }
+    
 }
