@@ -22,7 +22,6 @@ class DatabaseSeeder extends Seeder
 
         User::factory(10)->create();
 
-        // 特定の条件を持つユーザーを作成
         User::create([
             'name' => 'admin',
             'email' => 'admin@admin.com',
