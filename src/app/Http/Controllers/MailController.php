@@ -20,8 +20,6 @@ class MailController extends Controller
         foreach ($users as $user) {
     Mail::to($user->email)->send(new NotificationMail($messageContent));
 }
-
-
         return redirect()->back()->with('success', 'メールが送信されました！');
     }
     

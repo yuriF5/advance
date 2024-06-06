@@ -39,12 +39,6 @@ class ReservationReminder  extends Mailable
     public function build()
     {
         $signedUrl = URL::signedRoute('reservation.confirm',['reservation' => $this->reservation->id]);
-        $qrCode = QrCode::size(200)->generate($signedUrl);
-        return $this->subject('予約リマインダー')
-            ->view('emails.reminder')
-            ->with([
-                'qrCode' => $qrCode,
-                'reservation' => $this->reservation
-            ]);
+
     }
 }
