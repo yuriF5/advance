@@ -15,18 +15,12 @@ class MailController extends Controller
     {
         $destination = $request->input('destination');
         $messageContent = $request->input('message');
-
-        $query = User::query();
-
-        if ($destination !== 'all') {
-            $query->where('role', $destination);
-        }
-
-        $users = $query->get();
+        $users = User::all();
 
         foreach ($users as $user) {
-            Mail::to($user->mail)->send(new NotificationMail($messageContent));
-        }
+    Mail::to($user->email)->send(new NotificationMail($messageContent));
+}
+
 
         return redirect()->back()->with('success', 'メールが送信されました！');
     }

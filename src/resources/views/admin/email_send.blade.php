@@ -23,12 +23,7 @@
                         宛先
                     </div>
                     <div class="email_send__area">
-                        <select name="destination" id="destination" size="1" class="destination__content-select">
-                            <option value="all">全員</option>
-                            <option value="2">ユーザー</option>
-                            <option value="1">店舗代表者</option>
-                            <option value="0">管理者</option>
-                        </select>
+                        全員
                     </div>
                 </div>
 

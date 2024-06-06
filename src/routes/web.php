@@ -10,12 +10,23 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\Auth\EmailVerificationController;
+
 
 Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::get('/auth/login',[AuthController::class,'login']);
 Route::get('/auth/thanks', [AuthController::class, 'thanks']);
+Route::controller(EmailVerificationController::class)
+	->prefix('email')->name('verification.')->group(function () {
+		Route::get('verify', 'index')->name('notice');
+		Route::post('verification-notification', 'notification')
+			->middleware('throttle:6,1')->name('send');
+		Route::get('verification/{id}/{hash}', 'verification')
+			->middleware(['signed', 'throttle:6,1'])->name('verify');
+	});
+Route::middleware(['web', 'verified', 'auth']);
 
 // auth
 Route::middleware('auth')->group(function () {
@@ -60,7 +71,7 @@ Route::post('/review/{shop_id}', [ReviewController::class, 'store'])->name('revi
 Route::post('/delete/{review_id}',[ReviewController::class, 'delete']);
 
 // mail
-Route::post('/admin/email-notification', [MailController::class, 'sendNotification'])->name('send.notification');
+Route::post('/send-notification', [MailController::class, 'sendNotification'])->name('send.notification');
 Route::get('/admin/email_send',[MailController::class,'email']);
 
 // admin
