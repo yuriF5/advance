@@ -89,4 +89,5 @@ Route::get('/admin/reservation', [AdminController::class, 'index'])->name('admin
 Route::prefix('payment')->name('payment.')->group(function () {
     Route::get('/create',[PaymentController::class,'create'])->name('create');
     Route::post('/store',[PaymentController::class,'store'])->name('store');
+    Route::get('/complete', [PaymentController::class,'complete'])->name('complete');
 });

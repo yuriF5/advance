@@ -32,13 +32,13 @@ class PaymentController extends Controller
         try {
             \Stripe\Charge::create([
                 'source' => $request->stripeToken,
-                'amount' => 5000,
+                'amount' => 1000,
                 'currency' => 'jpy',
             ]);
         } catch (Exception $e) {
             return back()->with('flash_alert', '決済に失敗しました！('. $e->getMessage() . ')');
         }
-        return back()->with('status', '決済が完了しました！');
+        return view('payment.complete');
     }
     
 }

@@ -9,13 +9,14 @@
         "bacon/bacon-qr-code": "^2.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
+        "laravel/cashier": "^13.0",
         "laravel/fortify": "^1.19",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
         "laravel/tinker": "^2.5",
         "laravel/ui": "^3.4",
         "league/csv": "^9.8",
-        "stripe/stripe-php": "^14.6"
+        "stripe/stripe-php": "^7.39"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

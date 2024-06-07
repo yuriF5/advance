@@ -1,68 +1,27 @@
 @extends('layouts.app')
-
-@section('css')
-    <link rel="stylesheet" href="{{ asset('css/payment.css') }}">
-@endsection
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Stripeテスト</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
 
 @section('content')
-<div class="container">
-    @if (session('flash_alert'))
-        <div class="alert alert-danger">{{ session('flash_alert') }}</div>
-    @elseif(session('status'))
-        <div class="alert alert-success">
-            {{ session('status') }}
-        </div>
-    @endif
-    <div class="p-5">
-        <div class="col-6 card">
-            <div class="card-header">Stripe決済</div>
-            <div class="card-body">
-                <form id="card-form" action="{{ route('payment.store') }}" method="POST">
-                    @csrf
-                    <div>
-                        <label for="card_number">カード番号</label>
-                        <div id="card-number" class="form-control"></div>
-                    </div>
-                    <div class="error__item">
-                        @error('card_number')
-                        <span class="error__message">{{ $message }}</span>
-                        @enderror
-                    </div>
-
-                    <div>
-                        <label for="card_expiry">有効期限</label>
-                        <div id="card-expiry" class="form-control"></div>
-                    </div>
-                    <div class="error__item">
-                        @error('card_expiry')
-                        <span class="error__message">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div>
-                        <label for="card-cvc">セキュリティコード</label>
-                        <div id="card-cvc" class="form-control"></div>
-                    </div>
-                    <div class="error__item">
-                        @error('card_cvc')
-                        <span class="error__message">{{ $message }}</span>
-                        @enderror
-                    </div>
-                    <div id="card-errors" class="text-danger"></div>
-
-                    <div class="text-right">
-                        <button class="mt-3 btn btn-primary">支払い</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-    <a href="https://buy.stripe.com/test_dR60404su2F0bg4aEF" class="shop__button-detail">イタリアン</a>
-    
-    <a href="https://buy.stripe.com/test_6oE1840cea7s3NC28a" class="shop__button-detail">ラーメン</a>
-</div>
-
-
-
+    <form action="{{ asset('payment') }}" method="POST" class="text-center mt-5">
+        {{ csrf_field() }}
+        <script
+            src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+            data-key="{{ env('STRIPE_KEY') }}"
+            data-amount="1000"
+            data-name="Stripe Demo"
+            data-label="決済をする"
+            data-description="これはStripeのデモです。"
+            data-image="https://stripe.com/img/documentation/checkout/marketplace.png"
+            data-locale="auto"
+            data-currency="JPY">
+        </script>
+    </form>
     <script src="https://js.stripe.com/v3/"></script>
     <script>
         /* 基本設定*/
@@ -132,4 +91,4 @@
             form.submit();
         }
     </script>
-    @endsection
+@endsection
