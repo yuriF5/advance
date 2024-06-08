@@ -58,7 +58,7 @@ class ReservationController extends Controller
 
         return view('edit.reservation', compact('reservation', 'user', 'shop', 'availableTimes','numbers','backRoute'));
     }
-    public function update(Request $request, $id)
+    public function update(ReseFormRequest $request, $id)
     {
         $request->validate([
             'date' => 'required|date',

@@ -7,6 +7,7 @@ use App\Models\Shop;
 use App\Models\Area;
 use App\Models\Favorite;
 use App\Models\Genre;
+use App\Models\ShopRepresentative;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\ReseFormRequest;
 use App\Http\Requests\ShopUpdateRequest;

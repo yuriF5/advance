@@ -45,4 +45,9 @@ class Shop extends Model
         return $this->hasMany(Review::class);
     }
 
+    public function shop_representatives()
+    {
+        return $this->hasMany(Review::class);
+    }
+
 }

@@ -73,19 +73,30 @@ class AdminController extends Controller
     public function register(AdminRequest $request)
     {
 
-        $user = new User();
-        $user->name = $request->name;
-        $user->email = $request->email;
-        $user->password = Hash::make($request->password);
-        $user->role = intval($request->role); // 入力を整数に変換
-        $user->save();
+        DB::beginTransaction();
 
-        if (!$user) {
-            return redirect()->back()->with('error', '登録に失敗しました。');
-        }
+    try {
+        $shopId = $request->input('shop_id');
+        $userId = $request->input('user_id');
+        $roles = $request->input('role');
 
-        return view('/admin/do');
+        // 中間テーブルにデータを追加
+        DB::table('shop_representatives')->insert([
+            'shop_id' => $shopId,
+            'user_id' => $userId,
+        ]);
 
+        // ユーザーロールの更新
+        $user = User::findOrFail($userId);
+        $user->roles()->sync($roles);
+
+        DB::commit();
+
+        return redirect()->route('/admin/do')->with('success', '代表者が登録されました。');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', '登録中にエラーが発生しました。');
+    }
     }
 
     public function displayQrCode()

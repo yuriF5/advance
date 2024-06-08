@@ -6,8 +6,8 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Http\RegisterRequest;
-use Illuminate\Foundation\Http\LoginRequest;
+use App\Http\Requests\LoginRequest;
+use App\Http\Requests\RegisterRequest;
 
 class AuthController extends Controller
 {
@@ -30,7 +30,7 @@ class AuthController extends Controller
         return view('/auth/thanks');
     }
 
-    public function register(Request $request)
+    public function register(RegisterRequest $request)
     {
 
         $user = User::create([

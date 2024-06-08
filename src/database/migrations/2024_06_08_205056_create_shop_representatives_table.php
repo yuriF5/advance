@@ -15,7 +15,11 @@ class CreateShopRepresentativesTable extends Migration
     {
         Schema::create('shop_representatives', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('shop_id');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+            $table->foreign('shop_id')->references('id')->on('shops')->onDelete('cascade');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 
