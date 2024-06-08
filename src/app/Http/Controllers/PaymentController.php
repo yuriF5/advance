@@ -38,7 +38,10 @@ class PaymentController extends Controller
         } catch (Exception $e) {
             return back()->with('flash_alert', '決済に失敗しました！('. $e->getMessage() . ')');
         }
-        return view('payment.complete');
+        return view('payment.com');
     }
-    
+    public function com()
+    {
+        return view('payment.com');
+    }
 }

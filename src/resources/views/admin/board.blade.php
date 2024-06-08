@@ -10,6 +10,19 @@
     </div>
     <form action="/admin/register" method="post" class="form__item">
         @csrf
+        <div class="form__item-shop">
+        <select name="shop_id" class="form__input-item">
+            <option value="">店舗選択</option>
+            @foreach ($shops as $shop)
+                <option value="{{ $shop->id }}">{{ $shop->name }}</option>
+            @endforeach
+        </select>
+        <div class="error__item">
+            @error('shop')
+                <span class="error__message">{{ $message }}</span>
+            @enderror
+        </div>
+        </div>
         <div class="form__item-user">
             <input type="text" class="form__input-item" name="name" placeholder="店舗代表者名" value="{{ old('name') }}">
         </div>

@@ -154,7 +154,6 @@ class ShopController extends Controller
         //更新
         $shop = Shop::find($request->id);
         $shop->update($update_info);
-   
         return redirect('/admin/done');
     }
 

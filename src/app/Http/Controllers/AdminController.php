@@ -12,8 +12,8 @@ use Illuminate\Support\Facades\Hash;
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Writer;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Foundation\Http\AdminRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\AdminRequest;
 
 
 class AdminController extends Controller
@@ -21,7 +21,9 @@ class AdminController extends Controller
 
     public function board()
     {
-        return view('admin.board');
+        $shops = Shop::all();
+        $users=User::all();
+        return view('admin.board', compact('shops','users'));
     }
 
     public function create()

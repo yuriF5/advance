@@ -24,7 +24,8 @@ class AdminRequest extends FormRequest
     public function rules()
     {
         return [
-            'admin_name' => 'required|string|max:50',
+            'shop' => 'required',
+            'name' => 'required|string|max:50',
             'email' => 'required|string|email|max:191|unique:admins',
             'password' => 'required|string|min:8|max:191',
         ];
@@ -33,9 +34,10 @@ class AdminRequest extends FormRequest
     public function messages()
     {
         return [
-            'admin_name.required' => '名前を入力してください。',
-            'admin_name.string' => '名前は文字列で入力してください。',
-            'admin_name.max' => '名前は50文字以内で入力してください。',
+            'shop.required' => '店舗を選択してください。',
+            'name.required' => '名前を入力してください。',
+            'name.string' => '名前は文字列で入力してください。',
+            'name.max' => '名前は50文字以内で入力してください。',
             'email.required' => 'メールアドレスを入力してください。',
             'email.string' => 'メールアドレスは文字列で入力してください。',
             'email.email' => '有効なメールアドレス形式で入力してください。',
