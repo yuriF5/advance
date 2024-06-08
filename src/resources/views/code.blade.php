@@ -1,9 +1,6 @@
 @extends('layouts.app')
 
 
-@section('css')
-    
-@endsection
 
 @section('content')
 <div class="qr-code-container">

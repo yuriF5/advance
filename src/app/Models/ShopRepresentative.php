@@ -9,15 +9,9 @@ class ShopRepresentative extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'user_id',
         'shop_id',
     ];
 
-    public function shop()
-    {
-        return $this->belongsTo('App\Models\Shop', 'shop_id');
-    }
 
 }

@@ -61,7 +61,7 @@
             </div>
             <div class="shop__button">
                 <a class="shop__button-detail" href="{{ url('/detail/'.$shop->id) }}">詳しくみる</a>
-                @if(Auth::check() && Auth::user()->role == 1)
+                @if(Auth::check() && Auth::user()->id == 12 && $shop->id == 1)
                 <a class="shop__button-update" href="{{ url('/admin/update/'.$shop->id) }}">店舗修正</a>
                 @endif
                 @if (Auth::check())

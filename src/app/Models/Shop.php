@@ -45,9 +45,9 @@ class Shop extends Model
         return $this->hasMany(Review::class);
     }
 
-    public function shop_representatives()
+    public function representatives()
     {
-        return $this->hasMany(Review::class);
+        return $this->belongsToMany(User::class, 'shop_representatives');
     }
 
 }

@@ -8,6 +8,7 @@ use App\Models\Favorite;
 use App\Models\Review;
 use App\Models\User;
 use App\Models\Reservation;
+use App\Models\ShopRepresentative;
 use Illuminate\Support\Facades\Hash;
 use BaconQrCode\Renderer\ImageRenderer;
 use BaconQrCode\Writer;
@@ -72,31 +73,16 @@ class AdminController extends Controller
 
     public function register(AdminRequest $request)
     {
+        $validated = $request->validated();
 
-        DB::beginTransaction();
+        $representative = new ShopRepresentative;
+        $request->input('shop_id');
+        $request->input('user_id');
 
-    try {
-        $shopId = $request->input('shop_id');
-        $userId = $request->input('user_id');
-        $roles = $request->input('role');
+        $representative->save();
 
-        // 中間テーブルにデータを追加
-        DB::table('shop_representatives')->insert([
-            'shop_id' => $shopId,
-            'user_id' => $userId,
-        ]);
-
-        // ユーザーロールの更新
-        $user = User::findOrFail($userId);
-        $user->roles()->sync($roles);
-
-        DB::commit();
-
-        return redirect()->route('/admin/do')->with('success', '代表者が登録されました。');
-    } catch (\Exception $e) {
-        DB::rollBack();
-        return redirect()->back()->with('error', '登録中にエラーが発生しました。');
-    }
+        return redirect()->back()->with('success', '店舗代表者を登録しました。');
+    
     }
 
     public function displayQrCode()
