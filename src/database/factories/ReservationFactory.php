@@ -29,8 +29,6 @@ class ReservationFactory extends Factory
             'date' => $randomDate,
             'time' => $this->faker->randomElement(['20:00', '20:30', '21:00', '21:30', '22:00']),
             'number_of_people' => $this->faker->numberBetween(1, 6),
-            'visit_status' => $this->faker->randomElement(['予約中', '来店済み', '強制キャンセル']),
-            'payment_status' => $this->faker->randomElement(['支払い済み', '未払い']),
             'created_at' => now(),
             'updated_at' => now(),
         ];

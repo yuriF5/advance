@@ -19,11 +19,10 @@ class MailController extends Controller
         $users = User::all();
 
         foreach ($users as $user) {
-    Mail::to($user->email)->send(new NotificationMail($messageContent));
-}
+        Mail::to($user->email)->send(new NotificationMail($messageContent));
+        }
         return redirect()->back()->with('success', 'メールが送信されました！');
     }
-    
 
     // お知らせ画面表示
     public function email()
