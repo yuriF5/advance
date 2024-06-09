@@ -19,13 +19,13 @@ use BaconQrCode\Writer;
 class MyPageController extends Controller
 {
 // ログインユーザー、予約、お気に入り表示
-    public function my_page()
+    public function mypage()
     {
         $user = Auth::user();
         $reservations = Reservation::where('user_id', $user->id)->get();
         $favorites = $user->favorites()->pluck('shop_id')->toArray();
         $shops = Shop::whereIn('id', $favorites)->with('genre', 'area')->get();
-        return view('my_page', compact('reservations', 'favorites', 'shops'));
+        return view('mypage', compact('reservations', 'favorites', 'shops'));
     }
 
 // お気に入り変更

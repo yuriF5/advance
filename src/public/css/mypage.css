@@ -6,7 +6,7 @@
     text-align: center;
 }
 
-.my_page__wrap {
+.mypage__wrap {
     display: flex;
     gap: 30px;
     justify-content: space-around;

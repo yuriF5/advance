@@ -32,7 +32,7 @@ Route::middleware(['web', 'verified', 'auth']);
 Route::middleware('auth')->group(function () {
     Route::get('/', [AuthController::class, 'index'])->name('home');
     Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
-    Route::get('/my_page', [AuthController::class, 'my_page'])->name('my_page');
+    Route::get('/mypage', [AuthController::class, 'mypage'])->name('mypage');
 });
 
 // shop
@@ -58,8 +58,8 @@ Route::controller(FavoriteController::class)->group(function () {
 
 // My_page
 Route::controller(MyPageController::class)->group(function () {
-    Route::get('/my_age', 'my_page')->name('my_page');
-    Route::post('/my_page/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
+    Route::get('/mypage', 'mypage')->name('mypage');
+    Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
     Route::get('/code','showQrCode');
 
