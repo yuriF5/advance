@@ -1,12 +1,12 @@
 @extends('layouts.app')
 
 @section('css')
-    <link rel="stylesheet" href="{{ asset('css/mypage.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/my_page.css') }}">
 @endsection
 
 @section('content')
 <p class="user__name">{{ Auth::user()->name }}さん</p>
-<div class="mypage__wrap">
+<div class="my_page__wrap">
     <div class="reservation__wrap">
         <div class="reservation__title">
         <p class="reservation__title_p">ご予約状況</p>

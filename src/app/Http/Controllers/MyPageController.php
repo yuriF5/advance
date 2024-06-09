@@ -18,17 +18,17 @@ use BaconQrCode\Writer;
 
 class MyPageController extends Controller
 {
-    public function mypage()
-{
-    $user = Auth::user();
-    $reservations = Reservation::where('user_id', $user->id)->get();
-    $favorites = $user->favorites()->pluck('shop_id')->toArray();
-    $shops = Shop::whereIn('id', $favorites)->with('genre', 'area')->get();
+// ログインユーザー、予約、お気に入り表示
+    public function my_page()
+    {
+        $user = Auth::user();
+        $reservations = Reservation::where('user_id', $user->id)->get();
+        $favorites = $user->favorites()->pluck('shop_id')->toArray();
+        $shops = Shop::whereIn('id', $favorites)->with('genre', 'area')->get();
+        return view('my_page', compact('reservations', 'favorites', 'shops'));
+    }
 
-    return view('mypage', compact('reservations', 'favorites', 'shops'));
-}
-
-
+// お気に入り変更
     public function updateFavorite(Request $request, $shopId)
     {
         $user = Auth::user();    
@@ -38,12 +38,14 @@ class MyPageController extends Controller
         return redirect()->back()->with('status', $message)->with('shops', $shops);
     }
 
+// 予約削除
     public function destroy(Request $request, Reservation $reservation)
     {
         $reservation->delete();
         return redirect()->back();
     }
 
+//QRコード生成表示 
     public function showQrCode(Request $request)
     {
         // リクエストから予約IDを取得

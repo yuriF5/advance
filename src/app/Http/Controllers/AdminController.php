@@ -19,7 +19,7 @@ use App\Http\Requests\AdminRequest;
 
 class AdminController extends Controller
 {
-
+    // 店舗代表者登録画面表示
     public function board()
     {
         $shops = Shop::all();
@@ -27,16 +27,19 @@ class AdminController extends Controller
         return view('admin.board', compact('shops','users'));
     }
 
+    // 新店舗表示 登録処理はShopControllerへ
     public function create()
     {
         return view('admin.create');
     }
 
+    // 代表者登録完了画面
     public function do()
     {
         return view('admin.do');
     }
 
+    // 予約一覧と検索画面表示
     public function index(Request $request)
 {
     $userSearch = $request->input('user_search');
@@ -63,7 +66,6 @@ class AdminController extends Controller
     foreach ($reservations as $reservation) {
         $user = $reservation->user;
         $reservation->user_name = $user ? $user->name : 'Unknown';
-
         $shop = $reservation->shop;
         $reservation->shop_name = $shop ? $shop->name : 'Unknown';
     }
@@ -71,20 +73,19 @@ class AdminController extends Controller
     return view('admin.reservation', compact('reservations'));
     }
 
+    // 管理者登録処理
     public function register(AdminRequest $request)
     {
-        $validated = $request->validated();
-
-        $representative = new ShopRepresentative;
-        $request->input('shop_id');
-        $request->input('user_id');
+        $representative = new ShopRepresentative();
+        $representative->shop_id = $shop->id;
+        $representative->user_id = Auth::user()->id;
 
         $representative->save();
 
-        return redirect()->back()->with('success', '店舗代表者を登録しました。');
-    
+        return view('admin.done');
     }
 
+    // QRコード生成＆表示
     public function displayQrCode()
     {
         // ログインしているユーザーの予約情報を取得

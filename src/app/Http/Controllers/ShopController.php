@@ -15,27 +15,22 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
-
+// トップ画面表示と検索
     public function index(Request $request)
     {
         $shopsQuery = Shop::query();
-    
         // 条件に従って絞り込む
         if ($request->filled('area')) {
             $shopsQuery->where('area_id', $request->input('area'));
         }
-        
         if ($request->filled('genre')) {
             $shopsQuery->where('genre_id', $request->input('genre'));
         }
-        
         if ($request->filled('word')) {
             $shopsQuery->where('name', 'like', '%'.$request->input('word').'%');
-        }
-        
+        } 
         // $shops を取得
         $shops = $shopsQuery->get(['id', 'name', 'image_url', 'area_id', 'genre_id']);
-        
         // 地域とジャンルの名前を取得し、$shops に追加する
         $areaNames = Area::pluck('name', 'id');
         $genreNames = Genre::pluck('name', 'id');
@@ -47,6 +42,7 @@ class ShopController extends Controller
         
         return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres','favorites'));
         }
+
 // 検索機能
     public function search(Request $request)
     {
@@ -61,7 +57,7 @@ class ShopController extends Controller
         $genres = Genre::all();
         return view('search_result', compact('message', 'shops', 'favorites', 'areas', 'genres'));  
     }
-// 検索機能結果
+// 検索結果
     private function searchShops(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -79,6 +75,7 @@ class ShopController extends Controller
         }
         return $query->get();
     }
+
 // お気に入り有無取得
     private function getFavorites(): array
     {
@@ -87,6 +84,7 @@ class ShopController extends Controller
         }
         return [];
     }
+
 // 詳細ページ
     public function detail(Request $request)
     {
@@ -98,6 +96,7 @@ class ShopController extends Controller
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
 
+// 新店舗保存処理
     public function store(ShopUpdateRequest $request)
     {
          // 画像を保存してパスを取得
@@ -117,12 +116,11 @@ class ShopController extends Controller
         $shop->genre_id = $genreId;
         $shop->area_id = $areaId;
         $shop->image_url = $path;
-
         $shop->save();
-
         return redirect('/admin/done');
     }
 
+// 店舗更新画面表示
     public function show(Request $request)
     {
         $user = Auth::user();
@@ -135,14 +133,13 @@ class ShopController extends Controller
         return view('admin.update', compact('user', 'shop','genres', 'areas','backRoute'));
     }
 
-    public function update(ShopUpdateRequest $request)
+    public function update(ShopUpdateRequest $request,$id)
     {
-
         //ストレージに画像を登録
         $img = $request->file('image_file');
         $path = $img->store('img', 'public');
-
         //更新情報を作成
+
         $update_info = [
             'name' => $request->name,
             'region' => $request->region,
@@ -152,11 +149,12 @@ class ShopController extends Controller
         if(!empty($path)) $update_info['image_url'] = $path;
 
         //更新
-        $shop = Shop::find($request->id);
+        $shop = Shop::findOrFail($id);
         $shop->update($update_info);
-        return redirect('/admin/done');
+        return redirect()->route('/admin/done');
     }
 
+// 完了画面表示
         public function done()
     {
         return view('admin.done');

@@ -11,6 +11,7 @@ use App\Jobs\SendNotificationEmail;
 
 class MailController extends Controller
 {
+    // 送信処理
     public function sendNotification(Request $request)
     {
         $destination = $request->input('destination');
@@ -24,6 +25,7 @@ class MailController extends Controller
     }
     
 
+    // お知らせ画面表示
     public function email()
     {
         return view('admin.email_send');

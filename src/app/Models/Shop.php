@@ -47,7 +47,7 @@ class Shop extends Model
 
     public function representatives()
     {
-        return $this->belongsToMany(User::class, 'shop_representatives');
+        return $this->hasMany(ShopRepresentative::class);
     }
 
 }

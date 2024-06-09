@@ -13,5 +13,13 @@ class ShopRepresentative extends Model
         'shop_id',
     ];
 
+public function users()
+    {
+        return $this->belongsTo(User::class);
+    }
 
+    public function shops()
+    {
+        return $this->belongsTo(Shop::class);
+    }
 }

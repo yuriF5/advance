@@ -13,18 +13,13 @@ use Stripe\Charge;
 
 class PaymentController extends Controller
 {
-
-    /**
-     * 決済フォーム表示
-     */
+// 決済フォーム表示
     public function create()
     {
         return view('payment.create');
     }
 
-    /**
-     * 決済実行
-     */
+//  決済実行
     public function store(StorePaymentRequest $request)
     {
         \Stripe\Stripe::setApiKey(config('stripe.stripe_secret_key'));
@@ -40,6 +35,7 @@ class PaymentController extends Controller
         }
         return view('payment.com');
     }
+// 決済完了
     public function com()
     {
         return view('payment.com');
