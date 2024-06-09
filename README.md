@@ -42,11 +42,11 @@ git clone git@github.com:estra-inc/confirmation-test-contact-form.git
 店舗代表者権限で店舗情報の作成/更新、予約一覧閲覧
 
 ## 仕様技術
-docker、Laravel 8.x、PHP8.1.2 4、laravel-fortify、laravel-permission、Stripe、javascript
+docker、Laravel 7.x、PHP8.1.2、laravel-fortify、Stripe、javascript
 
 ## テーブル設計及びER図
 
-![ER最終](https://github.com/yuriF5/advance/assets/152612024/4dd2851f-00c1-4604-bcc2-45ae51bb0d8e)
+![ER提出用](https://github.com/yuriF5/advance/assets/152612024/3fe83f47-8de8-4407-990e-ce6b0e325244)
 ![テーブル１](https://github.com/yuriF5/advance/assets/152612024/9af6adb8-e937-4920-a399-98ddfcbfd4bc)
 ![テーブル３](https://github.com/yuriF5/advance/assets/152612024/662690a2-d532-42b4-b786-ace0c308716f)
 ![テーブル４](https://github.com/yuriF5/advance/assets/152612024/251b1db0-28dc-4e24-977e-fc67dba031b7)
@@ -87,7 +87,7 @@ $ sudo chmod -R 777 *
 ## ダミーデータの説明
 ### ユーザー一覧
 1. 管理者　　　email: admin@admin.com
-2. 店舗代表者　email: shop@shop.com
+2. 店舗代表者　email: shop@shop.com ※shop_id=1の代表
 3. ユーザー　　email: test@test.com  
 
 ※パスワードは全て"password"でログインできます。
