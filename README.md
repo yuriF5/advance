@@ -48,6 +48,7 @@ docker、Laravel 8.x、PHP8.1.2 4、laravel-fortify、laravel-permission、Strip
 
 ![ER最終](https://github.com/yuriF5/advance/assets/152612024/4dd2851f-00c1-4604-bcc2-45ae51bb0d8e)
 ![テーブル１](https://github.com/yuriF5/advance/assets/152612024/9af6adb8-e937-4920-a399-98ddfcbfd4bc)
+![テーブル３](https://github.com/yuriF5/advance/assets/152612024/662690a2-d532-42b4-b786-ace0c308716f)
 ![テーブル４](https://github.com/yuriF5/advance/assets/152612024/251b1db0-28dc-4e24-977e-fc67dba031b7)
 ![修正テーブル5](https://github.com/yuriF5/advance/assets/152612024/66196e2b-3bd8-4e8e-9330-1e3d7aba6905)
 
