@@ -7,7 +7,7 @@
 @section('content')
     <div class="content__wrap">
         <p class="content__text">
-            店舗更新が完了しました。
+            完了しました。
         </p>
         <a class="content__button" href="/">戻る</a>
     </div>

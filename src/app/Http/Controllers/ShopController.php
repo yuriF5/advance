@@ -47,7 +47,7 @@ class ShopController extends Controller
         
         return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres','favorites'));
         }
-// HOME検索機能
+// 検索機能
     public function search(Request $request)
     {
         $shops = $this->searchShops($request);
@@ -61,7 +61,7 @@ class ShopController extends Controller
         $genres = Genre::all();
         return view('search_result', compact('message', 'shops', 'favorites', 'areas', 'genres'));  
     }
-// HOME検索機能結果
+// 検索機能結果
     private function searchShops(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -98,7 +98,7 @@ class ShopController extends Controller
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
 
-    public function store(Request $request)
+    public function store(ShopUpdateRequest $request)
     {
          // 画像を保存してパスを取得
         $img = $request->file('image_file');
@@ -120,8 +120,7 @@ class ShopController extends Controller
 
         $shop->save();
 
-        $message = '店舗を新規登録しました。';
-        return redirect('/admin/create')->with('message', $message);
+        return redirect('/admin/done');
     }
 
     public function show(Request $request)

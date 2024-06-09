@@ -16,6 +16,8 @@ class ShopUpdateRequest extends FormRequest
     {
         return [
             'name' => 'required|string|max:15',
+            'area' => 'required',
+            'genre' => 'required',
             'description' => 'required|string|max:300',
             'image_file' => 'required',
         ];
@@ -27,6 +29,8 @@ class ShopUpdateRequest extends FormRequest
             'name.required' => '店舗名は必須です。',
             'name.string' => '店舗名は文字列で入力してください。',
             'name.max' => '店舗名は15文字以内で入力してください。',
+            'area.required' => '地域は選択は必須です。',
+            'genre.required' => 'ジャンルは選択必須です。',
             'description.required' => 'お店の紹介は必須です。',
             'description.string' => '文字列で入力してください。',
             'description.max' => '300文字以内で入力してください。',

@@ -12,8 +12,10 @@
         <p class="reservation__title_p">ご予約状況</p>
         </div>
             <div class="reservation__content-wrap">
+                @if ($reservations->isEmpty())
+                    <p class="message">まだ予約情報がありません</p>
+                    @else
                 @foreach ($reservations->sortBy('date') as $reservation)
-                    @if (strtotime($reservation->date) > strtotime(date('Y-m-d')) || (strtotime($reservation->date) == strtotime(date('Y-m-d')) && strtotime($reservation->time) >= strtotime(date('H:i:s'))))
                     <div class="reservation__content">
                         <div class="reservation__header">
                             <p class="header__title reservation__header__title">予約{{ $loop->iteration }}</p>
@@ -60,8 +62,8 @@
                                 <a class="form__button--pay" href="/payment/create">ネット</br>決済&#128179;</a>
                         </div>
                     </div>
-                    @endif
-                @endforeach
+                    @endforeach
+                @endif
             </div>
         </div>
 
