@@ -133,25 +133,28 @@ class ShopController extends Controller
         return view('admin.update', compact('user', 'shop','genres', 'areas','backRoute'));
     }
 
-    public function update(ShopUpdateRequest $request,$id)
+    public function update(Request $request)
     {
-        //ストレージに画像を登録
-        $img = $request->file('image_file');
-        $path = $img->store('img', 'public');
-        //更新情報を作成
+        // 画像ファイルがアップロードされたかどうかをチェック
+        if ($request->hasFile('image_file')) {
+            $img = $request->file('image_file');
+            $path = $img->store('img', 'public');
+            $update_info['image_url'] = $path;
+        }
 
+        //更新情報を作成
         $update_info = [
-            'name' => $request->name,
-            'region' => $request->region,
-            'genre' => $request->genre,
-            'description' => $request->description
+        'name' => $request->name,
+        'area_id' => $request->area_id,
+        'genre_id' => $request->genre_id,
+        'description' => $request->description
         ];
         if(!empty($path)) $update_info['image_url'] = $path;
 
         //更新
-        $shop = Shop::findOrFail($id);
+        $shop = Shop::find($request->id);
         $shop->update($update_info);
-        return redirect()->route('/admin/done');
+        return redirect('/admin/done');
     }
 
 // 完了画面表示

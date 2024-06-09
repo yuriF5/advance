@@ -211,6 +211,10 @@ header {
     font-size: 1.2rem;
 }
 
+.image-preview{
+    max-width: 400px;
+}
+
 @media screen and (max-width: 768px) {
     .reservation__wrap {
         width: auto;

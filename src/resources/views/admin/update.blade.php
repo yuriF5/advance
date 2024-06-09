@@ -29,8 +29,9 @@
         </div>
     </div>
     
-    <h1>店舗情報の更新</h1>
+
     <div class="shop_header">
+            <h1>店舗情報の更新</h1>
         <form method="POST" action="/update/shop" enctype="multipart/form-data">
             @csrf
             <div>
@@ -85,7 +86,11 @@
             </div>
             <div>
                 <label for="image_file" class="block">画像の変更</label>
-                    <input type="file" name="image_file"  class="form__input-item">
+                    <input type="file" name="image_file" id="image_file" class="form__input-item">
+                <p>画像プレビューはこちら</p>
+                <div id="image_preview" class="image-preview" style="margin-top: 20px;">
+                    <img id="preview" src="" alt="画像プレビュー"style="max-width: 25%; height: auto; display: none;">
+                </div>
                 <div class="error__item">
                 @error('image_file')
                 <span class="error__message">{{ $message }}</span>
@@ -96,4 +101,22 @@
         </form>
     </div>
 </div>
+<script>
+        document.getElementById('image_file').addEventListener('change', function(event) {
+            var input = event.target;
+
+            // ファイルが選択されている場合
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function(e) {
+                    var preview = document.getElementById('preview');
+                    preview.src = e.target.result;
+                    preview.style.display = 'block'; // 画像を表示
+                };
+
+                reader.readAsDataURL(input.files[0]); // 画像ファイルを読み込む
+            }
+        });
+    </script>
 @endsection

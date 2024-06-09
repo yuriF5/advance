@@ -41,40 +41,40 @@ class AdminController extends Controller
 
     // 予約一覧と検索画面表示
     public function index(Request $request)
-{
-    $userSearch = $request->input('user_search');
-    $shopSearch = $request->input('shop_search');
-    
-    // 検索結果を取得
-    $query = Reservation::query();
-    
-    if ($userSearch) {
-        $query->whereHas('user', function ($query) use ($userSearch) {
-            $query->where('name', 'like', "%$userSearch%");
-        });
-    }
+    {
+        $userSearch = $request->input('user_search');
+        $shopSearch = $request->input('shop_search');
+        
+        // 検索結果を取得
+        $query = Reservation::query();
+        
+        if ($userSearch) {
+            $query->whereHas('user', function ($query) use ($userSearch) {
+                $query->where('name', 'like', "%$userSearch%");
+            });
+        }
 
-    if ($shopSearch) {
-        $query->whereHas('shop', function ($query) use ($shopSearch) {
-            $query->where('name', 'like', "%$shopSearch%");
-        });
-    }
+        if ($shopSearch) {
+            $query->whereHas('shop', function ($query) use ($shopSearch) {
+                $query->where('name', 'like', "%$shopSearch%");
+            });
+        }
 
-    $reservations = $query->get();
+        $reservations = $query->get();
 
-    // ユーザー名と店舗名を取得
-    foreach ($reservations as $reservation) {
-        $user = $reservation->user;
-        $reservation->user_name = $user ? $user->name : 'Unknown';
-        $shop = $reservation->shop;
-        $reservation->shop_name = $shop ? $shop->name : 'Unknown';
-    }
+        // ユーザー名と店舗名を取得
+        foreach ($reservations as $reservation) {
+            $user = $reservation->user;
+            $reservation->user_name = $user ? $user->name : 'Unknown';
+            $shop = $reservation->shop;
+            $reservation->shop_name = $shop ? $shop->name : 'Unknown';
+        }
 
-    return view('admin.reservation', compact('reservations'));
+        return view('admin.reservation', compact('reservations'));
     }
 
     // 管理者登録処理
-    public function register(AdminRequest $request)
+    public function register(Request $request)
     {
         $representative = new ShopRepresentative();
         $representative->shop_id = $shop->id;

@@ -59,7 +59,7 @@
                             </button>
                             </form>
                             </form>
-                                <a class="form__button--pay" href="/payment/create">ネット</br>決済&#128179;</a>
+                                <a class="form__button--pay" href="https://buy.stripe.com/test_bIY7wsgbccfA4RG004">ネット</br>決済&#128179;</a>
                         </div>
                     </div>
                     @endforeach
