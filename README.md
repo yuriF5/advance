@@ -37,7 +37,7 @@ git clone git@github.com:estra-inc/confirmation-test-contact-form.git
 ※ご使用のphp等のversionに適したversionに必ず修正してください。意図しない表示がされます。
 
 ## 機能一覧
-ログイン機能、メール認証、お気に入り追加/削除、予約追加/変更/削除、検索、レビュー、リマインドメール送信、QRコードで予約認証、決済機能  
+ログイン機能、お気に入り追加/削除、予約追加/変更/削除、検索、レビュー、決済機能  
 管理者権限で店舗代表者作成、お知らせメール送信  
 店舗代表者権限で店舗情報の作成/更新、予約一覧閲覧
 
@@ -55,14 +55,11 @@ docker、Laravel 7.x、PHP8.1.2、laravel-fortify、Stripe、javascript
 
 ## 環境構築
 ### コマンドライン上
-```
-$ git clone 
-```
-
 ```php
 $ docker compose up -d --build
 $ docker compose exec php bash
 ```
+
 ### PHPコンテナ内
 ```php
 $ composer install
@@ -76,7 +73,7 @@ $ cp .env.local .env
 ### PHPコンテナ内
 ```php
 $ php artisan key:generate
-$ php artisan migrate --seed
+$ php artisan db:seed
 ```
 
 ### src上
