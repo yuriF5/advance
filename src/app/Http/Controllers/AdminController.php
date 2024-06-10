@@ -77,6 +77,6 @@ class AdminController extends Controller
         $user->role = $request->role=1;
         $user->save();
 
-        return view('admin.done');
+        return view('admin.do');
     }
 }

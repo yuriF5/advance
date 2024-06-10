@@ -53,13 +53,7 @@
                             </tr>
                         </table>
                         <div class="reservation__footer_button">
-                            <form method="GET" action="/code">
-                            <input type="hidden" name="reservation_id" value="{{ $reservation['id'] }}"><form method="GET" action="/code">
-                            <button type="submit" class="form__button--qr">QRコード</br>来店時にかざす
-                            </button>
-                            </form>
-                            </form>
-                                <a class="form__button--pay" href="https://buy.stripe.com/test_bIY7wsgbccfA4RG004">ネット</br>決済&#128179;</a>
+                            <a class="form__button--pay" href="https://buy.stripe.com/test_bIY7wsgbccfA4RG004">ネット</br>決済&#128179;</a>
                         </div>
                     </div>
                     @endforeach
