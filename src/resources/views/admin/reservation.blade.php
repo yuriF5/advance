@@ -20,8 +20,6 @@
                 <th>予約日</th>
                 <th>予約時間</th>
                 <th>予約人数</th>
-                <th>来店状況</th>
-                <th>決済状況</th>
             </tr>
             @foreach ($reservations as $reservation)
             <tr class="">
@@ -30,8 +28,6 @@
                 <td class="wrap">{{ $reservation['date']}}</td>
                 <td class="wrap">{{ $reservation['time']}}</td>
                 <td class="wrap">{{ $reservation['number_of_people']}}</td>
-                <td class="wrap">{{ $reservation['visit_status']}}</td>
-                <td class="wrap">{{ $reservation['payment_status']}}</td>
             </tr>
             @endforeach
             
