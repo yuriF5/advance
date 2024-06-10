@@ -40,8 +40,9 @@ class AdminController extends Controller
     // 予約一覧と検索画面表示
     public function index(Request $request)
     {
+        $shops=Shop::all();
+        $users=User::all();
         $userSearch = $request->input('user_search');
-        $shopSearch = $request->input('shop_search');
         
         // 検索結果を取得
         $query = Reservation::query();
@@ -51,24 +52,17 @@ class AdminController extends Controller
                 $query->where('name', 'like', "%$userSearch%");
             });
         }
-
-        if ($shopSearch) {
-            $query->whereHas('shop', function ($query) use ($shopSearch) {
-                $query->where('name', 'like', "%$shopSearch%");
-            });
-        }
-
-        $reservations = $query->get();
+        $reservations = $query->where('shop_id', 1)->get();
 
         // ユーザー名と店舗名を取得
         foreach ($reservations as $reservation) {
             $user = $reservation->user;
             $reservation->user_name = $user ? $user->name : 'Unknown';
-            $shop = $reservation->shop;
-            $reservation->shop_name = $shop ? $shop->name : 'Unknown';
+            $shop = $reservation->shop->id;
         }
 
-        return view('admin.reservation', compact('reservations'));
+        return view('admin.reservation', compact('reservations','shops','users'));
+
     }
 
     // 管理者登録処理
@@ -82,7 +76,7 @@ class AdminController extends Controller
         $user = User::findOrFail($request->user_id);
         $user->role = $request->role=1;
         $user->save();
-        
+
         return view('admin.done');
     }
 }
