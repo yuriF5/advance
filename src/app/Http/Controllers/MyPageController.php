@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Auth;
 
 class MyPageController extends Controller
 {
-// ログインユーザー、予約、お気に入り表示
+    // ログインユーザー、予約、お気に入り表示
     public function mypage()
     {
         $user = Auth::user();
@@ -22,7 +22,7 @@ class MyPageController extends Controller
         return view('mypage', compact('reservations', 'favorites', 'shops'));
     }
 
-// お気に入り変更
+    // お気に入り変更
     public function updateFavorite(Request $request, $shopId)
     {
         $user = Auth::user();    
@@ -32,7 +32,7 @@ class MyPageController extends Controller
         return redirect()->back()->with('status', $message)->with('shops', $shops);
     }
 
-// 予約削除
+    // 予約削除
     public function destroy(Request $request, Reservation $reservation)
     {
         $reservation->delete();

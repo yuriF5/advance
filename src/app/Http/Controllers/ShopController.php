@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Storage;
 
 class ShopController extends Controller
 {
-// トップ画面表示と検索
+    // トップ画面表示と検索
     public function index(Request $request)
     {
         $shopsQuery = Shop::query();
@@ -41,9 +41,9 @@ class ShopController extends Controller
         $favorites = $this->getFavorites();
         
         return view('index', compact('shops', 'areaNames', 'genreNames', 'areas', 'genres','favorites'));
-        }
+    }
 
-// 検索機能
+    // 検索機能
     public function search(Request $request)
     {
         $shops = $this->searchShops($request);
@@ -57,7 +57,7 @@ class ShopController extends Controller
         $genres = Genre::all();
         return view('search_result', compact('message', 'shops', 'favorites', 'areas', 'genres'));  
     }
-// 検索結果
+    // 検索結果
     private function searchShops(Request $request)
     {
         $keyword = $request->input('keyword');
@@ -76,7 +76,7 @@ class ShopController extends Controller
         return $query->get();
     }
 
-// お気に入り有無取得
+    // お気に入り有無取得
     private function getFavorites(): array
     {
         if (Auth::check()) {
@@ -85,7 +85,7 @@ class ShopController extends Controller
         return [];
     }
 
-// 詳細ページ
+    // 詳細ページ
     public function detail(Request $request)
     {
         $user = Auth::user();
@@ -96,7 +96,7 @@ class ShopController extends Controller
         return view('detail', compact('user', 'shop', 'backRoute'));
     }
 
-// 新店舗保存処理
+    // 新店舗保存処理
     public function store(ShopUpdateRequest $request)
     {
          // 画像を保存してパスを取得
@@ -120,7 +120,7 @@ class ShopController extends Controller
         return redirect('/admin/done');
     }
 
-// 店舗更新画面表示
+    // 店舗更新画面表示
     public function show(Request $request)
     {
         $user = Auth::user();
@@ -133,6 +133,7 @@ class ShopController extends Controller
         return view('admin.update', compact('user', 'shop','genres', 'areas','backRoute'));
     }
 
+    // 店舗更新処理
     public function update(Request $request)
     {
         // 画像ファイルがアップロードされたかどうかをチェック
@@ -157,8 +158,8 @@ class ShopController extends Controller
         return redirect('/admin/done');
     }
 
-// 完了画面表示
-        public function done()
+    // 完了画面表示
+    public function done()
     {
         return view('admin.done');
     }

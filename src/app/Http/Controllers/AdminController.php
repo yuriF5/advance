@@ -21,7 +21,7 @@ class AdminController extends Controller
     public function board()
     {
         $shops = Shop::all();
-        $users=User::all();
+        $users = User::all();
         return view('admin.board', compact('shops','users'));
     }
 

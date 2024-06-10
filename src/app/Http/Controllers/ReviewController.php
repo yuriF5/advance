@@ -14,7 +14,7 @@ use App\Http\Requests\ReviewStoreRequest;
 
 class ReviewController extends Controller
 {
-// レビュー画面表示
+    // レビュー画面表示
     public function create(Request $request)    
     {
         $user = Auth::user();
@@ -27,7 +27,7 @@ class ReviewController extends Controller
         return view('review', compact('user', 'shop', 'favorites', 'reviews', 'review', 'reviewsArray'));
     }
 
-// レビュー処理
+    // レビュー処理
     public function store(ReviewStoreRequest $request, $shop_id)
     {
         $review = new Review();
@@ -39,7 +39,7 @@ class ReviewController extends Controller
         return redirect()->route('review.create', ['shop_id' => $shop_id]);
     }
 
-// お気に入り情報
+    // お気に入り情報
     private function getFavorites(): array
     {
         if (Auth::check()) {
@@ -47,7 +47,8 @@ class ReviewController extends Controller
         }
         return [];
     }
-// レビュー情報
+
+    // レビュー情報
     private function getReviews(): array
     {
         if (Auth::check()) {
@@ -56,12 +57,10 @@ class ReviewController extends Controller
         return [];
     }
 
-// 削除
+    // 削除
     public function delete($review_id)
     {
         Review::find($review_id)->delete();
         return redirect()->back()->with('success','口コミを削除しました');
     }
-
-
 }

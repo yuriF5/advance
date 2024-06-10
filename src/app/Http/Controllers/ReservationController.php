@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Carbon;
 
 class ReservationController extends Controller
 {
-// 予約処理
+    // 予約処理
     public function store(ReseFormRequest $request, Shop $shop)
     {
         // 既存の予約があるかどうかを確認
@@ -38,13 +38,13 @@ class ReservationController extends Controller
         return redirect()->route('done');
     }
 
-// 完了画面表示
+    // 完了画面表示
     public function done()
     {
         return view('done');
     }
 
-// 予約変更画面の表示
+    // 予約変更画面の表示
     public function edit(Reservation $reservation)
     {
         $user = Auth::user();
@@ -55,7 +55,7 @@ class ReservationController extends Controller
         return view('edit.reservation', compact('reservation', 'user', 'shop', 'availableTimes','numbers','backRoute'));
     }
 
-// 予約変更処理
+    // 予約変更処理
     public function update(ReseFormRequest $request, $id)
     {
         $reservation = Reservation::findOrFail($id);
