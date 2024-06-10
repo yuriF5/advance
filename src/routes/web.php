@@ -9,24 +9,12 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\PaymentController;
-use App\Http\Controllers\Auth\EmailVerificationController;
-
 
 Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
 Route::post('/auth/register', [AuthController::class, 'register']);
 Route::get('/auth/login',[AuthController::class,'login']);
 Route::get('/auth/thanks', [AuthController::class, 'thanks']);
-Route::controller(EmailVerificationController::class)
-	->prefix('email')->name('verification.')->group(function () {
-		Route::get('verify', 'index')->name('notice');
-		Route::post('verification-notification', 'notification')
-			->middleware('throttle:6,1')->name('send');
-		Route::get('verification/{id}/{hash}', 'verification')
-			->middleware(['signed', 'throttle:6,1'])->name('verify');
-	});
-Route::middleware(['web', 'verified', 'auth']);
 
 // auth
 Route::middleware('auth')->group(function () {
@@ -48,20 +36,19 @@ Route::prefix('reservation')->controller(ReservationController::class)->group(fu
     Route::get('/edit/reservation/{reservation}', 'edit')->name('reservation.edit');
     Route::post('/update/reservation/{id}','update')->name('reservation.update');
     Route::get('/done','done')->name('done');
-    });
+});
 
 // Favorites
 Route::controller(FavoriteController::class)->group(function () {
     Route::post('/favorite/store/{shop}', 'store')->name('favorite');
     Route::delete('/favorite/destroy/{shop}', 'destroy')->name('unfavorite');
-    });
+});
 
 // My_page
 Route::controller(MyPageController::class)->group(function () {
     Route::get('/mypage', 'mypage')->name('mypage');
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
-
 });
 
 // review
