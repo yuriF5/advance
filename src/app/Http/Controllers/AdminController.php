@@ -75,11 +75,14 @@ class AdminController extends Controller
     public function register(Request $request)
     {
         $representative = new ShopRepresentative();
-        $representative->shop_id = $request->$shop->id;
-        $representative->user_id = Auth::user()->id;
-
+        $representative->shop_id = $request->shop_id;
+        $representative->user_id = $request->user_id;
         $representative->save();
 
+        $user = User::findOrFail($request->user_id);
+        $user->role = $request->role=1;
+        $user->save();
+        
         return view('admin.done');
     }
 }

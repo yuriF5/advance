@@ -37,14 +37,6 @@
             @enderror
         </div>
 
-
-        <div class="form__item-key">
-            <input type="checkbox" class="key" name="role[]" value="0" id="admin">
-            <label for="role_0">管理者</label>
-            <input type="checkbox" class="key" name="role[]" value="1" id="representative">
-            <label for="role_1">店舗代表者</label>
-        </div>
-
         <button type="submit" class="form__item-button">登録</button>
     </form>
 </div>
