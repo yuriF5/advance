@@ -63,4 +63,3 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasMany(ShopRepresentative::class);
     }
 }
-
