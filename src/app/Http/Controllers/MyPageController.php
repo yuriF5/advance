@@ -9,6 +9,7 @@ use App\Models\Area;
 use App\Models\Favorite;
 use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class MyPageController extends Controller
 {
@@ -37,5 +38,27 @@ class MyPageController extends Controller
     {
         $reservation->delete();
         return redirect()->back();
+    }
+
+    // QR生成
+    public function generateQRCode($reservationId)
+    {
+        // 予約情報が存在するか確認
+        $reservation = Reservation::find($reservationId);
+        if (!$reservation) {
+            abort(404); // 予約情報が見つからない場合は404エラーを返す
+        }
+
+        // QRコードの内容を生成
+        $qrCodeContent = 'Reservation ID: ' . $reservationId;
+
+        // PNG形式でQRコードを生成してレスポンスとして返す
+        return response(QrCode::format('png')->size(200)->generate($qrCodeContent))->header('Content-Type', 'image/png');
+    }
+
+    // QR表示
+    public function showQRCode($reservationId)
+    {
+        return view('qr', compact('reservationId'));
     }
 }

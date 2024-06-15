@@ -10,6 +10,7 @@ use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
 
+
 Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
 Route::post('/auth/register', [AuthController::class, 'register']);
@@ -50,6 +51,7 @@ Route::controller(MyPageController::class)->group(function () {
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
 });
+Route::get('/qrcode/{reservationId}', [MyPageController::class, 'showQRCode'])->name('show.qrcode');
 
 // review
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');

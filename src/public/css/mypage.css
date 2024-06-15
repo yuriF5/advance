@@ -207,6 +207,12 @@
     text-decoration: none;
     color: #070707;
 }
+
+.reservation__footer_button{
+    display: flex;
+    justify-content: space-between;
+}
+
 @media screen and (max-width: 768px) {
 
     .reservation__header__title {

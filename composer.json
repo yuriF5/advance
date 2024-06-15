@@ -1,6 +1,6 @@
 {
     "require": {
-        "bacon/bacon-qr-code": "^3.0",
-        "laravel/ui": "^4.5"
+        "laravel/ui": "^4.5",
+        "simplesoftwareio/simple-qrcode": "^4.2"
     }
 }
