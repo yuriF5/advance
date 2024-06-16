@@ -51,7 +51,9 @@ Route::controller(MyPageController::class)->group(function () {
     Route::post('/mypage/favorite/{shopId}', 'updateFavorite')->name('user.favorite.update');
     Route::delete('/reservations/{reservation}', 'destroy')->name('reservation.destroy');
 });
-Route::get('/qrcode/{reservationId}', [MyPageController::class, 'showQRCode'])->name('show.qrcode');
+
+// QR
+Route::get('/reservation/{reservationId}', [MyPageController::class, 'showQRCode'])->name('reservation.qr');
 
 // review
 Route::get('/review/create/{shop_id}', [ReviewController::class, 'create'])->name('review.create');

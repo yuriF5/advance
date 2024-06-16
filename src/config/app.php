@@ -163,6 +163,7 @@ return [
         Illuminate\View\ViewServiceProvider::class,
         App\Providers\FortifyServiceProvider::class,
 
+        
         /*
          * Package Service Providers...
          */
@@ -232,5 +233,4 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
 
     ],
-
 ];

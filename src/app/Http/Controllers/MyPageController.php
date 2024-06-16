@@ -11,6 +11,7 @@ use App\Models\Genre;
 use Illuminate\Support\Facades\Auth;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
+
 class MyPageController extends Controller
 {
     // ログインユーザー、予約、お気に入り表示
@@ -41,8 +42,10 @@ class MyPageController extends Controller
     }
 
     // QR生成
-    public function generateQRCode($reservationId)
+    public function showQRCode($reservationId)
     {
+
+        // 予約情報が存在するか確認
         // 予約情報が存在するか確認
         $reservation = Reservation::find($reservationId);
         if (!$reservation) {
@@ -50,15 +53,23 @@ class MyPageController extends Controller
         }
 
         // QRコードの内容を生成
-        $qrCodeContent = 'Reservation ID: ' . $reservationId;
+        $reservationData = [
+            '店舗ID' => $reservation->shop->id,
+            '店舗名' => $reservation->shop->name,
+            '予約者名' => $reservation->user->name,
+            'ご予約ID' => $reservationId,
+            '予約日' => $reservation->date,
+            '予約時間' => $reservation->time,
+            '人数' => $reservation->number_of_people,
+        ];
 
-        // PNG形式でQRコードを生成してレスポンスとして返す
-        return response(QrCode::format('png')->size(200)->generate($qrCodeContent))->header('Content-Type', 'image/png');
-    }
+        // 予約情報をJSON形式に変換
+        $jsonReservationData = json_encode($reservationData, JSON_UNESCAPED_UNICODE);
 
-    // QR表示
-    public function showQRCode($reservationId)
-    {
-        return view('qr', compact('reservationId'));
+        // QRコードを生成 (UTF-8エンコーディングを指定)
+        $qrCode = QrCode::encoding('UTF-8')->size(100)->generate($jsonReservationData);
+
+        // QRコードをビューに渡す
+        return view('qr', ['qrCode' => $qrCode, 'reservationData' => $reservationData]);
     }
 }
