@@ -46,7 +46,6 @@ class MyPageController extends Controller
     {
 
         // 予約情報が存在するか確認
-        // 予約情報が存在するか確認
         $reservation = Reservation::find($reservationId);
         if (!$reservation) {
             abort(404); // 予約情報が見つからない場合は404エラーを返す
