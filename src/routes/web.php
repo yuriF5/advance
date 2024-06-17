@@ -9,8 +9,14 @@ use App\Http\Controllers\MyPageController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\MailController;
 use App\Http\Controllers\AdminController;
+use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\VerificationController;
+use Illuminate\Auth\Events\Verified;
+
+// メール認証
 
 
+// 非会員用
 Route::get('/',[AuthController::class,'index']);
 Route::get('/auth/register',[AuthController::class,'store']);
 Route::post('/auth/register', [AuthController::class, 'register']);

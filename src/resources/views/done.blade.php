@@ -11,6 +11,5 @@
         </p>
         <a class="form__button--pay" href="https://buy.stripe.com/test_bIY7wsgbccfA4RG004">決済先へ&#128179;</a>
         <a class="content__button" href="/mypage">戻る</a>
-
     </div>
 @endsection

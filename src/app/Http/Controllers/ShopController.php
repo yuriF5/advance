@@ -104,8 +104,8 @@ class ShopController extends Controller
         $path = $img->store('img', 'public');
 
         // フォームからの入力データを取得
-        $genreId = $request->input('genre'); 
-        $areaId = $request->input('area'); 
+        $genreId = $request->input('genre');
+        $areaId = $request->input('area');
         $name = $request->input('name');
         $description = $request->input('description');
 

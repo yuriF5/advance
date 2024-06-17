@@ -29,7 +29,7 @@ class ReservationController extends Controller
             // 既存の予約がない場合は新規作成
             $reservation = new Reservation();
             $reservation->shop_id = $shop->id;
-            $reservation->user_id = Auth::id(); 
+            $reservation->user_id = Auth::id();
             $reservation->date = $request->date;
             $reservation->time = $request->time;
             $reservation->number_of_people = $request->number;
@@ -52,7 +52,7 @@ class ReservationController extends Controller
         $availableTimes = ['17:00', '18:00', '19:00', '20:30', '21:00'];
         $numbers = range(1, 5);
         $backRoute = '/my_page';
-        return view('edit.reservation', compact('reservation', 'user', 'shop', 'availableTimes','numbers','backRoute'));
+        return view('edit.reservation', compact('reservation', 'user', 'shop','availableTimes','numbers','backRoute'));
     }
 
     // 予約変更処理

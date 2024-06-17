@@ -15,7 +15,7 @@ use App\Http\Requests\ReviewStoreRequest;
 class ReviewController extends Controller
 {
     // レビュー画面表示
-    public function create(Request $request)    
+    public function create(Request $request)
     {
         $user = Auth::user();
         $userId = Auth::id();

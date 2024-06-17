@@ -6,7 +6,6 @@
 
 
 @section('content')
-
 <div class="container">
     <div class="detail__wrap">
         <div class="detail__header">

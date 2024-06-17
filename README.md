@@ -73,10 +73,11 @@ $ cp .env.local .env
 ### PHPコンテナ内
 ```php
 $ php artisan key:generate
+$ php artisan migrate
 $ php artisan db:seed
 ```
 
-### src上
+### 権限変更
 ```php
 $ sudo chmod -R 777 *
 ```
