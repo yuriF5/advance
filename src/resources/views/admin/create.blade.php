@@ -29,9 +29,9 @@
         <label for="area" class="block">地域</label>
             <select name="area" class="form__input-item" id="area">
                 <option value="" {{ old('area') == '' ? 'selected' : '' }}>選択してください</option>
-                <option value="1" {{ old('area') == '1' ? 'selected' : '' }}>東京</option>
-                <option value="2" {{ old('area') == '2' ? 'selected' : '' }}>大阪</option>
-                <option value="3" {{ old('area') == '3' ? 'selected' : '' }}>福岡</option>
+                <option value="1" {{ old('area') == '13' ? 'selected' : '' }}>東京</option>
+                <option value="2" {{ old('area') == '27' ? 'selected' : '' }}>大阪</option>
+                <option value="3" {{ old('area') == '40' ? 'selected' : '' }}>福岡</option>
             </select>
         </div>
         <div class="error__item">

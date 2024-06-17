@@ -15,9 +15,6 @@ class AreasTableSeeder extends Seeder
     public function run()
     {
     $param  = [
-            ['name' => '東京'],
-            ['name' => '大阪'],
-            ['name' => '福岡'],
             ['name' => '北海道'],
             ['name' => '青森'],
             ['name' => '岩手'],
@@ -30,6 +27,7 @@ class AreasTableSeeder extends Seeder
             ['name' => '群馬'],
             ['name' => '埼玉'],
             ['name' => '千葉'],
+            ['name' => '東京'],
             ['name' => '神奈川'],
             ['name' => '新潟'],
             ['name' => '富山'],
@@ -43,6 +41,7 @@ class AreasTableSeeder extends Seeder
             ['name' => '三重'],
             ['name' => '滋賀'],
             ['name' => '京都'],
+            ['name' => '大阪'],
             ['name' => '兵庫'],
             ['name' => '奈良'],
             ['name' => '和歌山'],
@@ -55,6 +54,7 @@ class AreasTableSeeder extends Seeder
             ['name' => '香川'],
             ['name' => '愛媛'],
             ['name' => '高知'],
+            ['name' => '福岡'],
             ['name' => '佐賀'],
             ['name' => '長崎'],
             ['name' => '熊本'],

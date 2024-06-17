@@ -64,11 +64,11 @@
         <div>
             <label for="genre" class="block">ジャンル</label>
             <select name="genre_id" class="form__input-item" id="genre" required>
-                    <option value="">選択してください</option>
-                    @foreach($genres ?? [] as $genre)
-                        <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
-                    @endforeach
-                </select>
+                <option value="">選択してください</option>
+                @foreach($genres ?? [] as $genre)
+                    <option value="{{ $genre->id }}" {{ old('genre_id', $shop->genre_id) == $genre->id ? 'selected' : '' }}>{{ $genre->name }}</option>
+                @endforeach
+            </select>
             <div class="error__item">
                 @error('genre')
                     <span class="error__message">{{ $message }}</span>

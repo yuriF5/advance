@@ -99,7 +99,7 @@ class ShopController extends Controller
     // 新店舗保存処理
     public function store(ShopUpdateRequest $request)
     {
-         // 画像を保存してパスを取得
+        // 画像を保存してパスを取得
         $img = $request->file('image_file');
         $path = $img->store('img', 'public');
 
